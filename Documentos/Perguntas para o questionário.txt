@@ -32,3 +32,6 @@
 - Existem eventos do museu fora do museu?, onde?, quais?, como?
 - Existe ingresso para acesso ao museu?
 - O que é necessário para o acesso ao acervo?
+- Quantos itens existem atualmente no museu?
+- Qual a frequência de chegada de novos itens?
+- Quanto tempo em média demora o processo documentação de um novo item?
