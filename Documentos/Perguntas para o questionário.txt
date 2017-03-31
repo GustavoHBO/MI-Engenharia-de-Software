@@ -35,3 +35,4 @@
 - Quantos itens existem atualmente no museu?
 - Qual a frequência de chegada de novos itens?
 - Quanto tempo em média demora o processo documentação de um novo item?
+- Quais são os cuidados obrigatórios para conservação dos itens do acervo?
