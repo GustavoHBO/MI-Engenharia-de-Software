@@ -36,3 +36,6 @@
 - Qual a frequência de chegada de novos itens?
 - Quanto tempo em média demora o processo documentação de um novo item?
 - Quais são os cuidados obrigatórios para conservação dos itens do acervo?
+- Qual o objetivo/visão do museu?
+- Qual o objetivo do site?
+- O que você espera com o site?
