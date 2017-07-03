@@ -42,3 +42,49 @@ $app->get('/exposicao/{idexposicao}', function ($idexposicao){
 $app->get('/noticia', function ($idnoticia){
 	return 'exposicao' .$idnoticia;
 });
+
+
+$app->group(['prefix' => 'item'], function () use ($app) {
+    $app->get('cadastrar', function ()    {
+        return 'cadastro de item';
+    });
+    $app->get('gerenciamento', function ()    {
+        return 'gerenciamento de item';
+    });
+    $app->get('editar/{iditem}', function ($iditem)    {
+        return 'edicao de item '. $iditem;
+    });
+    $app->get('listar', function ()    {
+        return 'listagem de todos os itens';
+    });
+    $app->get('listar/favoritos', function ()    {
+        return 'listagem de itens favoritos';
+    });
+    $app->get('visualizar/{iditem}', function ($iditem)    {
+        return 'visualização de item '. $iditem;
+    });
+    $app->get('/', function ()    {
+        return 'tela item';
+    });
+});
+
+$app->group(['prefix' => 'evento'], function () use ($app) {
+    $app->get('cadastro', function ()    {
+        return 'cadastro evento';
+    });
+    $app->get('gerenciamento', function ()    {
+        return 'gerenciamento evento';
+    });
+    $app->get('editar/{idevento}', function ($idevento)    {
+        return 'editar evento ' .$idevento;
+    });
+    $app->get('excluir/{idevento}', function ($idevento)    {
+        return 'excluir evento ' .$idevento;
+    });
+    $app->get('{idevento}', function ($idevento)    {
+        return 'evento ' .$idevento;
+    });
+    $app->get('/', function ()    {
+        return 'eventos';
+    });
+});
