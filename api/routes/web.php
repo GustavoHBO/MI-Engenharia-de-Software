@@ -14,21 +14,31 @@
 $app->get('/', function () use ($app) {
     return $app->version();
 });
+
 $app->get('/dashboard/exposicao', function (){
     return 'exposicao';
 });
+
 $app->post('/dashboard/exposicao/nova', function (){
     return 'exposicao nova';
 });
+
 $app->get('/dashboard/exposicao/editar/{idexposicao}', function ($idexposicao){
     return 'exposicao excluir ' . $idexposicao;
 });
+
 $app->get('/dashboard/exposicao/excluir/{idexposicao}', function ($idexposicao){
     return 'exposicao excluir ' . $idexposicao;
 });
+
 $app->get('/exposicoes', function (){
     return 'exposicoes';
 });
+
 $app->get('/exposicao/{idexposicao}', function ($idexposicao){
     return 'exposicao ' . $idexposicao;
+});
+
+$app->get('/noticia', function ($idnoticia){
+	return 'exposicao' .$idnoticia;
 });
