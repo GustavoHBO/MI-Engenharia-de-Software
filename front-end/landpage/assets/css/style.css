@@ -55,36 +55,6 @@ body {
     -webkit-font-smoothing: antialiased;
     font-weight: 300;
 }
-/*==========================================
-PRE LOADER 
-==========================================*/
-
-.preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #fefefe;
-    z-index: 99999;
-    height: 100%;
-    width: 100%;
-    overflow: hidden !important;
-}
-.preloader h2 {
-    font-size: 3rem;
-    text-align: center;
-    margin-top: 200px;
-    margin-bottom: 50px;
-}
-.loaded {
-    width: 60px;
-    height: 60px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin: -20px 0 0 -20px;
-}
 
 /*==========================================
             PREDFINEED CSS
@@ -278,13 +248,13 @@ nav ul li {
 }
 
 .opaque-navbar.opaque {
-    background-color: #CF806A;
+    background-color: #8D453C;
     height: 60px;
     transition: background-color .5s ease 0s;
 }
 
 ul.dropdown-menu {
-    background-color: #CF806A;
+    background-color: #8D453C;
 }
 
 
@@ -295,14 +265,33 @@ ul.dropdown-menu {
     background:white;
   }
   .opaque-navbar {
-    background-color: #CF806A;
+    background-color: #8D453C;
     height: 60px;
     transition: background-color .5s ease 0s;
+}}
+
+#logo{
+    font-family: 'Roboto',sans-serif;
+    color:black;
+    padding-top:10px;
 }
 
+#logo.logo-ativo{
+    color:white;
+    padding-top:10px;
 }
 
+#navMain li a{
+    font-family: 'Roboto',sans-serif;
+    font-size: 15px;
+    color: black;
+}
 
+#navMain li a.ativo{
+    font-family: 'Roboto',sans-serif;
+    font-size: 15px;
+    color:white;
+}
 
 
 /*==============================================================
@@ -330,11 +319,11 @@ ul.dropdown-menu {
 ===============================================================*/
 
 .home {
-    background: url(../images/sertao.jpg) no-repeat top center #141315;
+    background: url(../img/sertao.jpg) no-repeat top center #141315;
     background-size: cover;
     position: relative;
     padding-top: 80px;
-   background-attachment: fixed;
+    background-attachment: fixed;
 }
 
 .main_home {
@@ -343,7 +332,8 @@ ul.dropdown-menu {
 }
 .main_home h1{
     width:100%;
-    margin:20px auto;
+    padding-top: 65px;
+    margin:40px auto;
 }
 .main_home ul li a{
     color:#fff;
