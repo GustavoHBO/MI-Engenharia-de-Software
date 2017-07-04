@@ -15,29 +15,42 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
-$app->get('/dashboard/exposicao', function (){
-    return 'exposicao';
+$app->group(['prefix' => 'dashboard/exposicao'], function () use ($app){
+	$app->get('/', function (){
+    	return 'dashboard da exposicao';
+	});
+
+	$app->post('/cadastrar', function (){
+    	return 'Cadastro de um nova exposicao';
+	});	
+
+	$app->post('/listar', function (){
+    	return 'Cadastro de um nova exposicao';
+	});	
+
+	$app->get('/editar/{idexposicao}', function ($idexposicao){
+    	return 'editar exposicao' . $idexposicao;
+	});
+
+	$app->get('/excluir/{idexposicao}', function ($idexposicao){
+    	return 'exposicao excluir ' . $idexposicao;
+	});
+
 });
 
-$app->post('/dashboard/exposicao/nova', function (){
-    return 'exposicao nova';
+
+app->group(['prefix' => 'exposicao'], function () use ($app){
+	$app->get('/', function (){
+    return 'pagina principal da exposicao';
+	});
+
+	$app->get('/buscar/{idexposicao}', function ($idexposicao){
+    return 'exposicao buscada: ' . $idexposicao;
+	});
+
 });
 
-$app->get('/dashboard/exposicao/editar/{idexposicao}', function ($idexposicao){
-    return 'exposicao excluir ' . $idexposicao;
-});
 
-$app->get('/dashboard/exposicao/excluir/{idexposicao}', function ($idexposicao){
-    return 'exposicao excluir ' . $idexposicao;
-});
-
-$app->get('/exposicoes', function (){
-    return 'exposicoes';
-});
-
-$app->get('/exposicao/{idexposicao}', function ($idexposicao){
-    return 'exposicao ' . $idexposicao;
-});
 
 /*
 Grupo para a parte das noticias
@@ -63,7 +76,7 @@ $app->group(['prefix' => 'noticia'], function () use ($app){
 
 });
 
-<<<<<<< HEAD
+
 /*
 Grupo de rotas para o dashboard da noticia
 */
@@ -85,8 +98,6 @@ $app->group(['prefix' => 'dashboard/noticia'], function () use ($app){
 
 
 	});
-
-=======
 
 $app->group(['prefix' => 'item'], function () use ($app) {
     $app->get('cadastrar', function ()    {
@@ -131,5 +142,4 @@ $app->group(['prefix' => 'evento'], function () use ($app) {
     $app->get('/', function ()    {
         return 'eventos';
     });
->>>>>>> a26f710f2c0e875cb79ee2ee2ecf6c78f9dddf07
 });
