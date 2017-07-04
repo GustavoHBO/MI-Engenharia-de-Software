@@ -39,6 +39,50 @@ $app->get('/exposicao/{idexposicao}', function ($idexposicao){
     return 'exposicao ' . $idexposicao;
 });
 
-$app->get('/noticia', function ($idnoticia){
-	return 'exposicao' .$idnoticia;
+/*
+Grupo para a parte das noticias
+*/
+$app->group(['prefix' => 'noticia'], function () use ($app){ 
+	$app->post('/buscar/{id_buscar}', function (){
+		return "Noticia Buscada";
+	});
+
+	$app->get('/exibir/{idexibir_noticia}', function ($idexibir_noticia){
+		return "exibindo noticia " .$idexibir_noticia;
+	});
+
+	$app->get('/compartilhar/{idcompartilhar_noticia}', function ($idcompartilhar_noticia){
+		return "compartilhando noticia " .$idcompartilhar_noticia;
+	});
+
+	$app->get('/', function(){
+		return "Principal da Noticia";
+
+
+	});
+
+});
+
+/*
+Grupo de rotas para o dashboard da noticia
+*/
+$app->group(['prefix' => 'dashboard/noticia'], function () use ($app){ 
+	$app->post('/cadastro', function (){
+		return "cadastro da notícia";
+	});
+
+	$app->get('/listar', function (){
+		return "cadastro da notícia";
+	});
+
+	$app->get('/excluir/{id_noticia_excluir}', function ($id_noticia_excluir){
+		return "cadastro da notícia " .$id_noticia_excluir;
+	});
+
+	$app->get('/', function(){
+		return "Principal do DashBoard notícia";
+
+
+	});
+
 });
