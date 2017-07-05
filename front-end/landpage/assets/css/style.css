@@ -271,9 +271,27 @@ ul.dropdown-menu {
 }}
 
 #logo{
+	/* TESTE FONTES */
+	font-family: 'Cinzel', serif;
+	font-family: 'Kurale', serif;
+	font-family: 'Courgette', cursive;
+	font-family: 'Satisfy', cursive;
+	font-family: 'Freckle Face', cursive;
+    font-family: 'Rock Salt', cursive;
     font-family: 'Roboto',sans-serif;
+
+
     color:black;
     padding-top:10px;
+}
+
+h1{
+	font-family: 'Cinzel', serif;
+	font-family: 'Kurale', serif;
+	font-family: 'Courgette', cursive;
+	font-family: 'Satisfy', cursive;
+	font-family: 'Freckle Face', cursive;
+    font-family: 'Rock Salt', cursive;
 }
 
 #logo.logo-ativo{
