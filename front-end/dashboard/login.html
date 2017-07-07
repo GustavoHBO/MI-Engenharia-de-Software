@@ -24,7 +24,7 @@
         <div id="login-page" class="row login-box">
             <div class="col-sm-4 col-sm-offset-4 login">
                 <div class="row form-box">
-                    <h2>LOGIN</h2>
+                    <h2>Login</h2>
                     <div class="col-xs-10 col-xs-offset-1">
                         <input class="form-group input-sm" type="email" placeholder="E-mail" v-model="email">
                     </div>
@@ -52,6 +52,20 @@
     </div>
 		<!-- NAVBAR -->
 	</div>
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDADtaW1yrjo77L-dePL_9-nmuECWxQBC8",
+        authDomain: "pblengsoft.firebaseapp.com",
+        databaseURL: "https://pblengsoft.firebaseio.com",
+        projectId: "pblengsoft",
+        storageBucket: "",
+        messagingSenderId: "944279566468"
+    };
+    firebase.initializeApp(config);
+    </script>
+
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
 	<script src="assets/vendor/jquery/jquery.min.js"></script>
