@@ -92,7 +92,8 @@ h2 {
 h1 {
     font-size: 2.571rem;
     line-height: 3.5rem;
-    color: #fff;
+    color: black;
+    font-family: 'Freckle Face';
 }
 h2 {
     font-size: 2.143rem;
@@ -240,7 +241,7 @@ nav ul li {
 *  OPAQUE NAVBAR SECTION
 ***********************************************************************/
 .opaque-navbar {
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(141,69,60,0.6);
   /* Transparent = rgba(0,0,0,0) / Translucent = (0,0,0,0.5)  */
     height: 60px;
     border-bottom: 0px;
@@ -254,7 +255,7 @@ nav ul li {
 }
 
 ul.dropdown-menu {
-    background-color: #8D453C;
+    background-color: white;
 }
 
 
@@ -271,9 +272,21 @@ ul.dropdown-menu {
 }}
 
 #logo{
-    font-family: 'Roboto',sans-serif;
-    color:black;
+	/* TESTE FONTES */
+	font-family: 'Freckle Face', cursive;
+    color:white;
     padding-top:10px;
+}
+
+.main_home h1{
+	font-family: 'Freckle Face', cursive;
+    font-size: 40px;
+    color: white;
+}
+
+h2{
+    font-family: 'Roboto', sans-serif;
+    color:white;
 }
 
 #logo.logo-ativo{
@@ -284,7 +297,7 @@ ul.dropdown-menu {
 #navMain li a{
     font-family: 'Roboto',sans-serif;
     font-size: 15px;
-    color: black;
+    color: white;
 }
 
 #navMain li a.ativo{
@@ -319,7 +332,7 @@ ul.dropdown-menu {
 ===============================================================*/
 
 .home {
-    background: url(../img/sertao.jpg) no-repeat top center #141315;
+    background: url(../img/sertao1.jpg) no-repeat top center #141315;
     background-size: cover;
     position: relative;
     padding-top: 80px;
@@ -330,11 +343,7 @@ ul.dropdown-menu {
     padding: 170px 20px 170px 20px;
     position: relative;
 }
-.main_home h1{
-    width:100%;
-    padding-top: 65px;
-    margin:40px auto;
-}
+
 .main_home ul li a{
     color:#fff;
 }

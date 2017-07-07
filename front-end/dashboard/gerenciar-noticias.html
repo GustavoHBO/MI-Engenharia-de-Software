@@ -122,7 +122,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="input-group">
-										<input class="form-control" type="text">
+										<input class="form-control" type="text" placeholder="Título da Notícia">
 										<span class="input-group-btn"><button class="btn btn-primary" type="button">Pesquisar</button></span>
 							</div>
 							<br>
@@ -131,30 +131,16 @@
 										<thead>
 											<tr>
 												<th>Título</th>
+												<th>Escritor</th>
 												<th>Data</th>
 												<th></th>
 											</tr>
 										</thead>
-										<tbody>
-											<tr>
-												<td>Novas peças foram encontradas nas redondezas da chapada diamantina</td>
-												<td>23/07/2017</td>
-												<td>
-													<a class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-													<a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-												</td>
-											</tr>
-											<tr>
-												<td>Exposição filhos do sertão voltará em breve</td>
-												<td>21/07/2017</td>
-												<td>
-													<a class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-													<a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-												</td>
-											</tr>
-											<tr>
-												<td>Exposição objetos em couro está disponível</td>
-												<td>20/07/2017</td>
+										<tbody id="lista_noticias">
+											<tr v-for="noticia in noticias">
+												<td>{{noticia.titulo}}</td>
+												<td>{{noticia.escritor}}</td>
+												<td>{{noticia.data}}</td>
 												<td>
 													<a class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
 													<a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
@@ -185,6 +171,11 @@
 	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="assets/scripts/klorofil-common.js"></script>
+
+	<!-- VUE.JS CDN -->
+	<script src="https://unpkg.com/vue"></script>
+	<!-- Page JS -->
+	<script src="assets/scripts/gerenciar-noticias.js"></script>
 </body>
 
 </html>
