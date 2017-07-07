@@ -56,7 +56,6 @@ $app->group(['prefix' => 'dashboard/exposicao'], function () use ($app){
 /*
 Grupo da exposicao
 */
-app->group(['prefix' => 'exposicao'], function () use ($app){
 
 $app->group(['prefix' => 'exposicao'], function () use ($app){
 
