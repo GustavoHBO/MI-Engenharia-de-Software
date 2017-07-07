@@ -1,0 +1,106 @@
+html,
+body {
+    width: 100%;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+}
+
+img{
+    width:60%;
+}
+
+.centered{
+    text-align: center;
+}
+
+@media (min-width: 768px){
+    img{
+        width:60%;
+        margin-bottom: 20px;
+    }
+}
+@media (min-width: 400px){
+    @media (max-width: 768px){
+        img{
+            width:30%;
+        }
+    }
+}
+
+h2{
+    text-align: center;
+    color: #fff;
+    letter-spacing: 3px;
+}
+h4{
+    text-align: center;
+    color: #fff;
+}
+
+body {
+    height: 100vh;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.login-box{
+    padding-top: 100px;
+    height: 200px;
+}
+
+.login{
+    border: 1px solid #39B2FF;
+    background-color: #2B333E;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+.form-box{
+    padding-top:10px;
+}
+@media (max-width: 768px){
+    .login{
+        margin: 0 20px;
+    }
+    footer{
+        padding-bottom: 20px;
+    }
+}
+.input-sm{
+	width:100%;
+    font-family: 'Roboto', sans-serif;
+}
+.btn{
+    background-color:#39B2FF;
+    color: #fff;
+    margin-bottom: 10px;
+}
+.btn-facebook{
+    background-color: #3B5998;
+}
+.btn-google{
+    background-color: #DD5347;
+}
+.btn:hover{
+    background-color: #fff;
+    color: #000;
+}
+.forgetPassword{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+}
+.forgetPassword a{
+	color: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+.forgetPassword a:hover{
+	color: red;
+}

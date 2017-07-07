@@ -11,8 +11,22 @@
 |
 */
 
-$app->get('/', function () use ($app) {
-    return $app->version();
+$app->group(['prefix' => 'usr'], function () use ($app){
+    $app->get('/', 'UsuarioController@readAll');
+    $app->post('/new', 'UsuarioController@create');
+	$app->post('/update', 'UsuarioController@update');
+	$app->post('/desativar', 'UsuarioController@desativar');
+});
+
+/*
+Grupo do dashboard da exposicao
+*/
+
+$app->group(['prefix' => 'usr'], function () use ($app){
+    $app->get('/', 'FuncionarioController@readAll');
+    $app->post('/new', 'FuncionarioController@create');
+	$app->post('/update', 'FuncionarioController@update');
+	$app->post('/desativar', 'FuncionarioController@desativar');
 });
 
 $app->group(['prefix' => 'dashboard/exposicao'], function () use ($app){
@@ -39,7 +53,12 @@ $app->group(['prefix' => 'dashboard/exposicao'], function () use ($app){
 });
 
 
-app->group(['prefix' => 'exposicao'], function () use ($app){
+/*
+Grupo da exposicao
+*/
+
+$app->group(['prefix' => 'exposicao'], function () use ($app){
+
 	$app->get('/', function (){
     return 'pagina principal da exposicao';
 	});
@@ -82,7 +101,7 @@ Grupo de rotas para o dashboard da noticia
 */
 $app->group(['prefix' => 'dashboard/noticia'], function () use ($app){ 
 	$app->post('/cadastro', function (){
-		return "cadastro da notÃ­cia";
+		return "cadastro da notÃcia";
 	});
 
 	$app->get('/listar', function (){
@@ -116,7 +135,7 @@ $app->group(['prefix' => 'item'], function () use ($app) {
         return 'listagem de itens favoritos';
     });
     $app->get('visualizar/{iditem}', function ($iditem)    {
-        return 'visualização de item '. $iditem;
+        return 'visualizaï¿½ï¿½o de item '. $iditem;
     });
     $app->get('/', function ()    {
         return 'tela item';

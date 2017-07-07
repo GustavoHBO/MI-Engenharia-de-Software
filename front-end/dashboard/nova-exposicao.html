@@ -122,8 +122,17 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-
-
+								<input id="nome" type="text" class="form-control" placeholder="Nome" required>
+								<br>
+								<input id="titulo" type="text" class="form-control" placeholder="Título" required>
+								<br>
+								<input id="descricao" type="text" class="form-control" placeholder="Descrição" required>
+								<br>
+								<input id="data_inicio" type="date" class="form-control" placeholder="Data de Início" required>
+								<br>
+								<input id="data_termino" type="date" class="form-control" placeholder="Data de Término" required>
+								<br>
+								<button class="btn btn-primary">Enviar</button>
 							</div>
 
 						</div>
@@ -134,43 +143,35 @@
 		</div>
 		<!-- END MAIN CONTENT -->
 	</div>
-	<!-- END MAIN -->
-	<div class="clearfix"></div>
-	<footer>
-		<div class="container-fluid">
-			<p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved.</p>
-		</div>
-	</footer>
-</div>
-<!-- END WRAPPER -->
-<!-- Javascript -->
-<script src="assets/vendor/jquery/jquery.min.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-<script src="assets/vendor/chartist/js/chartist.min.js"></script>
-<script src="assets/scripts/klorofil-common.js"></script>
-<script>
-	$(function() {
-	var data, options;
+	<!-- END WRAPPER -->
+	<!-- Javascript -->
+	<script src="assets/vendor/jquery/jquery.min.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
+	<script src="assets/scripts/klorofil-common.js"></script>
+	<script>
+		$(function () {
+		var data, options;
 
-	// headline charts
-	data = {
-	labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-	series: [
-	[23, 29, 24, 40, 25, 24, 35],
-	[14, 25, 18, 34, 29, 38, 44],
-	]
-};
+		// headline charts
+		data = {
+		labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+		series: [
+		[23, 29, 24, 40, 25, 24, 35],
+		[14, 25, 18, 34, 29, 38, 44],
+		]
+	};
 
-options = {
-height: 300,
-showArea: true,
-showLine: false,
-showPoint: false,
-fullWidth: true,
-axisX: {
-showGrid: false
+	options = {
+	height: 300,
+	showArea: true,
+	showLine: false,
+	showPoint: false,
+	fullWidth: true,
+	axisX: {
+	showGrid: false
 },
 lineSmooth: false,
 };
@@ -242,7 +243,7 @@ new Chartist.Bar('#visits-chart', data, options);
 // real-time pie chart
 var sysLoad = $('#system-load').easyPieChart({
 size: 130,
-barColor: function(percent) {
+barColor: function (percent) {
 return "rgb(" + Math.round(200 * percent / 100) + ", " + Math.round(200 * (1.1 - percent / 100)) + ", 0)";
 },
 trackColor: 'rgba(245, 245, 245, 0.8)',
@@ -254,7 +255,7 @@ animate: 800
 
 var updateInterval = 3000; // in milliseconds
 
-setInterval(function() {
+setInterval(function () {
 var randomVal;
 randomVal = getRandomInt(0, 100);
 
@@ -268,6 +269,11 @@ return Math.floor(Math.random() * (max - min + 1)) + min;
 
 });
 </script>
+
+<!-- VUE.JS CDN -->
+<script src="https://unpkg.com/vue"></script>
+<!-- Page JS -->
+<script src="assets/scripts/nova-exposicao.js"></script>
 </body>
 
 </html>

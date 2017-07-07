@@ -1,0 +1,21 @@
+.add {
+  text-align: center;
+  background-color: lightgray;
+  min-height: 100px;
+  max-height: 100px;
+  min-width: 100px;
+  max-width: 100px;
+  padding: 0;
+  margin: 0;
+}
+
+.add-button:hover div{
+  cursor:pointer;
+  background-color: darkgrey;
+}
+
+.icon-plus {
+  position: relative;
+  font-size: 50px;
+  top: 25px;
+}
