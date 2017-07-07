@@ -1,7 +1,7 @@
 
 
 // Instancia responsável pelo controle da lista de noticias
-var lista_eventos = new Vue({
+var lista_noticias = new Vue({
   el: '#lista_noticias',
   data: {
     noticias: [
