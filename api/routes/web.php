@@ -15,6 +15,9 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
+/*
+Grupo do dashboard da exposicao
+*/
 $app->group(['prefix' => 'dashboard/exposicao'], function () use ($app){
 	$app->get('/', function (){
     	return 'dashboard da exposicao';
@@ -38,7 +41,9 @@ $app->group(['prefix' => 'dashboard/exposicao'], function () use ($app){
 
 });
 
-
+/*
+Grupo da exposicao
+*/
 app->group(['prefix' => 'exposicao'], function () use ($app){
 	$app->get('/', function (){
     return 'pagina principal da exposicao';
@@ -82,7 +87,7 @@ Grupo de rotas para o dashboard da noticia
 */
 $app->group(['prefix' => 'dashboard/noticia'], function () use ($app){ 
 	$app->post('/cadastro', function (){
-		return "cadastro da notÃ­cia";
+		return "cadastro da notÃcia";
 	});
 
 	$app->get('/listar', function (){
