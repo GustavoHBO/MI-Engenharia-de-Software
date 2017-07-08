@@ -241,8 +241,8 @@ nav ul li {
 *  OPAQUE NAVBAR SECTION
 ***********************************************************************/
 .opaque-navbar {
-    background-color: rgba(141,69,60,0.5);
-  /* Transparent = rgba(0,0,0,0) / Translucent = (0,0,0,0.5)  */
+    background-color: rgba(0,0,0,0);
+  /* Transparent = rgba(0,0,0,0) / Translucent = (0,0,0,0.5)  rgba(141,69,60,0.5) */
     height: 60px;
     border-bottom: 0px;
     transition: background-color .5s ease 0s;
@@ -274,7 +274,7 @@ ul.dropdown-menu {
 #logo{
 	/* TESTE FONTES */
 	font-family: 'Freckle Face', cursive;
-    color:white;
+    color:black;
     padding-top:10px;
 }
 
@@ -298,13 +298,14 @@ h2{
 #navMain li a{
     font-family: 'Roboto',sans-serif;
     font-size: 15px;
-    color: white;
+    color: black;
 }
 
 #navMain li a.ativo{
     font-family: 'Roboto',sans-serif;
     font-size: 15px;
     color:white;
+    background-color: rgba(0,0,0,0);
 }
 
 
@@ -328,12 +329,16 @@ h2{
 }
 
 
+
+
+
+
 /*=============================================================
                     home section
 ===============================================================*/
 
 .home {
-    background: url(../img/sertao1.jpg) no-repeat top center #141315;
+    background: url(../img/sertao.jpg) no-repeat top center #141315;
     background-size: cover;
     position: relative;
     padding-top: 80px;
