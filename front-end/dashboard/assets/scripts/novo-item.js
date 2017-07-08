@@ -3,13 +3,13 @@ var imagens = new Vue({
   el: '#imagens',
   data: {
     imagens: [
-        { 
+        {
             url: 'foto',
         },
-         { 
+         {
             url: 'foto',
         },
-         { 
+         {
             url: 'foto',
         },
     ]
