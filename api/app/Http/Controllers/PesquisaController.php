@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\SecurityController;
 
-class RelatorioController extends Controller
+class PesquisaController extends Controller
 {
 
      //Método para cadastrar item em relatorio

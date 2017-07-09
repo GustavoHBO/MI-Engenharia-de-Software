@@ -177,24 +177,12 @@ $app->group(['prefix' => 'evento'], function () use ($app) {
 });
 
 $app->group(['prefix' => 'pesquisa'], function () use ($app) {
-    $app->post('cadastro', function ()    {
-        return 'cadastro pesquisa';
-    });
-    $app->get('gerenciamento', function ()    {
-        return 'gerenciamento pesquisa';
-    });
-    $app->get('editar/{idpesquisa}', function ($idpesquisa)    {
-        return 'editar pesquisa ' .$idevento;
-    });
-    $app->get('excluir/{idpesquisa}', function ($idpesquisa)    {
-        return 'excluir pesquisa ' .$idevento;
-    });
-    $app->get('{idpesquisa}', function ($idpesquisa)    {
-        return 'pesquisa ' .$idpesquisa;
-    });
-    $app->get('/', function ()    {
-        return 'pesquisas';
-    });
+    $app->post('cadastro', 'PesquisaController@cadastro');
+    // $app->get('gerenciamento', 'PesquisaController@cadastro');
+    $app->post('editar/{idpesquisa}', 'PesquisaController@editar');
+    $app->post('excluir/{idpesquisa}', 'PesquisaController@excluir');
+    $app->get('{idpesquisa}', 'PesquisaController@get'});
+    $app->get('/', 'PesquisaController@getall');
 });
 
 $app->group(['prefix' => 'relatorio'], function () use ($app) {
