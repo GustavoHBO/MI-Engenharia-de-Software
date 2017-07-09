@@ -177,7 +177,7 @@ $app->group(['prefix' => 'evento'], function () use ($app) {
 });
 
 $app->group(['prefix' => 'pesquisa'], function () use ($app) {
-    $app->get('cadastro', function ()    {
+    $app->post('cadastro', function ()    {
         return 'cadastro pesquisa';
     });
     $app->get('gerenciamento', function ()    {
@@ -198,10 +198,6 @@ $app->group(['prefix' => 'pesquisa'], function () use ($app) {
 });
 
 $app->group(['prefix' => 'relatorio'], function () use ($app) {
-    $app->get('cadastro', function ()    {
-        return 'cadastro relatorio';
-    });
-    $app->get('{datainicial}/{datafinal}', function ($datainicial, $datafinal)    {
-        return 'relatorio ' .$datainicial. ' '.$datafinal ;
-    });
+    $app->post('cadastro', 'RelatorioController@novo');
+    $app->get('{datainicial}/{datafinal}', 'RelatorioController@get');
 });
