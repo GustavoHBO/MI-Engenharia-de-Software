@@ -27,4 +27,4 @@ var lista_item = new Vue({
         },
     ]
   }
-})
+});
