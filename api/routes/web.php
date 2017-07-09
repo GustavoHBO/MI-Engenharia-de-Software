@@ -36,11 +36,11 @@ $app->group(['prefix' => 'dashboard/exposicao'], function () use ($app){
 
 	$app->post('/cadastrar', function (){
     	return 'Cadastro de um nova exposicao';
-	});	
+	});
 
 	$app->post('/listar', function (){
     	return 'Cadastro de um nova exposicao';
-	});	
+	});
 
 	$app->get('/editar/{idexposicao}', function ($idexposicao){
     	return 'editar exposicao' . $idexposicao;
@@ -70,10 +70,10 @@ $app->group(['prefix' => 'exposicao'], function () use ($app){
 
 /*
 	Acesso a funcoes das noticias pelo usuario.
-	Algumas rotas ainda precisa ser definida, como a 
+	Algumas rotas ainda precisa ser definida, como a
 	as rotas de exibir e compartilhamento que estou em duvida
 */
-$app->group(['prefix' => 'noticia'], function () use ($app){ 
+$app->group(['prefix' => 'noticia'], function () use ($app){
 
 	$app->get('/buscar/{key_word}', 'NoticiaController@buscarNoticia');
 
@@ -96,7 +96,7 @@ $app->group(['prefix' => 'noticia'], function () use ($app){
 	para poder testar a insercoes, remocoes
 	e etc no banco de dados
 */
-$app->group(['prefix' => 'dashboard/noticia'], function () use ($app){ 
+$app->group(['prefix' => 'dashboard/noticia'], function () use ($app){
 
 	$app->get('/cadastro/{titulo_noticia}/{descricao_noticia}/{data_publicacao}/{ativo_noticia}/{Usuario_id_user}', 'NoticiaController@cadastrarNoticia');
 	$app->get('/listar', 'NoticiaController@listarNoticia');
@@ -152,5 +152,56 @@ $app->group(['prefix' => 'evento'], function () use ($app) {
     });
     $app->get('/', function ()    {
         return 'eventos';
+    });
+});
+
+$app->group(['prefix' => 'evento'], function () use ($app) {
+    $app->get('cadastro', function ()    {
+        return 'cadastro evento';
+    });
+    $app->get('gerenciamento', function ()    {
+        return 'gerenciamento evento';
+    });
+    $app->get('editar/{idevento}', function ($idevento)    {
+        return 'editar evento ' .$idevento;
+    });
+    $app->get('excluir/{idevento}', function ($idevento)    {
+        return 'excluir evento ' .$idevento;
+    });
+    $app->get('{idevento}', function ($idevento)    {
+        return 'evento ' .$idevento;
+    });
+    $app->get('/', function ()    {
+        return 'eventos';
+    });
+});
+
+$app->group(['prefix' => 'pesquisa'], function () use ($app) {
+    $app->get('cadastro', function ()    {
+        return 'cadastro pesquisa';
+    });
+    $app->get('gerenciamento', function ()    {
+        return 'gerenciamento pesquisa';
+    });
+    $app->get('editar/{idpesquisa}', function ($idpesquisa)    {
+        return 'editar pesquisa ' .$idevento;
+    });
+    $app->get('excluir/{idpesquisa}', function ($idpesquisa)    {
+        return 'excluir pesquisa ' .$idevento;
+    });
+    $app->get('{idpesquisa}', function ($idpesquisa)    {
+        return 'pesquisa ' .$idpesquisa;
+    });
+    $app->get('/', function ()    {
+        return 'pesquisas';
+    });
+});
+
+$app->group(['prefix' => 'relatorio'], function () use ($app) {
+    $app->get('cadastro', function ()    {
+        return 'cadastro relatorio';
+    });
+    $app->get('{datainicial}/{datafinal}', function ($datainicial, $datafinal)    {
+        return 'relatorio ' .$datainicial. ' '.$datafinal ;
     });
 });
