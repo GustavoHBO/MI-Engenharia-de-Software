@@ -20,15 +20,22 @@ export class item {
   data;
   historico;
   ativo;
-  dimansao;
-  aquisicao;
-  item_imagem;
-  documentacao_fotografica;
-  caracteristicas_estilisticas;
-  remove;
-  cria;
-  edita;
-  favorita;
+  altura_dimensao; 
+  diametro_dimensao; 
+  largura_dimensao; 
+  peso_dimensao; 
+  comprimento_dimensao; 
+  data_aquisicao; 
+  modo_aquisicao; 
+  autor_aquisicao; 
+  observacao_aquisicao; 
+  foto_imagem; 
+  materiais_cat_estilisticas; 
+  tecnica_cat_estilisticas; 
+  autoria_cat_estilisticas; 
+  fotografo_doc_fotografica; 
+  data_doc_fotografica; 
+  foto_doc_fotografica;
  
   constructor() {} 
 }

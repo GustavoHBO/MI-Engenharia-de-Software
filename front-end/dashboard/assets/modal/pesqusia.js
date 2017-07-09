@@ -6,7 +6,6 @@ export class pesquisa {
   data; 
   Usuario_id_usuario; 
   ativo; 
-  desabilita_pesquisa; 
 
   constructor() {} 
 }

@@ -5,9 +5,6 @@ export class noticia {
   data_publicacao; 
   ativo; 
   Usuario_id_user; 
-  editar_noticia; 
-  remove_noticia; 
-  noticia_imagem; 
  
   constructor() { 
        

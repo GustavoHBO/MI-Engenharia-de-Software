@@ -10,10 +10,7 @@ export class evento {
   data_fim; 
   categoria; 
   ativo;
-  cria_evento;
-  edita_evento;
-  remove_evento;
-  favorita_evento;
+
  
   constructor() {} 
 }
