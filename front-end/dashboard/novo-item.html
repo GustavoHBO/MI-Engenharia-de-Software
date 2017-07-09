@@ -126,8 +126,9 @@
 								<div class="col-sm-12 col-md-6">
 
 									<div id="imagens" class="row">
-										<img src="assets/img/image-unavailable.png" class="img-responsive center-block"/>
-										<br>
+										<!-- Não é necessário imagem de destaque na tela de adição/edição de itens -->
+										<!--img src="assets/img/image-unavailable.png" class="img-responsive center-block"/>
+										<br-->
 										<p class="text-center">Clique no "+" para adicionar imagens:</p>
 										<div v-for="imagem in imagens" class=" col-xs-6 col-sm-3 col-md-3">
 											<div class="add">
@@ -143,43 +144,43 @@
 										</div>
 									</div>
 									<p class="text-center">Envie aqui o seu modelo 3D:</p>
-									<div class="col-sm-12 col-md-12 modelo3d">
-										<input type="file" class="form-control" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" id="modelo_3d"
-										name="arquivos" accept=".png, .jpg, .jpeg" required/>
-										<br>
-										<p class="text-left">Características Estílisticas:</p>
-										<textarea rows="4" id="materiais_constitutivos" type="text" class="form-control" placeholder="Materiais Constitutivos" required></textarea>
-										<br>
-										<textarea rows="4" id="tecnicas_fabricacao" type="text" class="form-control" placeholder="Técnicas de fabricação" required></textarea>
-										<br>
-										<textarea rows="4" id="autoria" type="text" class="form-control" placeholder="Autoria" required></textarea>
-										<br>
-										<p class="text-left">Mode de aquisição:</p>
-										<div class="radio">
-											<label><input type="radio" name="mode_aquisicao" >Coleta</label>
-										</div>
-										<div class="radio">
-											<label><input type="radio" name="mode_aquisicao" >Compra</label>
-										</div>
-										<div class="radio">
-											<label><input type="radio" name="mode_aquisicao" >Doação</label>
-										</div>
-										<div class="radio">
-											<label><input type="radio" name="mode_aquisicao" >Permuta</label>
-										</div>
-										<div class="radio">
-											<label><input type="radio" name="mode_aquisicao" >Produto de oficina</label>
-										</div>
-										<div class="radio">
-											<label><input type="radio" name="mode_aquisicao" >Transferência</label>
-										</div>
-										<br>
-										<input id="data" type="text" class="form-control" placeholder="Data" required>
-										<br>
-										<input id="autor" type="text" class="form-control" placeholder="Autor" required>
-										<br>
-										<textarea rows="4" id="observacoes" type="text" class="form-control" placeholder="Observações" required></textarea>
+
+									<input type="file" class="form-control" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" id="modelo_3d"
+									    name="arquivos" accept=".png, .jpg, .jpeg" required/>
+									<br>
+									<p class="text-left">Características Estílisticas:</p>
+									<textarea rows="4" id="materiais_constitutivos" type="text" class="form-control" placeholder="Materiais Constitutivos" required></textarea>
+									<br>
+									<textarea rows="4" id="tecnicas_fabricacao" type="text" class="form-control" placeholder="Técnicas de fabricação" required></textarea>
+									<br>
+									<textarea rows="4" id="autoria" type="text" class="form-control" placeholder="Autoria" required></textarea>
+									<br>
+									<p class="text-left">Mode de aquisição:</p>
+									<div class="radio">
+										<label><input type="radio" name="mode_aquisicao" >Coleta</label>
 									</div>
+									<div class="radio">
+										<label><input type="radio" name="mode_aquisicao" >Compra</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="mode_aquisicao" >Doação</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="mode_aquisicao" >Permuta</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="mode_aquisicao" >Produto de oficina</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="mode_aquisicao" >Transferência</label>
+									</div>
+									<br>
+									<input id="data" type="text" class="form-control" placeholder="Data" required>
+									<br>
+									<input id="autor" type="text" class="form-control" placeholder="Autor" required>
+									<br>
+									<textarea rows="4" id="observacoes" type="text" class="form-control" placeholder="Observações" required></textarea>
+
 								</div>
 								<div class="col-sm-12 col-md-6">
 									<br>
@@ -217,7 +218,8 @@
 									<br>
 									<textarea rows="4" id="historico_objeto" type="text" class="form-control" placeholder="Histórico do objeto" required></textarea>
 									<br>
-									<textarea rows="4" id="referencia_bibliografica" type="text" class="form-control" placeholder="Referência bibliográfica" required></textarea>
+									<textarea rows="4" id="referencia_bibliografica" type="text" class="form-control" placeholder="Referência bibliográfica"
+									    required></textarea>
 									<br>
 									<textarea rows="4" id="local_data" type="text" class="form-control" placeholder="Local e data" required></textarea>
 								</div>
@@ -247,127 +249,127 @@
 	<script src="assets/scripts/klorofil-common.js"></script>
 	<script>
 		$(function () {
-		var data, options;
+			var data, options;
 
-		// headline charts
-		data = {
-		labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-		series: [
-		[23, 29, 24, 40, 25, 24, 35],
-		[14, 25, 18, 34, 29, 38, 44],
-		]
-	};
+			// headline charts
+			data = {
+				labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+				series: [
+					[23, 29, 24, 40, 25, 24, 35],
+					[14, 25, 18, 34, 29, 38, 44],
+				]
+			};
 
-	options = {
-	height: 300,
-	showArea: true,
-	showLine: false,
-	showPoint: false,
-	fullWidth: true,
-	axisX: {
-	showGrid: false
-},
-lineSmooth: false,
-};
+			options = {
+				height: 300,
+				showArea: true,
+				showLine: false,
+				showPoint: false,
+				fullWidth: true,
+				axisX: {
+					showGrid: false
+				},
+				lineSmooth: false,
+			};
 
-new Chartist.Line('#headline-chart', data, options);
-
-
-// visits trend charts
-data = {
-labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-series: [{
-name: 'series-real',
-data: [200, 380, 350, 320, 410, 450, 570, 400, 555, 620, 750, 900],
-}, {
-name: 'series-projection',
-data: [240, 350, 360, 380, 400, 450, 480, 523, 555, 600, 700, 800],
-}]
-};
-
-options = {
-fullWidth: true,
-lineSmooth: false,
-height: "270px",
-low: 0,
-high: 'auto',
-series: {
-'series-projection': {
-showArea: true,
-showPoint: false,
-showLine: false
-},
-},
-axisX: {
-showGrid: false,
-
-},
-axisY: {
-showGrid: false,
-onlyInteger: true,
-offset: 0,
-},
-chartPadding: {
-left: 20,
-right: 20
-}
-};
-
-new Chartist.Line('#visits-trends-chart', data, options);
+			new Chartist.Line('#headline-chart', data, options);
 
 
-// visits chart
-data = {
-labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-series: [
-[6384, 6342, 5437, 2764, 3958, 5068, 7654]
-]
-};
+			// visits trend charts
+			data = {
+				labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+				series: [{
+					name: 'series-real',
+					data: [200, 380, 350, 320, 410, 450, 570, 400, 555, 620, 750, 900],
+				}, {
+					name: 'series-projection',
+					data: [240, 350, 360, 380, 400, 450, 480, 523, 555, 600, 700, 800],
+				}]
+			};
 
-options = {
-height: 300,
-axisX: {
-showGrid: false
-},
-};
+			options = {
+				fullWidth: true,
+				lineSmooth: false,
+				height: "270px",
+				low: 0,
+				high: 'auto',
+				series: {
+					'series-projection': {
+						showArea: true,
+						showPoint: false,
+						showLine: false
+					},
+				},
+				axisX: {
+					showGrid: false,
 
-new Chartist.Bar('#visits-chart', data, options);
+				},
+				axisY: {
+					showGrid: false,
+					onlyInteger: true,
+					offset: 0,
+				},
+				chartPadding: {
+					left: 20,
+					right: 20
+				}
+			};
+
+			new Chartist.Line('#visits-trends-chart', data, options);
 
 
-// real-time pie chart
-var sysLoad = $('#system-load').easyPieChart({
-size: 130,
-barColor: function (percent) {
-return "rgb(" + Math.round(200 * percent / 100) + ", " + Math.round(200 * (1.1 - percent / 100)) + ", 0)";
-},
-trackColor: 'rgba(245, 245, 245, 0.8)',
-scaleColor: false,
-lineWidth: 5,
-lineCap: "square",
-animate: 800
-});
+			// visits chart
+			data = {
+				labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+				series: [
+					[6384, 6342, 5437, 2764, 3958, 5068, 7654]
+				]
+			};
 
-var updateInterval = 3000; // in milliseconds
+			options = {
+				height: 300,
+				axisX: {
+					showGrid: false
+				},
+			};
 
-setInterval(function () {
-var randomVal;
-randomVal = getRandomInt(0, 100);
+			new Chartist.Bar('#visits-chart', data, options);
 
-sysLoad.data('easyPieChart').update(randomVal);
-sysLoad.find('.percent').text(randomVal);
-}, updateInterval);
 
-function getRandomInt(min, max) {
-return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+			// real-time pie chart
+			var sysLoad = $('#system-load').easyPieChart({
+				size: 130,
+				barColor: function (percent) {
+					return "rgb(" + Math.round(200 * percent / 100) + ", " + Math.round(200 * (1.1 - percent / 100)) + ", 0)";
+				},
+				trackColor: 'rgba(245, 245, 245, 0.8)',
+				scaleColor: false,
+				lineWidth: 5,
+				lineCap: "square",
+				animate: 800
+			});
 
-});
-</script>
+			var updateInterval = 3000; // in milliseconds
 
-<!-- VUE.JS CDN -->
-<script src="https://unpkg.com/vue"></script>
-<!-- Page JS -->
-<script src="assets/scripts/novo-item.js"></script>
+			setInterval(function () {
+				var randomVal;
+				randomVal = getRandomInt(0, 100);
+
+				sysLoad.data('easyPieChart').update(randomVal);
+				sysLoad.find('.percent').text(randomVal);
+			}, updateInterval);
+
+			function getRandomInt(min, max) {
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+
+		});
+	</script>
+
+	<!-- VUE.JS CDN -->
+	<script src="https://unpkg.com/vue"></script>
+	<!-- Page JS -->
+	<script src="assets/scripts/novo-item.js"></script>
 
 
 </body>
