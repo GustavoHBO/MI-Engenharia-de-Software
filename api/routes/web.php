@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -111,69 +111,36 @@ $app->group(['prefix' => 'dashboard/noticia'], function () use ($app){
 
 
 $app->group(['prefix' => 'item'], function () use ($app) {
-    $app->get('cadastrar', function ()    {
-        return 'cadastro de item';
-    });
-    $app->get('gerenciamento', function ()    {
-        return 'gerenciamento de item';
-    });
-    $app->get('editar/{iditem}', function ($iditem)    {
-        return 'edicao de item '. $iditem;
-    });
-    $app->get('listar', function ()    {
-        return 'listagem de todos os itens';
-    });
-    $app->get('listar/favoritos', function ()    {
-        return 'listagem de itens favoritos';
-    });
-    $app->get('visualizar/{iditem}', function ($iditem)    {
-        return 'visualiza��o de item '. $iditem;
-    });
-    $app->get('/', function ()    {
-        return 'tela item';
-    });
+    $app->get('/', 'ItemController@index');
+    
+    $app->get('cadastrar', 'ItemController@cadastro');
+    
+    $app->get('gerenciamento', 'ItemController@gerenciamento');
+    
+    $app->get('editar/{iditem}', 'ItemController@editar');
+    
+    $app->get('listar', 'ItemController@listar');
+    
+    $app->get('listar/favoritos', 'ItemController@listarFavoritos');
+    
+    $app->get('visualizar/{iditem}', 'ItemController@visualizar');
+    
+    
 });
 
 $app->group(['prefix' => 'evento'], function () use ($app) {
-    $app->get('cadastro', function ()    {
-        return 'cadastro evento';
-    });
-    $app->get('gerenciamento', function ()    {
-        return 'gerenciamento evento';
-    });
-    $app->get('editar/{idevento}', function ($idevento)    {
-        return 'editar evento ' .$idevento;
-    });
-    $app->get('excluir/{idevento}', function ($idevento)    {
-        return 'excluir evento ' .$idevento;
-    });
-    $app->get('{idevento}', function ($idevento)    {
-        return 'evento ' .$idevento;
-    });
-    $app->get('/', function ()    {
-        return 'eventos';
-    });
-});
-
-$app->group(['prefix' => 'evento'], function () use ($app) {
-    $app->get('cadastro', function ()    {
-        return 'cadastro evento';
-    });
-    $app->get('gerenciamento', function ()    {
-        return 'gerenciamento evento';
-    });
-    $app->get('editar/{idevento}', function ($idevento)    {
-        return 'editar evento ' .$idevento;
-    });
-    $app->get('excluir/{idevento}', function ($idevento)    {
-        return 'excluir evento ' .$idevento;
-    });
-    $app->get('{idevento}', function ($idevento)    {
-        return 'evento ' .$idevento;
-    });
-    $app->get('/', function ()    {
-        return 'eventos';
-    });
+    $app->get('/', 'EventoController@index');
+    
+    $app->get('cadastrar', 'EventoController@cadastro');
+    
+    $app->get('gerenciamento', 'EventoController@gerenciamento');
+    
+    $app->get('editar/{idevento}', 'EventoController@editar');
+    
+    $app->get('excluir/{idevento}', 'EventoController@excluir');
+    
+    $app->get('visualizar/{idevento}', 'EventoController@visualizar');
+    
 });
 
 $app->group(['prefix' => 'pesquisa'], function () use ($app) {
