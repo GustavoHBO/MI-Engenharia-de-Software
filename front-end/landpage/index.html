@@ -25,7 +25,6 @@
 
 
 
-
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
@@ -127,8 +126,33 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <h1>Sobre o Museu</h1>
-                                        </div>
-
+                                                <br/>
+                                                <div class="row">
+                                                <div class="col-sm-6 thumb">
+                                                    <a href="#" class="thumbnail" data-toggle="modal" data-target="#myModal" data-image="assets/img/artefatos-museu.jpg">
+                                                        <img src="assets/img/artefatos-museu.jpg" alt="Objetos expostos nas prateleiras do Museu Casa do Sertão">
+                                                    </a>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <a href="#" class="thumbnail" data-toggle="modal" data-target="#myModal">
+                                                        <img src="assets/img/couro-museu.jpg" alt="Peças de couro em exposição no Museu">
+                                                    </a>
+                                                </div>
+                                            </div> <!-- Fecha row -->
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <a href="#" class="thumbnail" data-toggle="modal" data-target="#myModal">
+                                                        <img src="assets/img/expo-museu.jpg" alt="Vasos de barro em exposição no Museu">
+                                                    </a>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <a href="#" class="thumbnail" data-toggle="modal" data-target="#myModal"> 
+                                                        <img src="assets/img/expo-museu2.jpg" alt="Peças da exposição A feira de Feira de Santana">
+                                                    </a>
+                                                </div>
+                                            </div> <!-- Fecha row -->
+                                        </div> <!-- Fecha área esquerda -->
+                                        
                                         <div class="col-md-8">
                                             <h6 class="m-b-2">Construído pelo Lions Clube de Feira de Santana, e inaugurado 
                                                 em 30 de junho de 1978, no Campus da UEFS, o Museu Casa do Sertão objetiva 
@@ -150,28 +174,13 @@
                                             </p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="about_content center p-b-3 wow fadeInUp" data-wow-duration="700ms">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                         
-                         
-                                            <!-- Aqui podia ter fotos do interior do Museu -->
-                                        </div>
-                                        <div class="col-md-4">
-                                            
-                                        </div>
-                                        <div class="col-md-4">
-                                        </div>
-
-                                    </div>
-                                </div>
+                                </div>    
                             </div>
-                            <hr />
-                        </div><!-- End of col-md-12 -->
-                    </div><!-- End of row -->
-                </div><!-- End of Container-fluid -->
-            </section><!-- End of Home Section -->
+                        <hr />
+                    </div><!-- End of col-md-12 -->
+                </div><!-- End of row -->
+            </div><!-- End of Container-fluid -->
+        </section><!-- Fim da seção Sobre -->
 
             <!-- Seção Notícias -->
             <section id="noticias" class="portfolio">
@@ -422,5 +431,22 @@
         <script src="assets/js/plugins.js"></script>
         <script src="assets/js/main.js"></script>
 
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img class="img-responsive" src="">
+            </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/open-modal.js"></script>
+
+
     </body>
+    
 </html>
