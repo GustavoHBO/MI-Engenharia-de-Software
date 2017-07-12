@@ -9,5 +9,15 @@ var lista_funcionarios = new Vue({
             nome: 'Maikon Filho'
         }
     ]
-  }
+  },
+    beforeCreate: function () {
+        firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    console.log('logado');
+                } else {
+                    window.location.href = "login.html";
+                    // No user is signed in.
+                }
+            });
+    }
 })

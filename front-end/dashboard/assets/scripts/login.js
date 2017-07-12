@@ -34,11 +34,22 @@ var loginpage = new Vue({
       console.log('logou');
       window.location.href = "index.html";
       }).catch(function(error) {
-        console.log(errorMessage = error.message);
+        console.log(error.message);
       });
     },
     loginFacebook: () => {
-      console.log('apertou facebooks');
+      var provider = new firebase.auth.FacebookAuthProvider();
+      firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        // ...
+        console.log('logou');
+        window.location.href = "index.html";
+      }).catch(function(error) {
+        console.log(error.message);
+      });
     }
   }
 })

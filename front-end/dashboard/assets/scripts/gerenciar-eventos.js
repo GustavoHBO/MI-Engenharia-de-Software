@@ -18,5 +18,15 @@ var lista_eventos = new Vue({
             data_fim: '15/10/2017'
         }
     ]
-  }
+  },
+    beforeCreate: function () {
+        firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    console.log('logado');
+                } else {
+                    window.location.href = "login.html";
+                    // No user is signed in.
+                }
+            });
+    }
 })
