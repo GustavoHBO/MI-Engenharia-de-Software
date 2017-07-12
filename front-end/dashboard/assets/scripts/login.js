@@ -1,12 +1,12 @@
 var loginpage = new Vue({
   el: '#login-page',
   data: {
-    email: "",
-    senha: ""
+    email: '',
+    senha: ''
   },
   methods:{
     loginEmail: () => {
-      firebase.auth().signInWithEmailAndPassword(this.email, this.senha).catch(function(error) {
+      firebase.auth().signInWithEmailAndPassword(loginpage.email, loginpage.senha).catch(function(error) {
       // Handle Errors here.
           var errorCode = error.code;
           var errorMessage = error.message;
