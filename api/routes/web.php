@@ -110,37 +110,40 @@ $app->group(['prefix' => 'dashboard/noticia'], function () use ($app){
 
 
 
+/*ITEM*/
 $app->group(['prefix' => 'item'], function () use ($app) {
-    $app->get('/', 'ItemController@index');
+    $app->get('/', 'ItemController@indexItem');
     
-    $app->get('cadastrar', 'ItemController@cadastro');
+    $app->get('cadastrar', 'ItemController@cadastroItem');
     
-    $app->get('gerenciamento', 'ItemController@gerenciamento');
+    $app->get('gerenciamento', 'ItemController@gerenciamentoItem');
     
-    $app->get('editar/{iditem}', 'ItemController@editar');
+    $app->get('editar/{iditem}', 'ItemController@editarItem');
     
-    $app->get('listar', 'ItemController@listar');
+    $app->get('listar', 'ItemController@listarItem');
     
-    $app->get('listar/favoritos', 'ItemController@listarFavoritos');
+    $app->get('listar/favoritos', 'ItemController@listarFavoritosItem');
     
-    $app->get('visualizar/{iditem}', 'ItemController@visualizar');
+    $app->get('visualizar/{iditem}', 'ItemController@visualizarItem');
     
     
 });
 
+/*EVENTO*/
 $app->group(['prefix' => 'evento'], function () use ($app) {
-    $app->get('/', 'EventoController@index');
+    $app->get('/', 'EventoController@indexEvento');
     
-    $app->get('cadastrar', 'EventoController@cadastro');
+    $app->get('cadastrar', 'EventoController@cadastroEvento');
     
-    $app->get('gerenciamento', 'EventoController@gerenciamento');
+    $app->get('gerenciamento', 'EventoController@gerenciamentoEvento');
     
-    $app->get('editar/{idevento}', 'EventoController@editar');
+    $app->get('editar/{idevento}', 'EventoController@editarEvento');
     
-    $app->get('excluir/{idevento}', 'EventoController@excluir');
+    $app->get('listar', 'EventoController@listarEvento');
     
-    $app->get('visualizar/{idevento}', 'EventoController@visualizar');
+    $app->get('excluir/{idevento}', 'EventoController@excluirEvento');
     
+    $app->get('visualizar/{idevento}', 'EventoController@visualizarEvento');    
 });
 
 $app->group(['prefix' => 'pesquisa'], function () use ($app) {

@@ -9,32 +9,55 @@ class ItemController extends Controller
     {
         //
     }
-    public function index()
+    public function indexItem()
     {
         return 'index';
     }
-    public function cadastro()
+    /*ITEM*/
+    
+    /*Cadastro item*/
+    public function cadastroItem($material, $doador, $autor, $origem, $conservacao, $dimensoes, $colecao, $categoria, $classificacao, $titulo, $descricao, $imagem, $imagem3D)
     {
-        return 'cadastro';
+        $inserir = DB::INSERT('INSERT INTO item(material, doador, autor, origem, conservacao, dimensoes, colecao, categoria, classificacao, titulo, descricao, imagem, imagem3D) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)', 
+                [$material, $doador, $autor, $origem, $conservacao, $dimensoes, $colecao, $categoria, $classificacao, $titulo, $descricao, $imagem, $imagem3D]);
+        
+        if($inserir){
+            return response()->json(true);
+        }else{
+            return response()->json(false);
+        }
     }
-    public function gerenciamento()
+    /*Gerenciamento item*/
+    public function gerenciamentoItem()
     {
         return 'gerenciamento';
     }
-    public function editar($iditem)
+    /*Editar item*/
+    public function editarItem($iditem,$material, $doador, $autor, $origem, $conservacao, $dimensoes, $colecao, $categoria, $classificacao, $titulo, $descricao, $imagem, $imagem3D)
     {
-        return 'editar'.$iditem;
+        $editado = DB::UPDATE('UPDATE item SET material = ?, doador = ?, autor = ?, origem = ?, conservacao = ?, dimensoes = ?, colecao = ?, categoria = ?, classificacao = ?, titulo = ?, descricao = ?, imagem = ?, imagem3D = ? WHERE iditem = ?', [$material, $doador, $autor, $origem, $conservacao, $dimensoes, $colecao, $categoria, $classificacao, $titulo, $descricao, $imagem, $imagem3D, $iditem]);
+
+        if ($editado) {
+            return response()->json(true);
+        } else {
+            return response()->json(false);
+        }
     }
-    public function listar()
+    /*Listar item*/
+    public function listarItem()
     {
-        return 'listar';
+        $informacoes = DB::SELECT('SELECT * FROM item');
+        return response()->json($informacoes);
     }
-    public function listarFavoritos()
+    /*public function listarFavoritosItem()
     {
         return 'listar favoritos';
-    }
-    public function visualizar($iditem)
+    }*/
+    /*Visualizar item*/
+    public function visualizarItem($iditem)
     {
+        /*$informacao = DB::SELECT('SELECT * FROM item WHERE iditem = ?',[$iditem]);
+        return response()->json($informacoes);*/
         return 'visualizar'.$iditem;
     }
    
