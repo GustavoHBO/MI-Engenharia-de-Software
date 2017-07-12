@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="assets/css/main.css">
-	<link rel="stylesheet" href="assets/css/layout_novo_item.css">
+	<link rel="stylesheet" href="assets/css/novo-item.css">
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 </head>
@@ -60,10 +60,10 @@
 							</div>
 						</li>
 						<li>
-							<a href="#usuarios" data-toggle="collapse" class="collapsed"><i class="lnr lnr-users"></i> <span>Usuarios</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<a href="#usuarios" data-toggle="collapse" class="collapsed"><i class="lnr lnr-users"></i> <span>Usuários</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="usuarios" class="collapse ">
 								<ul class="nav">
-									<li><a href="gerenciar-usuarios.html" class="">Gerenciar Usuarios</a></li>
+									<li><a href="gerenciar-usuarios.html" class="">Gerenciar Usuários</a></li>
 									<li><a href="gerenciar-funcionarios.html" class="">Gerenciar Funcionários</a></li>
 									<li><a href="novo-funcionario.html" class="">Novo Funcionário</a></li>
 								</ul>
@@ -123,39 +123,111 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
+								<div class="col-sm-12 col-md-6">
 
-								<div class="col-xs-12 col-md-4">
-									
+									<div id="imagens" class="row">
+										<!-- Não é necessário imagem de destaque na tela de adição/edição de itens -->
+										<!--img src="assets/img/image-unavailable.png" class="img-responsive center-block"/>
+										<br-->
+										<p class="text-center">Clique no "+" para adicionar imagens:</p>
+										<div v-for="imagem in imagens" class=" col-xs-6 col-sm-3 col-md-3">
+											<div class="add">
+												<p>{{imagem.url}}</p>
+											</div>
+										</div>
+										<div class=" col-xs-6 col-sm-3 col-md-3">
+											<a class="add-button">
+												<div class="add">
+													<i class="fa fa-plus icon-plus" aria-hidden="true"></i>
+												</div>
+											</a>
+										</div>
+									</div>
+									<p class="text-center">Envie aqui o seu modelo 3D:</p>
+
+									<input type="file" class="form-control" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" id="modelo_3d"
+									    name="arquivos" accept=".png, .jpg, .jpeg" required/>
+									<br>
+									<p class="text-left">Características Estílisticas:</p>
+									<textarea rows="4" id="materiais_constitutivos" type="text" class="form-control" placeholder="Materiais Constitutivos" required></textarea>
+									<br>
+									<textarea rows="4" id="tecnicas_fabricacao" type="text" class="form-control" placeholder="Técnicas de fabricação" required></textarea>
+									<br>
+									<textarea rows="4" id="autoria" type="text" class="form-control" placeholder="Autoria" required></textarea>
+									<br>
+									<p class="text-left">Mode de aquisição:</p>
+									<div class="radio">
+										<label><input type="radio" name="mode_aquisicao" >Coleta</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="mode_aquisicao" >Compra</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="mode_aquisicao" >Doação</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="mode_aquisicao" >Permuta</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="mode_aquisicao" >Produto de oficina</label>
+									</div>
+									<div class="radio">
+										<label><input type="radio" name="mode_aquisicao" >Transferência</label>
+									</div>
+									<br>
+									<input id="data" type="text" class="form-control" placeholder="Data" required>
+									<br>
+									<input id="autor" type="text" class="form-control" placeholder="Autor" required>
+									<br>
+									<textarea rows="4" id="observacoes" type="text" class="form-control" placeholder="Observações" required></textarea>
+
 								</div>
-								<div class="col-xs-12 col-md-8">
-									
+								<div class="col-sm-12 col-md-6">
+									<br>
+									<input id="numero_inventario" type="text" class="form-control" placeholder="Nº do inventário" required>
+									<br>
+									<input id="colecao" type="text" class="form-control" placeholder="Coleção" required>
+									<br>
+									<input id="classificacao" type="text" class="form-control" placeholder="Classificação" required>
+									<br>
+									<input id="nome" type="text" class="form-control" placeholder="Nome" required>
+									<br>
+									<input id="titulo" type="text" class="form-control" placeholder="Título" required>
+									<br>
+									<input id="funcao" type="text" class="form-control" placeholder="Função" required>
+									<br>
+									<input id="origem" type="text" class="form-control" placeholder="Origem" required>
+									<br>
+									<input id="procedencia" type="text" class="form-control" placeholder="Procedência" required>
+									<br>
+									<textarea rows="4" id="descricao" type="text" class="form-control" placeholder="Descrição" required></textarea>
+									<br>
+									<input id="dimensoes" type="text" class="form-control" placeholder="Dimensões" required>
+									<br>
+									<input id="altura" type="text" class="form-control" placeholder="Altura" required>
+									<br>
+									<input id="largura" type="text" class="form-control" placeholder="Largura" required>
+									<br>
+									<input id="diametro" type="text" class="form-control" placeholder="Diâmetro" required>
+									<br>
+									<input id="peso" type="text" class="form-control" placeholder="Peso" required>
+									<br>
+									<input id="comprimento" type="text" class="form-control" placeholder="Comprimento" required>
+									<br>
+									<textarea rows="4" id="estado_conservacao" type="text" class="form-control" placeholder="Estado de Conservação" required></textarea>
+									<br>
+									<textarea rows="4" id="historico_objeto" type="text" class="form-control" placeholder="Histórico do objeto" required></textarea>
+									<br>
+									<textarea rows="4" id="referencia_bibliografica" type="text" class="form-control" placeholder="Referência bibliográfica"
+									    required></textarea>
+									<br>
+									<textarea rows="4" id="local_data" type="text" class="form-control" placeholder="Local e data" required></textarea>
 								</div>
 
-
-
-								<img src="assets/img/image-unavailable.png" alt="image unavailable">
-								<h5>Mais Imagens:</h5>
-								<img src="assets/img/image-unavailable.png" alt="image unavailable" width="100px">
-								<img src="assets/img/image-unavailable.png" alt="image unavailable" width="100px">
-								<form id="descricao">
-									<hgroup>
-										<h5>Nome:<input type="text" name="nome_item"></h5>
-										<h5>Autor:<input type="text" name="nome_autor"></h5>
-										<h5>Data de entrada:<input type="text" name="data_entrada"></h5>
-										<h5>Código:<input type="text" name="codigo"></h5>
-										<h5>Origem:<input type="text" name="origem"></h5>
-										<h5>Conservação:
-											<ul>
-												<li><input type="radio" name="op_conservacao" value="Ótimo"> Ótimo</li>
-												<li><input type="radio" name="op_conservacao" value="Bom"> Bom</li>
-												<li><input type="radio" name="op_conservacao" value="Ruim"> Ruim</li>
-											</ul>
-										</h5>
-										<h5>Descrição:<input id="input_condicao" type="text" name="descricao"></h5>
-									</hgroup>
-								</form>
-								<button name="button">Cancelar</button>
-								<button name="button">Salvar</button>
+								<div class="col-sm-12 col-md-12">
+									<br>
+									<button class="btn btn-primary ">Enviar</button>
+								</div>
 							</div>
 
 						</div>
@@ -166,11 +238,6 @@
 		</div>
 		<!-- END MAIN -->
 		<div class="clearfix"></div>
-		<footer>
-			<div class="container-fluid">
-				<p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved.</p>
-			</div>
-		</footer>
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
@@ -298,6 +365,10 @@
 
 		});
 	</script>
-</body>
 
+	<!-- VUE.JS CDN -->
+	<script src="https://unpkg.com/vue"></script>
+	<!-- Page JS -->
+	<script src="assets/scripts/novo-item.js"></script>
+</body>
 </html>

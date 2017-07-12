@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +18,16 @@ $app->group(['prefix' => 'usr'], function () use ($app){
 	$app->post('/desativar', 'UsuarioController@desativar');
 });
 
+/*
+Grupo do dashboard da exposicao
+*/
+
 $app->group(['prefix' => 'usr'], function () use ($app){
     $app->get('/', 'FuncionarioController@readAll');
     $app->post('/new', 'FuncionarioController@create');
 	$app->post('/update', 'FuncionarioController@update');
 	$app->post('/desativar', 'FuncionarioController@desativar');
 });
-
 
 $app->group(['prefix' => 'dashboard/exposicao'], function () use ($app){
 	$app->get('/', function (){
@@ -33,11 +36,11 @@ $app->group(['prefix' => 'dashboard/exposicao'], function () use ($app){
 
 	$app->post('/cadastrar', function (){
     	return 'Cadastro de um nova exposicao';
-	});	
+	});
 
 	$app->post('/listar', function (){
     	return 'Cadastro de um nova exposicao';
-	});	
+	});
 
 	$app->get('/editar/{idexposicao}', function ($idexposicao){
     	return 'editar exposicao' . $idexposicao;
@@ -49,7 +52,12 @@ $app->group(['prefix' => 'dashboard/exposicao'], function () use ($app){
 
 });
 
+/*
+Grupo da exposicao
+*/
+
 $app->group(['prefix' => 'exposicao'], function () use ($app){
+
 	$app->get('/', function (){
     return 'pagina principal da exposicao';
 	});
@@ -60,15 +68,14 @@ $app->group(['prefix' => 'exposicao'], function () use ($app){
 
 });
 
-
-
 /*
-Grupo para a parte das noticias
+	Acesso a funcoes das noticias pelo usuario.
+	Algumas rotas ainda precisa ser definida, como a
+	as rotas de exibir e compartilhamento que estou em duvida
 */
-$app->group(['prefix' => 'noticia'], function () use ($app){ 
-	$app->post('/buscar/{id_buscar}', function (){
-		return "Noticia Buscada";
-	});
+$app->group(['prefix' => 'noticia'], function () use ($app){
+
+	$app->get('/buscar/{key_word}', 'NoticiaController@buscarNoticia');
 
 	$app->get('/exibir/{idexibir_noticia}', function ($idexibir_noticia){
 		return "exibindo noticia " .$idexibir_noticia;
@@ -79,77 +86,73 @@ $app->group(['prefix' => 'noticia'], function () use ($app){
 	});
 
 	$app->get('/', function(){
-		return "Principal da Noticia";
-
-
-	});
-
+		return "Principal da Noticia"; });
 });
 
 
 /*
-Grupo de rotas para o dashboard da noticia
+	Dashboard para cadastro das noticias
+	Estou passando os dados pelo metodo get
+	para poder testar a insercoes, remocoes
+	e etc no banco de dados
 */
-$app->group(['prefix' => 'dashboard/noticia'], function () use ($app){ 
-	$app->post('/cadastro', function (){
-		return "cadastro da notícia";
-	});
+$app->group(['prefix' => 'dashboard/noticia'], function () use ($app){
 
-	$app->get('/listar', function (){
-		return "cadastro da notícia";
-	});
-
-	$app->get('/excluir/{id_noticia_excluir}', function ($id_noticia_excluir){
-		return "cadastro da notícia " .$id_noticia_excluir;
-	});
+	$app->get('/cadastro/{titulo_noticia}/{descricao_noticia}/{data_publicacao}/{ativo_noticia}/{Usuario_id_user}', 'NoticiaController@cadastrarNoticia');
+	$app->get('/listar', 'NoticiaController@listarNoticia');
+	$app->get('/excluir/{id_noticia}', 'NoticiaController@excluirNoticia');
+	$app->get('/atualizar/{id_noticia}/{titulo_noticia}/{descricao_noticia}/{data_publicacao}/{ativo_noticia}/{Usuario_id_user}','NoticiaController@atualizarNoticia');
 
 	$app->get('/', function(){
-		return "Principal do DashBoard notícia";
-
-
+		return "Principal do DashBoard noticia";
 	});
+});
+
+
 
 $app->group(['prefix' => 'item'], function () use ($app) {
-    $app->get('cadastrar', function ()    {
-        return 'cadastro de item';
-    });
-    $app->get('gerenciamento', function ()    {
-        return 'gerenciamento de item';
-    });
-    $app->get('editar/{iditem}', function ($iditem)    {
-        return 'edicao de item '. $iditem;
-    });
-    $app->get('listar', function ()    {
-        return 'listagem de todos os itens';
-    });
-    $app->get('listar/favoritos', function ()    {
-        return 'listagem de itens favoritos';
-    });
-    $app->get('visualizar/{iditem}', function ($iditem)    {
-        return 'visualiza��o de item '. $iditem;
-    });
-    $app->get('/', function ()    {
-        return 'tela item';
-    });
+    $app->get('/', 'ItemController@index');
+    
+    $app->get('cadastrar', 'ItemController@cadastro');
+    
+    $app->get('gerenciamento', 'ItemController@gerenciamento');
+    
+    $app->get('editar/{iditem}', 'ItemController@editar');
+    
+    $app->get('listar', 'ItemController@listar');
+    
+    $app->get('listar/favoritos', 'ItemController@listarFavoritos');
+    
+    $app->get('visualizar/{iditem}', 'ItemController@visualizar');
+    
+    
 });
 
 $app->group(['prefix' => 'evento'], function () use ($app) {
-    $app->get('cadastro', function ()    {
-        return 'cadastro evento';
-    });
-    $app->get('gerenciamento', function ()    {
-        return 'gerenciamento evento';
-    });
-    $app->get('editar/{idevento}', function ($idevento)    {
-        return 'editar evento ' .$idevento;
-    });
-    $app->get('excluir/{idevento}', function ($idevento)    {
-        return 'excluir evento ' .$idevento;
-    });
-    $app->get('{idevento}', function ($idevento)    {
-        return 'evento ' .$idevento;
-    });
-    $app->get('/', function ()    {
-        return 'eventos';
-    });
+    $app->get('/', 'EventoController@index');
+    
+    $app->get('cadastrar', 'EventoController@cadastro');
+    
+    $app->get('gerenciamento', 'EventoController@gerenciamento');
+    
+    $app->get('editar/{idevento}', 'EventoController@editar');
+    
+    $app->get('excluir/{idevento}', 'EventoController@excluir');
+    
+    $app->get('visualizar/{idevento}', 'EventoController@visualizar');
+    
+});
+
+$app->group(['prefix' => 'pesquisa'], function () use ($app) {
+    $app->post('cadastro', 'PesquisaController@cadastro');
+    // $app->get('gerenciamento', 'PesquisaController@cadastro');
+    $app->post('editar/{idpesquisa}', 'PesquisaController@editar');
+    $app->post('excluir/{idpesquisa}', 'PesquisaController@excluir');
+    $app->get('{idpesquisa}', 'PesquisaController@get'});
+    $app->get('/', 'PesquisaController@getall');
+});
+
+$app->group(['prefix' => 'relatorio'], function () use ($app) {
+    $app->post('cadastro', 'RelatorioController@novo');
+    $app->get('{datainicial}/{datafinal}', 'RelatorioController@get');
 });
