@@ -139,10 +139,11 @@ a:hover{
     text-decoration: none;
 
 }
-
+/*
 .btn, .btn-large, .btn-flat{
     text-transform: lowercase !important;
 }
+*/
 .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
     outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
@@ -306,6 +307,12 @@ h2{
     font-size: 15px;
     color:white;
     background-color: rgba(0,0,0,0);
+}
+
+#login{
+	padding-top: 8px;
+	padding-bottom: 15px;
+	text-transform: capitalize;
 }
 
 
