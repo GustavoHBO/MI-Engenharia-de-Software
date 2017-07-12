@@ -1,15 +1,10 @@
-
-var lista_usuarios = new Vue({
-  el: '#lista_usuarios',
+var NovoFuncionarioPage = new Vue({
+  el: '#novo-funcionario',
   data: {
-    usuarios: [
-        {
-            nome: 'Carlos Goes'
-        },
-        {
-            nome: 'Titi Queiroz'
-        }
-    ]
+    message: 'mensagem'
+  },
+  methods:{
+    
   },
     beforeCreate: function () {
         firebase.auth().onAuthStateChanged(function(user) {
@@ -21,4 +16,4 @@ var lista_usuarios = new Vue({
                 }
             });
     }
-})
+});

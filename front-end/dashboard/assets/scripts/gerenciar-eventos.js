@@ -1,5 +1,4 @@
 
-
 // Instancia responsável pelo controle da lista de eventos
 var lista_eventos = new Vue({
   el: '#lista_eventos',

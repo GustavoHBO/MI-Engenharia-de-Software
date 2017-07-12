@@ -1,5 +1,4 @@
 
-
 // Instancia responsável pelo controle da lista de exposições
 var lista_exposicoes = new Vue({
   el: '#lista_exposicoes',

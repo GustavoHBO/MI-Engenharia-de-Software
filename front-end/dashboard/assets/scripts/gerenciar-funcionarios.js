@@ -1,3 +1,4 @@
+
 var lista_funcionarios = new Vue({
   el: '#lista_funcionarios',
   data: {

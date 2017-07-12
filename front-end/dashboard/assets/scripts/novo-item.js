@@ -1,3 +1,4 @@
+
 // Instancia responsável pelo controle da lista de noticias
 var imagens = new Vue({
   el: '#imagens',
