@@ -242,7 +242,7 @@ nav ul li {
 *  OPAQUE NAVBAR SECTION
 ***********************************************************************/
 .opaque-navbar {
-    background-color:white;
+    background-color:rgba(0,0,0,0);
   /* Transparent = rgba(0,0,0,0) / Translucent = (0,0,0,0.5)  rgba(141,69,60,0.5) */
     height: 60px;
     border-bottom: 0px;
@@ -297,14 +297,14 @@ h2{
 }
 
 #navMain li a{
-    font-family: 'Roboto',sans-serif;
-    font-size: 15px;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 14px;
     color: black;
 }
 
 #navMain li a.ativo{
-    font-family: 'Roboto',sans-serif;
-    font-size: 15px;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 14px;
     color:white;
     background-color: rgba(0,0,0,0);
 }
@@ -374,15 +374,16 @@ h2{
 .carousel-indicators .active{
    height: 4px !important;
 }
+
 /*=============================================================
-                    home section
+                    Seção Home
 ===============================================================*/
 
 .home {
     background: url(../img/sertao.jpg) no-repeat top center #141315;
     background-size: cover;
     position: relative;
-    padding-top: 130px;
+    padding-top: 120px;
     background-attachment: fixed;
 }
 
