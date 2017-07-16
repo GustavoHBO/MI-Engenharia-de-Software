@@ -111,20 +111,21 @@ $app->group(['prefix' => 'dashboard/noticia'], function () use ($app){
 
 
 /*ITEM*/
-$app->group(['prefix' => 'item'], function () use ($app) {
-    $app->get('/', 'ItemController@indexItem');
-    
-    $app->get('cadastrar', 'ItemController@cadastroItem');
-    
-    $app->get('gerenciamento', 'ItemController@gerenciamentoItem');
-    
-    $app->get('editar/{iditem}', 'ItemController@editarItem');
-    
-    $app->get('listar', 'ItemController@listarItem');
-    
-    $app->get('listar/favoritos', 'ItemController@listarFavoritosItem');
-    
-    $app->get('visualizar/{iditem}', 'ItemController@visualizarItem');
+$app->group(['prefix' => '/item'], function () use ($app) {
+    //lista todos itens
+    $app->get('/', 'ItemController@todosItens');
+    //retorna um item
+    $app->get('/{id}', 'ItemController@buscarItem');
+    //cadastra item
+    $app->post('/', 'ItemController@cadastroItem');
+    //editar um item
+    $app->post('/editar', 'ItemController@editarItem');
+    //favorita item
+    $app->post('/favoritos/add', 'ItemController@favoritaItem');
+    //itens favoritos de um usuario
+    $app->get('/favoritos/{id_usr}', 'ItemController@todosItensFavoritos');
+    //remover item favorito
+    $app->post('/favoritos/remover', 'ItemController@removerFavorito');
     
     
 });
