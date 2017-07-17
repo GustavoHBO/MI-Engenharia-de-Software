@@ -131,20 +131,23 @@ $app->group(['prefix' => '/item'], function () use ($app) {
 });
 
 /*EVENTO*/
-$app->group(['prefix' => 'evento'], function () use ($app) {
-    $app->get('/', 'EventoController@indexEvento');
-    
-    $app->get('cadastrar', 'EventoController@cadastroEvento');
-    
-    $app->get('gerenciamento', 'EventoController@gerenciamentoEvento');
-    
-    $app->get('editar/{idevento}', 'EventoController@editarEvento');
-    
-    $app->get('listar', 'EventoController@listarEvento');
-    
-    $app->get('excluir/{idevento}', 'EventoController@excluirEvento');
-    
-    $app->get('visualizar/{idevento}', 'EventoController@visualizarEvento');    
+$app->group(['prefix' => '/evento'], function () use ($app) {
+    //lista todos eventos
+    $app->get('/', 'EventoController@todosEventos');
+    //retorna um evento
+    $app->get('/{id}', 'EventoController@buscarEvento');
+    //cadastra evento
+    $app->post('/', 'EventoController@cadastroEvento');
+    //editar um evento
+    $app->post('/editar', 'EventoController@editarEvento');
+    //remover evento
+    $app->post('/remover', 'EventoController@removerEvento');    
+    //favorita evento
+    $app->post('/favoritos/add', 'EventoController@favoritaEvento');
+    //eventos favoritos de um usuario
+    $app->get('/favoritos/{id_usr}', 'EventoController@todosEventosFavoritos');
+    //remover evento favorito
+    $app->post('/favoritos/remover', 'EventoController@removerFavorito'); 
 });
 
 $app->group(['prefix' => 'pesquisa'], function () use ($app) {

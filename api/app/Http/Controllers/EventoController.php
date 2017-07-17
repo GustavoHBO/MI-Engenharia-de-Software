@@ -2,60 +2,123 @@
 
 namespace App\Http\Controllers;
 
-class EventoController extends Controller{
-    
-    public function __construct() {
-        //
-    }
-   /* EVENTO */
-    
-    public function indexEvento() {
-        return 'index';
-    }
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
-    /* Cadastro Evento */
-    public function cadastroEvento($nome, $data_inicio, $data_fim, $local, $responsavel) {
-        $inserir = DB::INSERT('INSERT INTO evento(nome, data_inicio, data_fim, local, responsavel) VALUES (?,?,?,?,?)', [$nome, $data_inicio, $data_fim, $local, $responsavel]);
+class EventoController extends Controller
+{
+ 
+    /*CADASTRO DE EVENTO*/
+    public function cadastroEvento(Request $request){
+        $dados = $request->all();
+        
+        //verifica se já não existe um evento cadastrado
+        $busca = DB::SELECT('SELECT titulo FROM evento WHERE titulo = ?',
+        [$dados['titulo']]);
 
-        if ($inserir) {
+        if ($busca != null)
+            return response()->json(false);            
+       
+        $add = DB::INSERT('INSERT INTO evento (titulo, local, responsavel, foto_url, artista, horario_visitacao, data_inicio, data_fim, categoria, ativo) VALUES (?,?,?,?,?,?,?,?,?,?)',
+        [$dados['titulo'],$dados['local'], $dados['responsavel'], $dados['foto_url'], $dados['artista'], $dados['horario_visitacao'], $dados['data_inicio'], $dados['data_fim'], $dados['categoria'], $dados['ativo']]);
+
+       
+        if  ($add){
             return response()->json(true);
         } else {
             return response()->json(false);
         }
     }
-    /* Gerenciamento Evento */
-    public function gerenciamentoEvento() {
-        return 'gerenciamento';
+    /*BUSCA TODOS EVENTOS*/
+    public function todosEventos(){
+        $busca = DB::SELECT('SELECT titulo, local, responsavel, foto_url, artista, horario_visitacao, data_inicio, data_fim, categoria, ativo FROM evento');
+        return response()->json($busca);
     }
-    /* Editar Evento */
-    public function editarEvento($idevento, $nome, $data_inicio, $data_fim, $local, $responsavel) {
-        $editado = DB::UPDATE('UPDATE evento SET idevento = ?, nome = ?, data_inicio = ?, data_fim = ?, local = ?, responsavel = ? WHERE $idevento = ?', [$idevento, $nome, $data_inicio, $data_fim, $local, $responsavel, $idevento]);
+    /*BUSCA UM EVENTO*/
+    public function buscarEvento($id){
+        $busca = DB::SELECT('SELECT titulo, local, responsavel, foto_url, artista, horario_visitacao, data_inicio, data_fim, categoria, ativo FROM evento WHERE id_evento = ?',
+        [$id]);
+        if ($busca == null)
+            return response()->json(false);
+        
+        $busca = $busca[0];
+        return response()->json($busca);
+    }
+    /*EDITAR EVENTO*/
+    public function editarEvento (Request $request){
+        $dados = $request->all();
 
-        if ($editado) {
+        $update = DB::UPDATE('UPDATE evento SET titulo = ?, local = ?, responsavel = ?, foto_url = ?, artista = ?, horario_visitacao = ?, data_inicio = ?, data_fim = ?, categoria = ?, ativo = ? WHERE id_evento = ?',
+        [$dados['titulo'],$dados['local'], $dados['responsavel'], $dados['foto_url'], $dados['artista'], $dados['horario_visitacao'], $dados['data_inicio'], $dados['data_fim'], $dados['categoria'], $dados['ativo'],$dados['id_evento'] ]);
+
+        if  ($update){
+            return response()->json(true);
+        } else {
+            return response()->json(false);
+        }
+
+    }
+    /*REMOVE EVENTO*/
+    public function removerEvento (Request $request){
+        $dados = $request->all();
+
+        $delete = DB::DELETE('DELETE FROM evento WHERE id_evento = ?', [$dados['id_evento']]);
+
+        if  ($delete){
+            return response()->json(true);
+        } else {
+            return response()->json(false);
+        }
+
+    }
+
+    public function favoritaEvento(Request $request){
+        $dados = $request->all();
+
+        $busca = DB::SELECT('SELECT favorita_evento.Evento_id_evento, favorita_evento.Usuario_id_usuario FROM favorita_evento WHERE favorita_evento.Evento_id_evento = ? AND favorita_evento.Usuario_id_usuario = ?',
+        [$dados['id_evento'],$dados['id_usuario']]);
+
+        if ($busca != null)
+            return response()->json(false);
+
+        $add = DB::INSERT('INSERT INTO favorita_evento (Evento_id_evento, Usuario_id_usuario) VALUES (?, ?)',
+        [$dados['id_evento'], $dados['id_usuario']]);
+
+        if  ($add){
             return response()->json(true);
         } else {
             return response()->json(false);
         }
     }
-    /* Listar Evento */
-    public function listarEvento() {
-        $informacoes = DB::SELECT('SELECT * FROM evento');
-        return response()->json($informacoes);
-    }
-    /* Excluir Evento */
-    public function excluirEvento($idevento) {
+
+    public function todosEventosFavoritos($id_usr){
+    //FALTA COLOCAR O RETORNO CERTO
+        $busca = DB::SELECT('SELECT ev.titulo FROM favorita_evento fe INNER JOIN evento ev ON fe.Evento_id_evento = ev.id_evento INNER JOIN usuario usr ON usr.id_usuario = ?',[$id_usr]);
         
-        /*$deletado = DB::DELETE('DELETE evento WHERE idevento = ?',$idevento);*/
+        if ($busca == null)
+            return response()->json(false);
         
-        return 'excluir' . $idevento;
+        return response()->json($busca);
     }
-    /* Visualizar Evento */
-    public function visualizarEvento($idevento) {
-        
-        /*$informacao = DB::SELECT('SELECT * FROM evento WHERE idevento = ?',[$idevento]);
-        return response()->json($informacoes);*/
-                
-        return 'visualizar' . $idevento;
+
+    public function removerFavorito (Request $request){
+        $dados = $request->all();
+
+        $delete = DB::DELETE('DELETE FROM favorita_evento WHERE favorita_evento.Evento_id_evento = ? AND favorita_evento.Usuario_id_usuario = ?', [$dados['id_evento'],$dados['id_usr']]);
+
+        if  ($delete){
+            return response()->json(true);
+        } else {
+            return response()->json(false);
+        }
+
     }
-    
+
+
+
+
+
+
+
+
 }
