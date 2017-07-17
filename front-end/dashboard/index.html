@@ -15,7 +15,6 @@
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 </head>
-
 <body>
 	<!-- WRAPPER -->
 	<div id="wrapper">
@@ -118,11 +117,34 @@
 							<!--p class="panel-subtitle">Period: Oct 14, 2016 - Oct 21, 2016</p-->
 						</div>
 						<div class="panel-body">
-							<div class="row">
-								
-								
+							<div class="input-group">
+								<input class="form-control" type="text" placeholder="Nome do Item">
+								<span class="input-group-btn"><button class="btn btn-primary" type="button">Pesquisar</button></span>
 							</div>
-							
+							<br>
+							<div class="table-responsive" >
+								<table class="table table-striped table-hover table-condensed">
+									<thead>
+										<tr>
+											<th>Item</th>
+											<th>Funcionário</th>
+											<th>Movimentação</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody id="lista_relatorio">
+										<tr v-for="relatorio in relatorios">
+											<td>{{relatorio.item}}</td>
+											<td>{{relatorio.funcionario}}</td>
+											<td>{{relatorio.movimentacao}}</td>
+											<td>
+												<a class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+												<a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -155,6 +177,8 @@
 	<script src="assets/vendor/jquery/jquery.min.js"></script>
 	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/scripts/klorofil-common.js"></script>
+
 	<!-- VUE.JS CDN -->
 	<script src="https://unpkg.com/vue"></script>
 	<!-- Page JS -->
@@ -168,6 +192,9 @@
 			});
 		}
 	</script>
+
+	<!-- Page JS -->
+	<script src="assets/scripts/gerenciar-relatorios-itens.js" ></script>
 </body>
 
 </html>

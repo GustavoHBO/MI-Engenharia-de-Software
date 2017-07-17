@@ -140,7 +140,10 @@
 										<tr v-for="usuario in usuarios">
 											<td>{{usuario.nome}}</td>
 											<td>{{usuario.email}}</td>
-											<td>{{usuario.ativo}}</td>
+											<td>
+											<div v-if="usuario.ativo"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+											<div v-else="usuario.ativo"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+											</td>
 											<td>
 												<a class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
 												<a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
@@ -175,6 +178,7 @@
 	<script src="assets/vendor/jquery/jquery.min.js"></script>
 	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/scripts/klorofil-common.js"></script>
 
 	<script src="https://unpkg.com/vue"></script>
 	<script src="assets/scripts/gerenciar-usuarios.js"></script>

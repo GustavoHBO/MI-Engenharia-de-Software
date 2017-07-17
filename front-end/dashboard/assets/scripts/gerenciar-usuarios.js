@@ -4,10 +4,14 @@ var lista_usuarios = new Vue({
   data: {
     usuarios: [
         {
-            nome: 'Carlos Goes'
+            nome: 'Carlos Goes',
+            email: 'carlosgoes2008@hotmail.com',
+            ativo: true
         },
         {
-            nome: 'Titi Queiroz'
+            nome: 'Titi Queiroz',
+            email: 'titiquebrabarraco@hotmail.com',
+            ativo: false
         }
     ]
   },
