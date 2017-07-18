@@ -161,6 +161,6 @@ $app->group(['prefix' => 'pesquisa'], function () use ($app) {
 });
 
 $app->group(['prefix' => 'relatorio'], function () use ($app) {
-    $app->post('cadastro', 'RelatorioController@novo');
+    $app->get('cadastro', 'RelatorioController@novo');
     $app->get('{datainicial}/{datafinal}', 'RelatorioController@get');
 });
