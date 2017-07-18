@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
 	<title>Dashboard - Museu Casa do Sertão</title>
@@ -15,6 +15,7 @@
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 </head>
+
 <body>
 	<!-- WRAPPER -->
 	<div id="wrapper">
@@ -74,20 +75,20 @@
 							</div>
 						</li>
 						<li>
-							<a href="#exposicoes" data-toggle="collapse" class="collapsed"><i class="lnr lnr-eye"></i> <span>Exposições</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-							<div id="exposicoes" class="collapse ">
+							<a href="#exposicoes" class="active" data-toggle="collapse" class="collapsed"><i class="lnr lnr-eye"></i> <span>Exposições</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="exposicoes" class="collapse in">
 								<ul class="nav">
-									<li><a href="gerenciar-exposicoes.html" class="">Gerenciar Exposições</a></li>
+									<li><a class="active" href="gerenciar-exposicoes.html" class="">Gerenciar Exposições</a></li>
 									<li><a href="nova-exposicao.html" class="">Nova Exposição</a></li>
 								</ul>
 							</div>
 						</li>
 						<li>
-							<a href="#noticias" class="active" data-toggle="collapse" class="collapsed"><i class="lnr lnr-paperclip"></i> <span>Notícias</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-							<div id="noticias" class="collapse in">
+							<a href="#noticias" data-toggle="collapse" class="collapsed"><i class="lnr lnr-paperclip"></i> <span>Notícias</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="noticias" class="collapse ">
 								<ul class="nav">
 									<li><a href="gerenciar-noticias.html" class="">Gerenciar Notícias</a></li>
-									<li><a class="active" href="nova-noticia.html" class="">Nova Notícia</a></li>
+									<li><a href="nova-noticia.html" class="">Nova Notícia</a></li>
 								</ul>
 							</div>
 						</li>
@@ -106,42 +107,40 @@
 		</div>
 		<!-- END LEFT SIDEBAR -->
 		<!-- MAIN -->
-		<div class="main" id="nova-noticia">
+		<div class="main" id="nova-exposicao">
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
 					<!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
-							<h3 class="panel-title">Nova notícia</h3>
+							<h3 class="panel-title">Nova exposição</h3>
 							<!--p class="panel-subtitle">Period: Oct 14, 2016 - Oct 21, 2016</p-->
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<input type="text" class="form-control" placeholder="Título">
+								<input id="nome" type="text" class="form-control" placeholder="Nome" required>
 								<br>
-								<textarea class="form-control" placeholder="Texto" rows="12"></textarea>
+								<input id="titulo" type="text" class="form-control" placeholder="Título" required>
 								<br>
-								<p>Envie aqui uma imagem:</p>
-								<input type="file" class="form-control" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" id="imagens"
-                                                name="arquivos" accept=".png, .jpg, .jpeg" required/>
+								<input id="descricao" type="text" class="form-control" placeholder="Descrição" required>
+								<br>
+								Data de Início:
+								<input id="data_inicio" type="date" class="form-control" placeholder="Data de Início" required>
+								<br>
+								Data de Término:
+								<input id="data_termino" type="date" class="form-control" placeholder="Data de Término" required>
 								<br>
 								<button class="btn btn-primary">Enviar</button>
 							</div>
 
 						</div>
+
 					</div>
 				</div>
 			</div>
-			<!-- END MAIN CONTENT -->
 		</div>
-		<!-- END MAIN -->
-		<div class="clearfix"></div>
-		<footer>
-			<div class="container-fluid">
-				<p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved.</p>
-			</div>
-		</footer>
+		<!-- END MAIN CONTENT -->
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
@@ -161,13 +160,11 @@
 	<script src="assets/vendor/jquery/jquery.min.js"></script>
 	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
 	<script src="assets/scripts/klorofil-common.js"></script>
 
 	<!-- VUE.JS CDN -->
 	<script src="https://unpkg.com/vue"></script>
 	<!-- Page JS -->
-	<script src="assets/scripts/nova-noticia.js"></script>
+	<script src="assets/scripts/nova-exposicao.js"></script>
 </body>
-
 </html>
