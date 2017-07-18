@@ -126,8 +126,8 @@ $app->group(['prefix' => '/item'], function () use ($app) {
     $app->get('/favoritos/{id_usr}', 'ItemController@todosItensFavoritos');
     //remover item favorito
     $app->post('/favoritos/remover', 'ItemController@removerFavorito');
-    
-    
+
+
 });
 
 /*EVENTO*/
@@ -141,13 +141,13 @@ $app->group(['prefix' => '/evento'], function () use ($app) {
     //editar um evento
     $app->post('/editar', 'EventoController@editarEvento');
     //remover evento
-    $app->post('/remover', 'EventoController@removerEvento');    
+    $app->post('/remover', 'EventoController@removerEvento');
     //favorita evento
     $app->post('/favoritos/add', 'EventoController@favoritaEvento');
     //eventos favoritos de um usuario
     $app->get('/favoritos/{id_usr}', 'EventoController@todosEventosFavoritos');
     //remover evento favorito
-    $app->post('/favoritos/remover', 'EventoController@removerFavorito'); 
+    $app->post('/favoritos/remover', 'EventoController@removerFavorito');
 });
 
 $app->group(['prefix' => 'pesquisa'], function () use ($app) {
@@ -155,7 +155,7 @@ $app->group(['prefix' => 'pesquisa'], function () use ($app) {
     // $app->get('gerenciamento', 'PesquisaController@cadastro');
     $app->post('editar/{idpesquisa}', 'PesquisaController@editar');
     $app->post('excluir/{idpesquisa}', 'PesquisaController@excluir');
-    $app->get('{idpesquisa}', 'PesquisaController@get'});
+    $app->get('{idpesquisa}', 'PesquisaController@get');
     $app->get('/', 'PesquisaController@getall');
 });
 
