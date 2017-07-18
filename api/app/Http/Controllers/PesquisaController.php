@@ -9,18 +9,18 @@ use App\Http\Controllers\SecurityController;
 class PesquisaController extends Controller
 {
 
-     //Método para cadastrar item em relatorio
-     public function novo(Request $request){
+     //Método para cadastrar item em pesquisa
+     public function cadastro(Request $request){
 
          $security = new SecurityController;
          $dados =  $security->addbarras($request);
 
-         return response()->json($dados);
+        //  return response()->json($dados);
 
-         $add = true;
+        //  $add = true;
 
-        //  $add = DB::INSERT('INSERT INTO usuario (id_usuario, nome, sobrenome, tipo) VALUES (?, ?, ?, ?)',
-        //  [$dados['id'], $dados['nome'], $dados['sobrenome'], 'f']);
+         $add = DB::INSERT('INSERT INTO pesquisa (titulo, descricao, link, data, Usuario_id_usuario, ativo) VALUES (?, ?, ?, ?, ?, ?)',
+         [$dados['titulo'], $dados['descricao'], $dados['link'], $dados['data'], $dados['Usuario_id_usuario'], 1]);
 
          if ($add){
              return response()->json(true);
@@ -30,21 +30,19 @@ class PesquisaController extends Controller
 
      }
 
-     //Método para cadastrar item em relatorio
-     public function get($datainicial, $datafinal){
+     // Método para retorna lista de pesquisas
+     public function getAll(){
 
-        return response()->json($datafinal);
+       $pesquisa = DB::SELECT('SELECT * FROM pesquisa');
+       return response()->json($pesquisa);
 
-        $add = true;
+     }
 
-        //  $add = DB::INSERT('INSERT INTO usuario (id_usuario, nome, sobrenome, tipo) VALUES (?, ?, ?, ?)',
-        //  [$dados['id'], $dados['nome'], $dados['sobrenome'], 'f']);
+     // Método para retorna lista de pesquisas
+     public function get($idPesquisa){
 
-         if ($add){
-             return response()->json(true);
-         } else {
-             return response()->json(false);
-         }
+       $pesquisa = DB::SELECT('SELECT * FROM pesquisa where id_pesquisa = ?', [$idPesquisa]);
+       return response()->json($pesquisa);
 
      }
 }
