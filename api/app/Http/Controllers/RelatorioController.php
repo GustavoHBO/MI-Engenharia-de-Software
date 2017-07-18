@@ -33,7 +33,7 @@ class RelatorioController extends Controller
      //Método para cadastrar item em relatorio
      public function get($datainicial, $datafinal){
 
-        return response()->json($datafinal);
+        return response()->json($datainicial.' '.$datafinal);
 
         $add = true;
 
