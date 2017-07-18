@@ -155,6 +155,7 @@ $app->group(['prefix' => 'pesquisa'], function () use ($app) {
     // $app->get('gerenciamento', 'PesquisaController@cadastro');
     $app->post('editar/{idpesquisa}', 'PesquisaController@editar');
     $app->post('excluir/{idpesquisa}', 'PesquisaController@excluir');
+    $app->get('listar', 'PesquisaController@getAll');
     $app->get('{idpesquisa}', 'PesquisaController@get');
     $app->get('/', 'PesquisaController@getall');
 });

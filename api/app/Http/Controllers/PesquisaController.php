@@ -31,9 +31,17 @@ class PesquisaController extends Controller
      }
 
      // Método para retorna lista de pesquisas
-     public function get(){
+     public function getAll(){
 
        $pesquisa = DB::SELECT('SELECT * FROM pesquisa');
+       return response()->json($pesquisa);
+
+     }
+
+     // Método para retorna lista de pesquisas
+     public function get($idPesquisa){
+
+       $pesquisa = DB::SELECT('SELECT * FROM pesquisa where id_pesquisa = ?', [$idPesquisa]);
        return response()->json($pesquisa);
 
      }
