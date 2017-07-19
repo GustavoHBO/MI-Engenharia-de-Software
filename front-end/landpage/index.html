@@ -370,9 +370,7 @@
                                         <h1>Calendário</h1>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                            Integer arcu orci, Fermentum Vel finibus ac, blandit at tortor. 
-                                            Sed auctor ex id nulla ultricies laoreet. </h6>
+                                        <h6></h6>
                                     </div>
                                 </div>    
                                 <br>                                                          
@@ -551,6 +549,7 @@
                 $(window).load( function() {
                     $('#mycalendar').monthly({
                         mode: 'event',
+                        /* Arquivo json para adição de eventos no calendário */
                         jsonUrl: 'events.json',
                         dataType: 'json'
             		});

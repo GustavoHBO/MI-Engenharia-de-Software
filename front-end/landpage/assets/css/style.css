@@ -250,7 +250,7 @@ nav ul li {
 }
 
 .opaque-navbar.opaque {
-    background-color: #8D453C;
+    background-color: #CE6542;
     height: 60px;
     transition: background-color .5s ease 0s;
 }
@@ -267,7 +267,7 @@ ul.dropdown-menu {
     background:white;
   }
   .opaque-navbar {
-    background-color: #8D453C;
+    background-color: #CE6542;
     height: 60px;
     transition: background-color .5s ease 0s;
 }}
@@ -300,6 +300,7 @@ h2{
     font-family: 'Open Sans',sans-serif;
     font-size: 14px;
     color: black;
+    padding-top: 10px;
 }
 
 #navMain li a.ativo{
@@ -307,18 +308,29 @@ h2{
     font-size: 14px;
     color:white;
     background-color: rgba(0,0,0,0);
+    padding-top: 10px;
 }
+
+
+
+
+
 
 #login{
 	padding-top: 8px;
 	padding-bottom: 15px;
 	text-transform: capitalize;
+    background-color: white !important;
+    color: black !important;
 }
 
 #itens{
     padding-top: 80px;
 }
 
+.nome-itens{
+    font-family: 'Open Sans', sans-serif;
+}
 
 /*==============================================================
             Head Title
