@@ -58,7 +58,8 @@
 
     <!-- Calendario -->
     <link href="calendario/stylesheet.css" rel="stylesheet"/>
-
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="assets/css/monthly.css">
 
     <!--Old browser  JS-->
     <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
@@ -373,26 +374,21 @@
                                             Integer arcu orci, Fermentum Vel finibus ac, blandit at tortor. 
                                             Sed auctor ex id nulla ultricies laoreet. </h6>
                                     </div>
+                                </div>    
+                                <br>                                                          
+                                <div class="page col-sm-6 col-sm-offset-3">
+                                          <div style="width:100%; max-width:500px; display:inline-block;">
+                                            <div class="monthly" id="mycalendar"></div>
+                                          </div>
+                                        <br><br>
                                 </div>
                             </div>
-                <div class="wrapper">
-                    <div id="calendarContainer"></div>
-                    <div id="organizerContainer"></div>
-                </div>                           
                         </div>
                     </div><!-- End of row -->
 
                 </div><!-- End of container -->
-        <!--        <div class="wrapper">
-                    <div id="calendarContainer"></div>
-                    <div id="organizerContainer"></div>
-                </div> -->
             </section><!-- End of Team Section -->
 
-         <!--    <div class="wrapper">
-            <div id="calendarContainer"></div>
-            <div id="organizerContainer"></div>
-            </div> -->
 
             <!-- Seção de Contatos -->
             <section id="contatos" class="contactus colorsbg">
@@ -549,8 +545,18 @@
             <script src="assets/js/open-modal.js"></script>
 
             <!-- Calendario -->
-            <script src="calendario/library.js"></script>
-            <script src="calendario/calendarioInit.js"></script>
+
+            <script type="text/javascript" src="assets/js/monthly.js"></script>
+            <script type="text/javascript">
+                $(window).load( function() {
+                    $('#mycalendar').monthly({
+                        mode: 'event',
+                        jsonUrl: 'events.json',
+                        dataType: 'json'
+            		});
+                });
+            </script>
+
 
     </body>
     

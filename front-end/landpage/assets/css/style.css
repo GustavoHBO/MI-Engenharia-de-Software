@@ -316,7 +316,7 @@ h2{
 }
 
 #itens{
-    padding-top: 70px;
+    padding-top: 80px;
 }
 
 
@@ -442,6 +442,10 @@ h2{
 
 }
 
+
+#calendario{
+    padding-bottom: 50px;
+}
 
 /*====================================================================
                  About Section 
