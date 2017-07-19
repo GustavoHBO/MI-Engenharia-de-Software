@@ -56,6 +56,8 @@
     <!--Theme Colors css-->
     <!--<link rel="stylesheet" href="assets/css/white.css">-->
 
+    <!-- Calendario -->
+    <link href="calendario/stylesheet.css" rel="stylesheet"/>
 
 
     <!--Old browser  JS-->
@@ -373,24 +375,24 @@
                                     </div>
                                 </div>
                             </div>
-                    <div id="app"></div>
-                    <script src="vue-event-calendar/dist/index.js"></script>
-                    <div class="__vev_calendar-wrapper"></div>
-                    <script src="vue-event-calendar/dist/index.js"></script>
+                <div class="wrapper">
+                    <div id="calendarContainer"></div>
+                    <div id="organizerContainer"></div>
+                </div>                           
                         </div>
                     </div><!-- End of row -->
 
                 </div><!-- End of container -->
-                    <div id="app"></div>
-                    <script src="vue-event-calendar/dist/index.js"></script>
-                    <div class="__vev_calendar-wrapper"></div>
-                    <script src="vue-event-calendar/dist/index.js"></script>
+        <!--        <div class="wrapper">
+                    <div id="calendarContainer"></div>
+                    <div id="organizerContainer"></div>
+                </div> -->
             </section><!-- End of Team Section -->
 
-            <div id="app"></div>
-            <script src="vue-event-calendar/dist/index.js"></script>
-            <div class="__vev_calendar-wrapper"></div>
-            <script src="vue-event-calendar/dist/index.js"></script>
+         <!--    <div class="wrapper">
+            <div id="calendarContainer"></div>
+            <div id="organizerContainer"></div>
+            </div> -->
 
             <!-- Seção de Contatos -->
             <section id="contatos" class="contactus colorsbg">
@@ -546,6 +548,9 @@
             <!-- Abre o modal com um clique e passa o src da img selecionada como parâmetro pro objeto img do modal -->
             <script src="assets/js/open-modal.js"></script>
 
+            <!-- Calendario -->
+            <script src="calendario/library.js"></script>
+            <script src="calendario/calendarioInit.js"></script>
 
     </body>
     
