@@ -11,6 +11,8 @@
 |
 */
 
+$app->post('/login', 'LoginController@login');
+
 $app->group(['prefix' => 'usr'], function () use ($app){
     $app->get('/', 'UsuarioController@readAll');
     $app->post('/new', 'UsuarioController@create');
