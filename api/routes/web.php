@@ -116,41 +116,55 @@ $app->group(['prefix' => 'dashboard/noticia'], function () use ($app){
 $app->group(['prefix' => '/item'], function () use ($app) {
     //lista todos itens
     $app->get('/', 'ItemController@todosItens');
-    //retorna um item
+    //lista todos itens ativos
+    $app->get('/ativos', 'ItemController@todosItensAtivos');
+    //buscar um item id
     $app->get('/{id}', 'ItemController@buscarItem');
+    //pesquisar item
+    $app->get('/pesquisar/{titulo}', 'ItemController@pesquisarItem');
     //cadastra item
     $app->post('/', 'ItemController@cadastroItem');
     //editar um item
     $app->post('/editar', 'ItemController@editarItem');
+    //desativa item
+    $app->post('/desativa', 'ItemController@desativaItem');
+    //ativa item
+    $app->post('/ativa', 'ItemController@ativaItem');
     //favorita item
     $app->post('/favoritos/add', 'ItemController@favoritaItem');
     //itens favoritos de um usuario
     $app->get('/favoritos/{id_usr}', 'ItemController@todosItensFavoritos');
     //remover item favorito
-    $app->post('/favoritos/remover', 'ItemController@removerFavorito');
-
-
+    $app->post('/favoritos/remover', 'ItemController@removerFavorito');    
+    
 });
 
 /*EVENTO*/
 $app->group(['prefix' => '/evento'], function () use ($app) {
     //lista todos eventos
     $app->get('/', 'EventoController@todosEventos');
-    //retorna um evento
+    //lista todos eventos ativos
+    $app->get('/ativos', 'EventoController@todosEventosAtivos');
+    //buscar evento pelo id
     $app->get('/{id}', 'EventoController@buscarEvento');
+    //pesquisar evento pelo titulo
+    $app->get('/pesquisar/{titulo}', 'EventoController@pesquisarEvento');
     //cadastra evento
     $app->post('/', 'EventoController@cadastroEvento');
     //editar um evento
     $app->post('/editar', 'EventoController@editarEvento');
-    //remover evento
-    $app->post('/remover', 'EventoController@removerEvento');
+    //desativa evento
+    $app->post('/desativa', 'EventoController@desativaEvento'); 
+    //ativa evento
+    $app->post('/ativa', 'EventoController@ativaEvento');   
     //favorita evento
     $app->post('/favoritos/add', 'EventoController@favoritaEvento');
     //eventos favoritos de um usuario
     $app->get('/favoritos/{id_usr}', 'EventoController@todosEventosFavoritos');
     //remover evento favorito
-    $app->post('/favoritos/remover', 'EventoController@removerFavorito');
+    $app->post('/favoritos/remover', 'EventoController@removerFavorito'); 
 });
+
 
 $app->group(['prefix' => 'pesquisa'], function () use ($app) {
     $app->post('cadastro', 'PesquisaController@cadastro');
