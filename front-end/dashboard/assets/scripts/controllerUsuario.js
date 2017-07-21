@@ -23,7 +23,7 @@ class ControllerUsuario {
             beforeCreate: function () {
                 firebase.auth().onAuthStateChanged(function (user) {
                     if (user) {
-                        console.log('logado');
+                        console.log(user);
                     } else {
                         window.location.href = "login.html";
                         // No user is signed in.

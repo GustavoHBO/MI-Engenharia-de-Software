@@ -62,8 +62,13 @@ var loginpage = new Vue({
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-        // ...
-        console.log('logou');
+        user.providerData.forEach(function (profile) {
+          console.log("Sign-in provider: "+profile.providerId);
+          console.log("  Provider-specific UID: "+profile.uid);
+          console.log("  Name: "+profile.displayName);
+          console.log("  Email: "+profile.email);
+          console.log("  Photo URL: "+profile.photoURL);
+        });
         window.location.href = "index.html";
       }).catch(function(error) {
         var errorCode = error.code;
