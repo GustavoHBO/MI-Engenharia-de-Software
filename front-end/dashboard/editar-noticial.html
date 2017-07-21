@@ -167,7 +167,12 @@
 	<!-- VUE.JS CDN -->
 	<script src="https://unpkg.com/vue"></script>
 	<!-- Page JS -->
-	<script src="assets/scripts/nova-noticia.js"></script>
+	<script src="assets/scripts/controllerNoticia.js"></script>
+	<script src="assets/scripts/controllerGeral.js"></script>
+	<script>
+		new ControllerGeral();
+		new ControllerNoticia().editarNoticia();
+	</script>
 </body>
 
 </html>
