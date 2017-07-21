@@ -2,7 +2,12 @@ var loginpage = new Vue({
   el: '#login-page',
   data: {
     email: '',
-    senha: ''
+    senha: '',
+    cemail: '',
+    csenha: '',
+    csenha2: '',
+    nome: '',
+    sobrenome: ''
   },
   methods:{
     loginEmail: () => {

@@ -62,24 +62,24 @@
                     <h2 class="section-title">Cadastro</h2>
                 </div>
                 <form>
-                    <div class="row">
+                    <div class="row" id="cadastro">
                         <div class="col-xs-10 col-xs-offset-1">
-                            <input class="form-group input-sm" type="text" placeholder="Nome">
+                            <input class="form-group input-sm" type="text" placeholder="Nome" v-model="nome">
                         </div>
                         <div class="col-xs-10 col-xs-offset-1">
-                            <input class="form-group input-sm" type="text" placeholder="Sobrenome">
+                            <input class="form-group input-sm" type="text" placeholder="Sobrenome" v-model="sobrenome">
                         </div>
                         <div class="col-xs-10 col-xs-offset-1">
-                            <input class="form-group input-sm" type="e-mail" placeholder="E-mail">
+                            <input class="form-group input-sm" type="e-mail" placeholder="E-mail" v-model="email">
                         </div>
                         <div class="col-xs-10 col-xs-offset-1">
-                            <input class="form-group input-sm" type="password" placeholder="Senha" v-model="conta.senha">
+                            <input class="form-group input-sm" type="password" placeholder="Senha" v-model="senha">
                         </div>
                         <div class="col-xs-10 col-xs-offset-1">
-                            <input class="form-group input-sm" type="password" placeholder="Repetir senha" v-model="conta.senha">
+                            <input class="form-group input-sm" type="password" placeholder="Repetir senha" v-model="senha2">
                         </div>
                         <div class="col-xs-10 col-xs-offset-1">
-                            <a class="btn btn-sm btn-block">Cadastrar</a>
+                            <button class="btn btn-sm btn-block" @click="createUser($event)">Cadastrar</button>
                         </div>
                     </div>
                 </form>
@@ -109,7 +109,8 @@
     <!-- VUE.JS CDN -->
 	<script src="https://unpkg.com/vue"></script>
 	<!-- Page JS -->
-	<script src="assets/scripts/login.js"></script>
+    <script src="assets/scripts/login.js"></script>
+    <script src="assets/scripts/cadastro.js"></script>
 </body>
 
 </html>
