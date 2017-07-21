@@ -10,6 +10,15 @@ class ControllerEvento {
                 user: {
                     nome: 'Usuario Boladão'
                 }
+            }, 
+            methods: {
+                logout: () => {
+                    firebase.auth().signOut().then(function () {
+                        window.location.href = "login.html";
+                    }, function (error) {
+                        console.log(error.message);
+                    });
+                }
             },
             beforeCreate: function () {
                 firebase.auth().onAuthStateChanged(function (user) {

@@ -11,6 +11,15 @@ class ControllerExposicao {
                     nome: 'Usuario Boladão'
                 }
             },
+            methods: {
+                logout: () => {
+                    firebase.auth().signOut().then(function () {
+                        window.location.href = "login.html";
+                    }, function (error) {
+                        console.log(error.message);
+                    });
+                }
+            },
             beforeCreate: function () {
                 firebase.auth().onAuthStateChanged(function (user) {
                     if (user) {
@@ -51,7 +60,7 @@ class ControllerExposicao {
         var NovaExposicaoPage = new Vue({
             el: '#nova-exposicao',
             data: {
-                
+
             },
             methods: {
 
