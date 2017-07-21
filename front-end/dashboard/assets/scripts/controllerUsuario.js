@@ -43,7 +43,9 @@ class ControllerUsuario {
                 ]
             },
             methods: {
-
+                editar: (idUsuario) => {
+                    location.href = "editar-usuario.html?usuario=" + idUsuario;
+                }
             }
         })
     }

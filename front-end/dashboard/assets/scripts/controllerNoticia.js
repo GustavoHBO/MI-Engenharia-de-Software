@@ -37,7 +37,9 @@ class ControllerNoticia {
                 }, ]
             },
             methods: {
-
+                editar: (idNoticia) => {
+                    location.href = "editar-noticia.html?noticia=" + idNoticia;
+                }
             }
         })
     }

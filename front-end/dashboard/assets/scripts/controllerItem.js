@@ -53,7 +53,9 @@ class ControllerItem {
                 ]
             },
             methods: {
-            
+                editar: (idItem) => {
+                    location.href = "editar-item.html?item=" + idItem;
+                }
             }
         });
     }

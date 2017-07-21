@@ -40,7 +40,9 @@ class ControllerExposicao {
                 }, ]
             },
             methods: {
-
+                editar: (idExposicao) => {
+                    location.href = "editar-exposicao.html?exposicao=" + idExposicao;
+                }
             }
         })
     }

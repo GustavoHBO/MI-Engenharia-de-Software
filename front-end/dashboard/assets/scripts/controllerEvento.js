@@ -45,7 +45,9 @@ class ControllerEvento {
                 ]
             },
             methods:{
-
+                editar: (idEvento) => {
+                    location.href = "editar-evento.html?evento=" + idEvento;
+                }
             }
         })
     }

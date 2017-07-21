@@ -47,7 +47,9 @@ class ControllerFuncionario {
                 ]
             },
             methods: {
-
+                editar: (idFuncionario) => {
+                    location.href = "editar-funcionario.html?funcionario=" + idFuncionario;
+                }
             }
         });
     }
