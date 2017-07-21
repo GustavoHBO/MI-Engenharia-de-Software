@@ -42,8 +42,11 @@
                     <div class="col-xs-10 col-xs-offset-1">
                         <button class="btn btn-sm btn-block btn-google" v-on:click="loginGoogle"><i class="fa fa-google"></i> Google</button>
                         <!-- <a class="btn btn-lg btn-block" href="./dashboard/index.html">Login</a> -->
+                    </div> 
+                    <div class="col-xs-6 cadastrar">
+                        <a data-toggle="modal" data-target="#CadastroModal">Cadastrar</a>
                     </div>
-                    <div class="col-xs-12 forgetPassword">
+                    <div class="col-xs-6 forgetPassword">
                         <a href="#">Esqueci minha senha</a>
                     </div>
                 </div>
@@ -52,7 +55,37 @@
     </div>
 		<!-- NAVBAR -->
 	</div>
-    
+    <div id="CadastroModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="title-box wow fadeInDown">
+                    <h2 class="section-title">Cadastro</h2>
+                </div>
+                <form>
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <input class="form-group input-sm" type="text" placeholder="Nome">
+                        </div>
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <input class="form-group input-sm" type="text" placeholder="Sobrenome">
+                        </div>
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <input class="form-group input-sm" type="e-mail" placeholder="E-mail">
+                        </div>
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <input class="form-group input-sm" type="password" placeholder="Senha" v-model="conta.senha">
+                        </div>
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <input class="form-group input-sm" type="password" placeholder="Repetir senha" v-model="conta.senha">
+                        </div>
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <a class="btn btn-sm btn-block">Cadastrar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
     <script>
         // Initialize Firebase

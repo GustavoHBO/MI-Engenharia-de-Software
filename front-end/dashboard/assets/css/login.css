@@ -92,15 +92,27 @@ body {
     background-color: #fff;
     color: #000;
 }
-.forgetPassword{
+.forgetPassword,.cadastrar{
 	padding-top: 20px;
 	padding-bottom: 20px;
-	text-align: center;
 }
-.forgetPassword a{
+.cadastrar{
+    text-align: center;
+}
+.forgetPassword a, .cadastrar a{
 	color: #fff;
     font-family: 'Roboto', sans-serif;
 }
+.cadastrar a:hover{
+    color: green;
+}
 .forgetPassword a:hover{
 	color: red;
+}
+
+.modal-content{
+    background-color:#2B333E;
+}
+#CadastroModal .row{
+    margin: 30px 0 30px 0;
 }
