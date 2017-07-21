@@ -142,8 +142,8 @@
 											<td>{{exposicao.data_inicio}}</td>
 											<td>{{exposicao.data_fim}}</td>
 											<td>
-												<a class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-												<a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+												<a v-on:click="editar(exposicao.id)" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+												<a v-on:click="deletar(exposicao.id)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
 											</td>
 										</tr>
 									</tbody>

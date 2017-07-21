@@ -1,7 +1,7 @@
 class ControllerFuncionario {
     constructor() {
 
-    }  
+    }
 
 
     gerenciarFuncionario() {
@@ -45,4 +45,19 @@ class ControllerFuncionario {
 
     }
 
+    editarFuncionario() {
+        var editarFuncionario = new Vue({
+                el: '#editar-fucionario',
+                data: {},
+                methods: {
+
+                },
+                created: () => {
+                    let query = location.search.slice(1); //pega a parte depois da ?
+                    let id = query.split('=')[1]; // pega o id do evento enviado
+                    console.log(id);
+                }
+
+            });
+        }
 }

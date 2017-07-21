@@ -27,4 +27,19 @@ class ControllerUsuario {
         })
     }
 
+    editarUsuario(){
+         var editarUsuario = new Vue({
+            el: '#editar-usuario',
+            data: {
+            },
+            methods: {
+
+            },
+            created: () => {
+                let query = location.search.slice(1); //pega a parte depois da ?
+                let id = query.split('=')[1]; // pega o id do evento enviado
+                console.log(id);
+            }
+        });
+
 }

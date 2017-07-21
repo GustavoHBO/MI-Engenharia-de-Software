@@ -155,8 +155,8 @@
 											<div v-else="funcionario.gerencia_noticias"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
 											</td>
 											<td>
-												<a class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-												<a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+												<a v-on:click="editar(noticia.id)" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+												<a v-on:click="deletar(noticia.id)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
 											</td>
 										</tr>
 									</tbody>
