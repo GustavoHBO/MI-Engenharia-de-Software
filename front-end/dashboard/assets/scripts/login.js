@@ -66,7 +66,13 @@ var loginpage = new Vue({
         console.log('logou');
         window.location.href = "index.html";
       }).catch(function(error) {
-        console.log(error.message);
+        var errorCode = error.code;
+        if(errorCode == 'auth/popup-closed-by-user'){
+          $.gritter.add({
+                  // (string | mandatory) the heading of the notification
+                  title: 'Você não completou o login com Facebook!'
+            });
+        }
       });
     }
   }
