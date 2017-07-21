@@ -2,15 +2,35 @@ var loginpage = new Vue({
   el: '#login-page',
   data: {
     email: '',
-    senha: ''
+    senha: '',
+    cemail: '',
+    csenha: '',
+    csenha2: '',
+    nome: '',
+    sobrenome: ''
   },
   methods:{
     loginEmail: () => {
       firebase.auth().signInWithEmailAndPassword(loginpage.email, loginpage.senha).catch(function(error) {
       // Handle Errors here.
           var errorCode = error.code;
-          var errorMessage = error.message;
-          console.log(errorMessage);
+          console.log(errorCode);
+          if(errorCode == 'auth/invalid-email'){
+            $.gritter.add({
+                  // (string | mandatory) the heading of the notification
+                  title: 'E-mail inválido!'
+              });
+          } else if(errorCode == 'auth/wrong-password'){
+            $.gritter.add({
+                  // (string | mandatory) the heading of the notification
+                  title: 'Senha incorreta!'
+              });
+          } else if(errorCode == 'auth/user-not-found'){
+            $.gritter.add({
+                  // (string | mandatory) the heading of the notification
+                  title: 'E-mail não cadastrado!'
+            });
+          }
       // ...
       });
 
@@ -18,7 +38,6 @@ var loginpage = new Vue({
           if (user) {
               window.location.href = "index.html";
           } else {
-              console.log('não logado');
               // No user is signed in.
           }
       });
@@ -31,7 +50,6 @@ var loginpage = new Vue({
       // The signed-in user info.
       var user = result.user;
       // ...
-      console.log('logou');
       window.location.href = "index.html";
       }).catch(function(error) {
         console.log(error.message);
@@ -44,11 +62,22 @@ var loginpage = new Vue({
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-        // ...
-        console.log('logou');
+        user.providerData.forEach(function (profile) {
+          console.log("Sign-in provider: "+profile.providerId);
+          console.log("  Provider-specific UID: "+profile.uid);
+          console.log("  Name: "+profile.displayName);
+          console.log("  Email: "+profile.email);
+          console.log("  Photo URL: "+profile.photoURL);
+        });
         window.location.href = "index.html";
       }).catch(function(error) {
-        console.log(error.message);
+        var errorCode = error.code;
+        if(errorCode == 'auth/popup-closed-by-user'){
+          $.gritter.add({
+                  // (string | mandatory) the heading of the notification
+                  title: 'Você não completou o login com Facebook!'
+            });
+        }
       });
     }
   }
