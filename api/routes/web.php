@@ -79,14 +79,6 @@ $app->group(['prefix' => 'noticia'], function () use ($app){
 
 	$app->get('/buscar/{key_word}', 'NoticiaController@buscarNoticia');
 
-	$app->get('/exibir/{idexibir_noticia}', function ($idexibir_noticia){
-		return "exibindo noticia " .$idexibir_noticia;
-	});
-
-	$app->get('/compartilhar/{idcompartilhar_noticia}', function ($idcompartilhar_noticia){
-		return "compartilhando noticia " .$idcompartilhar_noticia;
-	});
-
 	$app->get('/', function(){
 		return "Principal da Noticia"; });
 });
@@ -100,10 +92,10 @@ $app->group(['prefix' => 'noticia'], function () use ($app){
 */
 $app->group(['prefix' => 'dashboard/noticia'], function () use ($app){
 
-	$app->get('/cadastro/{titulo_noticia}/{descricao_noticia}/{data_publicacao}/{ativo_noticia}/{Usuario_id_user}', 'NoticiaController@cadastrarNoticia');
+	$app->post('/cadastrar', 'NoticiaController@cadastrarNoticia');
 	$app->get('/listar', 'NoticiaController@listarNoticia');
-	$app->get('/excluir/{id_noticia}', 'NoticiaController@excluirNoticia');
-	$app->get('/atualizar/{id_noticia}/{titulo_noticia}/{descricao_noticia}/{data_publicacao}/{ativo_noticia}/{Usuario_id_user}','NoticiaController@atualizarNoticia');
+	$app->get('/excluir/{id_noticia}/{id_funcionario}', 'NoticiaController@excluirNoticia');
+	$app->post('/atualizar','NoticiaController@atualizarNoticia');
 
 	$app->get('/', function(){
 		return "Principal do DashBoard noticia";
