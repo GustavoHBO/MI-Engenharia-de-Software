@@ -72,29 +72,20 @@ $app->group(['prefix' => 'exposicao'], function () use ($app){
 });
 
 /*
-	Acesso a funcoes das noticias pelo usuario.
-	Algumas rotas ainda precisa ser definida, como a
-	as rotas de exibir e compartilhamento que estou em duvida
-*/
-$app->group(['prefix' => 'noticia'], function () use ($app){
-
-	$app->get('/buscar/{key_word}', 'NoticiaController@buscarNoticia');
-
-	$app->get('/', function(){
-		return "Principal da Noticia"; });
-});
-
-
-/*
 	Dashboard para cadastro das noticias
 	Estou passando os dados pelo metodo get
 	para poder testar a insercoes, remocoes
 	e etc no banco de dados
-*/
-$app->group(['prefix' => 'dashboard/noticia'], function () use ($app){
 
-	$app->post('/cadastrar', 'NoticiaController@cadastrarNoticia');
+    Algumas rotas ainda precisa ser definida, como a
+	as rotas de exibir e compartilhamento que estou em duvida
+
+*/
+$app->group(['prefix' => 'noticia'], function () use ($app){
+    // mudei para ter apenas um modulo com tudo referente a noticia (facilita a interpretação das rotas visto que muitas serão usadas tanto pra func quanto pra usr comum)
+    $app->get('/listar/{key_word}', 'NoticiaController@buscarNoticia'); 
 	$app->get('/listar', 'NoticiaController@listarNoticia');
+    $app->post('/cadastrar', 'NoticiaController@cadastrarNoticia');
 	$app->post('/excluir', 'NoticiaController@excluirNoticia');
 	$app->post('/atualizar','NoticiaController@atualizarNoticia');
 
