@@ -45,7 +45,7 @@ class NoticiaController extends Controller{
 
 		if ($adicionado){
 			$id_noticia = DB::SELECT('SELECT id_noticia FROM noticia WHERE titulo = ? AND descricao = ? AND data_publicacao',[$dados['titulo_noticia'], $dados['descricao_noticia']]);
-			$add = DB::INSERT('INSERT INTO noticia_imagem VALUES (?,?,?)', [$id_noticia, $dados['foto'], $dados['id_imagem']]);
+			$add = DB::INSERT('INSERT INTO noticia_imagem VALUES (?,?,?)', [$dados['foto'], $dados['id_imagem']]);
 			if ($add){
 				return response()->json(true);
 			}
@@ -62,7 +62,6 @@ class NoticiaController extends Controller{
 	Atualiza a noticia. Atualiza todos os atributos de uma vez
 	*/
 	public function atualizarNoticia(Request $request){
-		//$id_noticia, $titulo_noticia,$descricao_noticia,$data_publicacao,$ativo_noticia, $id_usuario
 
 		$security = new SecurityController;
 		$dados = $security->addbarras($request);
@@ -70,9 +69,8 @@ class NoticiaController extends Controller{
 		$atualizado = DB::UPDATE('UPDATE noticia 
 								  SET titulo = ?,
 								      descricao = ?,
-								      data_publicacao = ?,
 								      ativo = ?
-								  WHERE id_noticia = ? and ativo == 0', [$dados['titulo_noticia'],$dados['descricao_noticia'],$dados['data_publicacao'],$dados['ativo_noticia'], $dados['id_usuario'],$dados['id_noticia'], $dados['ativo_noticia']]);
+								  WHERE id_noticia = ? and ativo == 0', [$dados['titulo_noticia'],$dados['descricao_noticia'],$dados['ativo_noticia'], $dados['id_usuario'],$dados['id_noticia'], $dados['ativo_noticia']]);
 
 		if ($atualizado){
 			$relatorio = new RelatorioController;
