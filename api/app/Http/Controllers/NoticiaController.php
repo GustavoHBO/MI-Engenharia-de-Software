@@ -44,7 +44,7 @@ class NoticiaController extends Controller{
 		$adicionado = DB::INSERT('INSERT INTO noticia (titulo, descricao, data_publicacao, ativo, Usuario_id_user) VALUES (?,?,?,?,?)', [$dados['titulo_noticia'], $dados['descricao_noticia'], $data , $dados['ativo_noticia'], $dados['id_usuario']]);
 
 		if ($adicionado){
-			$id_noticia = DB::SELECT('SELECT id_noticia FROM noticia WHERE titulo = ? AND descricao = ? AND data_publicacao',[$dados['titulo_noticia'], $dados['descricao_noticia']]);
+			$id_noticia = DB::SELECT('SELECT id_noticia FROM noticia WHERE titulo = ? AND descricao = ?',[$dados['titulo_noticia'], $dados['descricao_noticia']]);
 			$add = DB::INSERT('INSERT INTO noticia_imagem VALUES (Noticia_id_noticia, foto_url)', [$id_noticia, $dados['foto']);
 			if ($add){
 				return response()->json(true);
