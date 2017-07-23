@@ -12,6 +12,11 @@ class NoticiaController extends Controller{
 	*/
 	public function listarNoticia(){
 		$dados = DB::SELECT('SELECT * FROM noticia WHERE ativo = ?', [0]);
+		foreach ($dados as $vetor) {
+			$res_fotos = DB::SELECT('SELECT * FROM noticia_imagem WHERE Noticia_id_noticia = ?', [$vetor->id_noticia]);
+			$vetor->info_imagens = array();
+			$vetor->info_imagens = $res_fotos;
+		}
 		return response()->json($dados);
 	}
 
@@ -86,6 +91,8 @@ class NoticiaController extends Controller{
 			return response()->json(false);
 		}
 	}
+
+
 	/*
 	Este metodo eh responsavel por desativar uma noticia
 	$id_noticia eh o id da noticia que vai ser desativa
