@@ -94,7 +94,7 @@ $app->group(['prefix' => 'dashboard/noticia'], function () use ($app){
 
 	$app->post('/cadastrar', 'NoticiaController@cadastrarNoticia');
 	$app->get('/listar', 'NoticiaController@listarNoticia');
-	$app->get('/excluir/{id_noticia}/{id_funcionario}', 'NoticiaController@excluirNoticia');
+	$app->post('/excluir', 'NoticiaController@excluirNoticia');
 	$app->post('/atualizar','NoticiaController@atualizarNoticia');
 
 	$app->get('/', function(){

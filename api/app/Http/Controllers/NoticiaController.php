@@ -45,7 +45,7 @@ class NoticiaController extends Controller{
 			$id_noticia = DB::SELECT('SELECT id_noticia FROM noticia WHERE titulo = ? AND descricao = ? AND data_publicacao',[$titulo_noticia, $descricao_noticia, $data_publicacao]);
 			$add = DB::INSERT('INSERT INTO noticia_imagem VALUES (?,?,?)', [$id_noticia, $dados['foto'], $dados['id_imagem']]);
 			if ($add){
-			return response()->json(true);
+				return response()->json(true);
 			}
 			else{
 				return response()->json(false);
@@ -92,14 +92,21 @@ class NoticiaController extends Controller{
 	$id_funcionario eh o id do funcionario que está desativando.
 	Esta ação é armazenada no relatorio.
 	*/
-	public function excluirNoticia ($id_noticia, $id_funcionario){
-		$desabilita	= DB::UPDATE('UPDATE noticia SET ativo = ? WHERE id_noticia = ?', [1, $id_noticia]);
+	public function excluirNoticia (Request $request){
+
+		$security = new SecurityController;
+		$dados = $security->addbarras($request);
+		
+		$desabilita	= DB::UPDATE('UPDATE noticia SET ativo = ? WHERE id_noticia = ?', [1, $dados['id_noticia']]);
 
 		if ($desabilita){
 			$relatorio = new RelatorioController;
-			$insere_relatorio = $relatorio->removeNoticia($id_noticia, $id_funcionario);
+			$insere_relatorio = $relatorio->removeNoticia($dados['id_noticia'], $dados['id_funcionario']);
 			if ($insere_relatorio){
 				return response()->json(true);
+			}
+			else{
+				return response()->json("foi atualizado, mas não foi inserido no relatorio");
 			}	
 		}
 		else{
