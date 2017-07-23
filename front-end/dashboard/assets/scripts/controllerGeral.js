@@ -8,9 +8,9 @@ class ControllerGeral {
             el: '#navbar-menu',
             data: {
                 user: {
-                    nome: 'Usuario Boladão'
+                    nome: ''
                 }
-            }, 
+            },
             methods: {
                 logout: () => {
                     firebase.auth().signOut().then(function () {
@@ -20,15 +20,22 @@ class ControllerGeral {
                     });
                 }
             },
-            beforeCreate: function () {
+            beforeCreate: () => {
                 firebase.auth().onAuthStateChanged(function (user) {
                     if (user) {
-                        console.log('logado');
+                        // Pegar nome do usuario
+                        $.get("http://localhost:8000/api/public/usuario/" + user.uid, data => {
+                            usuario.user.nome = data.nome;
+                            console.log('logado - ' + usuario.user.nome);
+                        });
                     } else {
                         window.location.href = "login.html";
                         // No user is signed in.
                     }
                 });
+            },
+            created: () => {
+                
             }
 
 
