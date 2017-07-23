@@ -41,5 +41,5 @@ class ControllerUsuario {
                 console.log(id);
             }
         });
-
+    }
 }
