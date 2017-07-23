@@ -58,7 +58,6 @@ $app->group(['prefix' => 'dashboard/exposicao'], function () use ($app){
 /*
 Grupo da exposicao
 */
-
 $app->group(['prefix' => 'exposicao'], function () use ($app){
 
 	$app->get('/', function (){
@@ -89,6 +88,7 @@ $app->group(['prefix' => 'noticia'], function () use ($app){
     $app->post('/cadastrar', 'NoticiaController@cadastrarNoticia');
 	$app->post('/excluir', 'NoticiaController@excluirNoticia');
 	$app->post('/atualizar','NoticiaController@atualizarNoticia');
+    $app->post('/atualizarImagem', 'NoticiaController@atualizar_imagem_noticia');
 
 	$app->get('/', function(){
 		return "Principal do DashBoard noticia";

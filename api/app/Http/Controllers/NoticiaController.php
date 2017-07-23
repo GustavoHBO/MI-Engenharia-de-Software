@@ -7,6 +7,7 @@ use App\Http\Controllers\RelatorioController;
 
 class NoticiaController extends Controller{
 
+
 	/*
 	Lista todas as noticias com as fotos
 	*/
@@ -22,8 +23,8 @@ class NoticiaController extends Controller{
 
 		/*
 		Busca uma noticia especifica pelo id. 
-		$id_not é o id da noticia
-
+		$id_not é o id da noticia.
+		retorna um vetor com os dados buscados.
 	*/
 	public function buscar_Id_Noticia($id_not){
 		$id_not = addslashes($id_not);
@@ -40,6 +41,7 @@ class NoticiaController extends Controller{
 
 	/*
 		Busca uma noticia especifica pelo titulo
+		retorna um vetor com os dados buscados
 	*/
 	public function buscarNoticia($key_word){
 		$key_word = addslashes("%" . $key_word ."%");
@@ -56,6 +58,9 @@ class NoticiaController extends Controller{
 	
 	/*
 	Metodo para cadastrar as noticias
+	retorna 'true' se o inseriu tanto na tabela noticia quanto na noticia_imagem 
+	retorna #insertError01 se inseriu na tabela noticia e deu erro na inserção da tabela noticia_imagem
+	retorna false se não consegiu inserir nem na tabela noticia nem na tabela noticia_image,
 	*/
 	public function cadastrarNoticia(Request $request){
 		
@@ -67,13 +72,13 @@ class NoticiaController extends Controller{
 		$adicionado = DB::INSERT('INSERT INTO noticia (titulo, descricao, data_publicacao, ativo, Usuario_id_user) VALUES (?,?,?,?,?)', [$dados['titulo_noticia'], $dados['descricao_noticia'], $data , $dados['ativo_noticia'], $dados['id_usuario']]);
 
 		if ($adicionado){
-			$id_noticia = DB::SELECT('SELECT id_noticia FROM noticia WHERE titulo = ? AND descricao = ? AND data_publicacao',[$dados['titulo_noticia'], $dados['descricao_noticia']]);
-			$add = DB::INSERT('INSERT INTO noticia_imagem VALUES (Noticia_id_noticia, foto_url)', [$id_noticia, $dados['foto']]);
+			$id_noticia = DB::SELECT('SELECT id_noticia FROM noticia WHERE titulo = ? AND descricao = ?',[$dados['titulo_noticia'], $dados['descricao_noticia']]);
+			$add = DB::INSERT('INSERT INTO noticia_imagem VALUES (Noticia_id_noticia, foto_url)', [$id_noticia, $dados['foto_url']]);
 			if ($add){
 				return response()->json(true);
 			}
 			else{
-				return response()->json(false);
+				return response()->json('#insertError01');
 			}
 		}
 		else{
@@ -83,6 +88,9 @@ class NoticiaController extends Controller{
 
 	/*
 	Atualiza a noticia. Atualiza todos os atributos de uma vez
+	retorna 'true' se o atualizou a tabela noticia e inseriu a informação na tabela do relatorio 
+	retorna #updateError01 se atualizou a tabela noticia, mas deu erro na inserção da tabela do relatorio
+	retorna false se não consegiu atualizar a tabela noticia.
 	*/
 	public function atualizarNoticia(Request $request){
 
@@ -97,12 +105,12 @@ class NoticiaController extends Controller{
 
 		if ($atualizado){
 			$relatorio = new RelatorioController;
-			$insere_relatorio = $relatorio->editaNoticia($dados['id_noticia'], $dados['id_usuario']);
+			$insere_relatorio = $relatorio->editaNoticia($dados['id_noticia'], $dados['id_funcionario']);
 			if ($insere_relatorio){
 				return response()->json(true);
 			}
 			else{
-				return response()->json(false);
+				return response()->json("#updateError01");
 			}
 		} 
 		else{
@@ -110,12 +118,49 @@ class NoticiaController extends Controller{
 		}
 	}
 
+	/*
+	Metodo que atualiza a imgem da noticia.
+	Request recebe como dados a foto da noticia (foto_url).
+	o id da notcia que (id_noticia) e o id do funcionario (id_funcionairo) para inserir a info no relatorio
+
+
+	retorna 'true' se o atualizou a tabela noticia_imagem e inseriu a informação na tabela do relatorio 
+	retorna #updateError01 se atualizou a tabela noticia_imagem, mas deu erro na inserção da tabela do relatorio
+	retorna 'false' se não consegiu atualizar a tabela noticia_imagem.
+	*/
+	public function atualizar_imagem_noticia(Request $request){
+
+		$security = new SecurityController;
+		$dados = $security->addbarras($request);
+
+		$atualizado = DB::UPDATE('UPDATE noticia_imagem SET foto_url = ? WHERE id_noticia_imagem = ?', [$dados['foto_url'], $dados['id_noticia_imagem']]);
+
+		if ($atualizado){
+			$relatorio = new RelatorioController;
+			$insere_relatorio = $relatorio->editaNoticia($dados['id_noticia'], $dados['id_funcionario']);
+			if ($insere_relatorio){
+				return response()->json(true);
+			}
+			else{
+				return response()->json('#updateError01');
+			}
+		}
+		else{
+			return response()->json(false);
+		}
+	}
+
+
 
 	/*
 	Este metodo eh responsavel por desativar uma noticia
 	$id_noticia eh o id da noticia que vai ser desativa
 	$id_funcionario eh o id do funcionario que está desativando.
 	Esta ação é armazenada no relatorio.
+
+	retorna 'true' se o setou ativo = 1 na tabela noticia e inseriu a informação na tabela do relatorio 
+	retorna '#updateError01' setou ativo = 1 a tabela noticia, mas deu erro na inserção da tabela do relatorio
+	retorna 'false' se não consegiu setar ativo = 1 na tabela noticia.
 	*/
 	public function excluirNoticia (Request $request){
 
@@ -131,7 +176,7 @@ class NoticiaController extends Controller{
 				return response()->json(true);
 			}
 			else{
-				return response()->json("foi atualizado, mas não foi inserido no relatorio");
+				return response()->json("#updateError01");
 			}	
 		}
 		else{
