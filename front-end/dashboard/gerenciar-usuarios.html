@@ -131,22 +131,20 @@
 									<thead>
 										<tr>
 											<th>Nome</th>
-											<th>Email</th>
 											<th>Status</th>
 											<th></th>
 										</tr>
 									</thead>
 									<tbody id="lista_usuarios">
 										<tr v-for="usuario in usuarios">
-											<td>{{usuario.nome}}</td>
-											<td>{{usuario.email}}</td>
+											<td>{{usuario.nome}} {{usuario.sobrenome}}</td>
 											<td>
-											<div v-if="usuario.ativo"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
-											<div v-else="usuario.ativo"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+											<div v-if="!usuario.ativo"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+											<div v-else="!usuario.ativo"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
 											</td>
 											<td>
-												<a class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-												<a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+												<!--a v-on:click="editar(usuario.id_usuario)" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a-->
+												<a v-on:click="desativar(usuario.id_usuario)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
 											</td>
 										</tr>
 									</tbody>
@@ -181,6 +179,7 @@
 	<script src="assets/scripts/klorofil-common.js"></script>
 
 	<script src="https://unpkg.com/vue"></script>
+	<script src="assets/model/usuario.js"></script>
 	<script src="assets/scripts/controllerUsuario.js"></script>
 	<script src="assets/scripts/controllerGeral.js"></script>
 	<script>
