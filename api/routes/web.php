@@ -13,7 +13,7 @@
 
 $app->post('/login', 'LoginController@login');
 
-$app->group(['prefix' => 'usr'], function () use ($app){
+$app->group(['prefix' => 'usuario'], function () use ($app){
     $app->get('/', 'UsuarioController@readAll');
     $app->post('/new', 'UsuarioController@create');
 	$app->post('/update', 'UsuarioController@update');
@@ -24,7 +24,7 @@ $app->group(['prefix' => 'usr'], function () use ($app){
 Grupo do dashboard da exposicao
 */
 
-$app->group(['prefix' => 'usr'], function () use ($app){
+$app->group(['prefix' => 'funcionario'], function () use ($app){
     $app->get('/', 'FuncionarioController@readAll');
     $app->post('/new', 'FuncionarioController@create');
 	$app->post('/update', 'FuncionarioController@update');
