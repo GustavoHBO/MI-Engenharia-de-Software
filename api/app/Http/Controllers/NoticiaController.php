@@ -35,11 +35,13 @@ class NoticiaController extends Controller{
 	Metodo para cadastrar as noticias
 	*/
 	public function cadastrarNoticia(Request $request){
-
+		
+		$data = date("Y-m-d H:i:s");
+		
 		$security = new SecurityController;
 		$dados = $security->addbarras($request);
 
-		$adicionado = DB::INSERT('INSERT INTO noticia (titulo, descricao, data_publicacao, ativo, Usuario_id_user) VALUES (?,?,?,?,?)', [$dados['titulo_noticia'], $dados['descricao_noticia'], $dados['data_publicacao'], $dados['ativo_noticia'], $dados['id_usuario']]);
+		$adicionado = DB::INSERT('INSERT INTO noticia (titulo, descricao, data_publicacao, ativo, Usuario_id_user) VALUES (?,?,?,?,?)', [$dados['titulo_noticia'], $dados['descricao_noticia'], $data , $dados['ativo_noticia'], $dados['id_usuario']]);
 
 		if ($adicionado){
 			$id_noticia = DB::SELECT('SELECT id_noticia FROM noticia WHERE titulo = ? AND descricao = ? AND data_publicacao',[$titulo_noticia, $descricao_noticia, $data_publicacao]);
