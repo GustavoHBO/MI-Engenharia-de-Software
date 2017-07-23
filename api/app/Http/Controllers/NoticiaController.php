@@ -21,10 +21,10 @@ class NoticiaController extends Controller{
 		return response()->json($dados);
 	}
 
-		/*
-		Busca uma noticia especifica pelo id. 
-		$id_not é o id da noticia.
-		retorna um vetor com os dados buscados.
+	/*
+	Busca uma noticia especifica pelo id. 
+	$id_not é o id da noticia.
+	retorna um vetor com os dados buscados.
 	*/
 	public function buscar_Id_Noticia($id_not){
 		$id_not = addslashes($id_not);

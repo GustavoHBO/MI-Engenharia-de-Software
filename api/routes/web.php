@@ -32,28 +32,6 @@ $app->group(['prefix' => 'funcionario'], function () use ($app){
 	$app->post('/desativar', 'FuncionarioController@desativar');
 });
 
-$app->group(['prefix' => 'dashboard/exposicao'], function () use ($app){
-	$app->get('/', function (){
-    	return 'dashboard da exposicao';
-	});
-
-	$app->post('/cadastrar', function (){
-    	return 'Cadastro de um nova exposicao';
-	});
-
-	$app->post('/listar', function (){
-    	return 'Cadastro de um nova exposicao';
-	});
-
-	$app->get('/editar/{idexposicao}', function ($idexposicao){
-    	return 'editar exposicao' . $idexposicao;
-	});
-
-	$app->get('/excluir/{idexposicao}', function ($idexposicao){
-    	return 'exposicao excluir ' . $idexposicao;
-	});
-
-});
 
 /*
 Grupo da exposicao
@@ -64,9 +42,17 @@ $app->group(['prefix' => 'exposicao'], function () use ($app){
     return 'pagina principal da exposicao';
 	});
 
-	$app->get('/buscar/{idexposicao}', function ($idexposicao){
-    return 'exposicao buscada: ' . $idexposicao;
-	});
+	$app->get('/buscar/{key_word}', 'ExposicaoContoller@buscarExposicao');
+
+    $app->get('/get/{id_exposicao}','ExposicaoContoller@buscarExposicao_PorID');
+
+    $app->post('/cadastrar', 'ExposicaoContoller@cadastrarExposicao');
+
+    $app->post('/listar', 'ExposicaoContoller@listarExposicao');
+
+    $app->get('/editar/{idexposicao}', 'ExposicaoContoller@atualizarExposicao');
+
+    $app->get('/excluir/{idexposicao}', 'ExposicaoContoller@excluirExposicao');
 
 });
 
