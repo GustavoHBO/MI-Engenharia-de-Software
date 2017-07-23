@@ -8,7 +8,7 @@ use App\Http\Controllers\RelatorioController;
 class NoticiaController extends Controller{
 
 	/*
-	Lista todas as noticias
+	Lista todas as noticias com as fotos
 	*/
 	public function listarNoticia(){
 		$dados = DB::SELECT('SELECT * FROM noticia WHERE ativo = ?', [0]);
@@ -18,6 +18,24 @@ class NoticiaController extends Controller{
 			$vetor->info_imagens = $res_fotos;
 		}
 		return response()->json($dados);
+	}
+
+		/*
+		Busca uma noticia especifica pelo id. 
+		$id_not é o id da noticia
+
+	*/
+	public function buscar_Id_Noticia($id_not){
+		$id_not = addslashes($id_not);
+		$resultados = DB::SELECT('SELECT * FROM noticia WHERE id_noticia LIKE ? and ativo = ?', [$id_not, 0]);
+		
+		foreach ($resultados as $vetor) {
+			$res_fotos = DB::SELECT('SELECT * FROM noticia_imagem WHERE Noticia_id_noticia = ?', [$vetor->id_noticia]);
+			$vetor->info_imagens = array();
+			$vetor->info_imagens = $res_fotos;
+		}
+		
+		return response()->json($resultados);
 	}
 
 	/*
