@@ -4,19 +4,27 @@ class ControllerNoticia {
     }
 
     gerenciarNoticia() {
-        var lista_noticias = new Vue({
+        var pesquisa = new Vue({
             el: '#lista_noticias',
             data: {
-                noticias: [{
-                    titulo: 'Novos itens chegam ao museu',
-                    data: '10/09/2017',
-                    escritor: 'Ricardo Nogueira'
-                }, ]
+                noticias: {},
+                pesquisa: "", 
             },
             methods: {
                 editar: (idNoticia) => {
                     location.href = "editar-noticia.html?noticia=" + idNoticia;
+                },
+                pesquisar: () => {
+                    $.get("http://localhost:8000/api/public/noticia/listar/" + pesquisa.pesquisa, data => {
+                    lista_noticias.noticias = data;
+                });
                 }
+            },
+            created: () => {
+                //pega lista de usuarios
+                $.get("http://localhost:8000/api/public/noticia/listar", data => {
+                    lista_noticias.noticias = data;
+                });
             }
         })
     }

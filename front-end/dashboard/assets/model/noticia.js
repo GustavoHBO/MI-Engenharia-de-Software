@@ -4,7 +4,8 @@ export class noticia {
   descricao; 
   data_publicacao; 
   ativo; 
-  Usuario_id_user; 
+  Usuario_id_user;
+  info_imagens;
  
   constructor() { 
        
