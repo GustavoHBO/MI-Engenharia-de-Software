@@ -10,33 +10,47 @@ class ItemController extends Controller
 {
     protected $controllerRelatorio;
 
-    public function __construct(RelatorioController $relatorioController)
+    public function __construct()
     {
-        $this->relatorioController = $relatorioController;
+        $this->relatorioController = new RelatorioController;
     }
-    /*RETORNA TODOS OS ITENS*/
+    /*RETORNA TODOS OS DADOS DE TODOS ITENS*/
     public function todosItens(){
-        $busca = DB::SELECT('SELECT * FROM item');
+        $busca = DB::SELECT('SELECT * FROM item it, aquisicao_item aq_it, caracteristicas_estilisticas_item carac_est_it, dimensao_item dim_it,documentacao_fotografica_item doc_fot_it WHERE it.id_item = aq_it.Item_id_item AND it.id_item = carac_est_it.Item_id_item AND it.id_item = dim_it.Item_id_item AND it.id_item = doc_fot_it.Item_id_item ORDER BY it.id_item');
+        
+        foreach($busca as $b){
+            $imagens = DB::SELECT('SELECT foto_url FROM item_imagem WHERE Item_id_item = ?',[$b->id_item]);
+            $b->foto_imagem = $imagens;
+        }
         return response()->json($busca);
     }
     /*RETORNA TODOS OS ITENS ATIVOS*/
     public function todosItensAtivos(){
-        $busca = DB::SELECT('SELECT * FROM item WHERE ativo = 1');
+        $busca = DB::SELECT('SELECT * FROM item it, aquisicao_item aq_it, caracteristicas_estilisticas_item carac_est_it, dimensao_item dim_it,documentacao_fotografica_item doc_fot_it WHERE it.id_item = aq_it.Item_id_item AND it.id_item = carac_est_it.Item_id_item AND it.id_item = dim_it.Item_id_item AND it.id_item = doc_fot_it.Item_id_item AND it.ativo = 1 ORDER BY it.id_item');
+        
+        foreach($busca as $b){
+            $imagens = DB::SELECT('SELECT foto_url FROM item_imagem WHERE Item_id_item = ?',[$b->id_item]);
+            $b->foto_imagem = $imagens;
+        }
         return response()->json($busca);
     }
     /*BUSCAR ITEM PELO ID*/
     public function buscarItem($id){
-        $busca = DB::SELECT('SELECT * FROM item WHERE id_item = ?',
-        [$id]);
+        $busca = DB::SELECT('SELECT * FROM item it, aquisicao_item aq_it, caracteristicas_estilisticas_item carac_est_it, dimensao_item dim_it,documentacao_fotografica_item doc_fot_it WHERE id_item = ? AND aq_it.Item_id_item = ? AND carac_est_it.Item_id_item = ? AND dim_it.Item_id_item = ? AND doc_fot_it.Item_id_item = ?',
+        [$id,$id,$id,$id,$id]);
+
         if ($busca == null)
             return response()->json(false);
         
         $busca = $busca[0];
+
+        $imagens = DB::SELECT('SELECT foto_url FROM item_imagem WHERE Item_id_item = ?',[$busca->id_item]);
+        $busca->foto_imagem = $imagens;
         return response()->json($busca);
     }
-    /*PESQUISAR ITEM PELO TITULO*/
+    /*PESQUISAR ITEM PELO TITULO OBS: só retornar os dados da tabela "item"*/
     public function pesquisarItem($titulo){
-        $busca = DB::SELECT('SELECT * FROM item WHERE titulo LIKE  ?',
+        $busca = DB::SELECT('SELECT * FROM item WHERE titulo LIKE  ? ORDER BY titulo',
         ["%".$titulo."%"]);
         if ($busca == null)
             return response()->json(false);
@@ -55,56 +69,57 @@ class ItemController extends Controller
         if ($busca != null)
             return response()->json(false);
 
-        $add_item = DB::INSERT('INSERT INTO item (id_item,material, doador, funcao, procedencia, autor, origem, conservacao, colecao, categoria, classificacao, titulo,imagem_3d, estado_de_conservacao, iconologia, referencias_bibliograficas, descricao_objeto, local, data, historico, ativo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+        $add = DB::INSERT('INSERT INTO item (id_item,material, doador, funcao, procedencia, autor, origem, conservacao, colecao, categoria, classificacao, titulo,imagem_3d, estado_de_conservacao, iconologia, referencias_bibliograficas, descricao_objeto, local, data, historico, ativo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
         [$dados['id_item'],$dados['material'],$dados['doador'], $dados['funcao'], $dados['procedencia'], $dados['autor'], $dados['origem'], $dados['conservacao'], $dados['colecao'], $dados['categoria'], $dados['classificacao'],$dados['titulo'],$dados['imagem_3d'], $dados['estado_de_conservacao'], $dados['iconologia'],$dados['referencias_bibliograficas'],$dados['descricao_objeto'],$dados['local'],$dados['data'], $dados['historico'], 1]);
 
-        $add_aquisicao = DB::INSERT('INSERT INTO aquisicao_item (Item_id_item, data, modo_aquisicao, autor, observacao) VALUES (?,?,?,?,?)',
-        [$dados['id_item'],$dados['data_aq'],$dados['modo_aquisicao'], $dados['autor'], $dados['observacao']]);
+        $add = DB::INSERT('INSERT INTO aquisicao_item (Item_id_item, data, modo_aquisicao, autor, observacao) VALUES (?,?,?,?,?)',
+        [$dados['id_item'],$dados['data_aquisicao'],$dados['modo_aquisicao'], $dados['autor_aquisicao'], $dados['observacao_aquisicao']]);
 
-        $add_carac_estilisticas = DB::INSERT('INSERT INTO caracteristicas_estilisticas_item (Item_id_item, materiais_constitutivos, tecnica_fabricacao, autoria) VALUES (?,?,?,?)',
-        [$dados['id_item'],$dados['materiais_constitutivos'],$dados['tecnica_fabricacao'], $dados['autoria']]);
+        $add = DB::INSERT('INSERT INTO caracteristicas_estilisticas_item (Item_id_item, materiais_constitutivos, tecnica_fabricacao, autoria) VALUES (?,?,?,?)',
+        [$dados['id_item'],$dados['materiais_cat_estilisticas'],$dados['tecnica_cat_estilisticas'], $dados['autoria_cat_estilisticas']]);
 
-        $add_dimensao = DB::INSERT('INSERT INTO dimensao_item (Item_id_item, altura, diamentro, largura, peso, comprimento) VALUES (?,?,?,?,?,?)',
-        [$dados['id_item'],$dados['altura'],$dados['diametro'],$dados['largura'], $dados['peso'], $dados['comprimento']]);
+        $add = DB::INSERT('INSERT INTO dimensao_item (Item_id_item, altura, diamentro, largura, peso, comprimento) VALUES (?,?,?,?,?,?)',
+        [$dados['id_item'],$dados['altura_dimensao'],$dados['diametro_dimensao'],$dados['largura_dimensao'], $dados['peso_dimensao'], $dados['comprimento_dimensao']]);
 
-        $add_doc_fotografica = DB::INSERT('INSERT INTO documentacao_fotografica_item (Item_id_item, fotografo, data, foto_url) VALUES (?,?,?,?)',
-        [$dados['id_item'],$dados['fotografo'],$dados['data_foto'], $dados['doc_foto_url']]);
-
-        $add_imagem = DB::INSERT('INSERT INTO item_imagem (Item_id_item, foto_url) VALUES (?,?)',
-        [$dados['id_item'],$dados['foto_url']]);
+        $add = DB::INSERT('INSERT INTO documentacao_fotografica_item (Item_id_item, fotografo, data, foto_url) VALUES (?,?,?,?)',
+        [$dados['id_item'],$dados['fotografo_doc_fotografica'],$dados['data_doc_fotografica'], $dados['foto_doc_fotografica']]);
 
 
-        if  ($add_item && $add_aquisicao&&$add_carac_estilisticas&&$add_dimensao&&$add_doc_fotografica&&$add_imagem){
+        foreach($dados['foto_imagem'] as $f){
+            $add = DB::INSERT('INSERT INTO item_imagem (Item_id_item, foto_url) VALUES (?,?)', [$dados['id_item'],$f]);
+        }
+
+        if  ($add){
             //$relatorioController->criarItem($dados['id_item'],$dados['id_usr']);
             return response()->json(true);
         } else {
             return response()->json(false);
         }
     }
-    /*Função para editar item*/
+    /*EDITAR ITEM*/
     public function editarItem (Request $request){
         $dados = $request->all();
 
-        $update_item = DB::UPDATE('UPDATE item SET material = ?, doador = ?, funcao = ?, procedencia = ?, autor = ?, origem = ?, conservacao = ?, colecao = ?, categoria = ?, classificacao = ?, titulo = ?,imagem_3d =?, estado_de_conservacao = ?, iconologia = ?, referencias_bibliograficas = ?, descricao_objeto = ?, local = ?, data = ?, historico = ? WHERE id_item = ?',
+        $update = DB::UPDATE('UPDATE item SET material = ?, doador = ?, funcao = ?, procedencia = ?, autor = ?, origem = ?, conservacao = ?, colecao = ?, categoria = ?, classificacao = ?, titulo = ?,imagem_3d =?, estado_de_conservacao = ?, iconologia = ?, referencias_bibliograficas = ?, descricao_objeto = ?, local = ?, data = ?, historico = ? WHERE id_item = ?',
         [$dados['material'],$dados['doador'], $dados['funcao'], $dados['procedencia'], $dados['autor'], $dados['origem'], $dados['conservacao'], $dados['colecao'], $dados['categoria'], $dados['classificacao'],$dados['titulo'],$dados['imagem_3d'], $dados['estado_de_conservacao'], $dados['iconologia'],$dados['referencias_bibliograficas'],$dados['descricao_objeto'],$dados['local'],$dados['data'], $dados['historico'], $dados['id_item']]);
 
-        $update_aquisicao = DB::UPDATE('UPDATE aquisicao_item SET data = ?, modo_aquisicao = ?, autor = ?, observacao = ? WHERE Item_id_item = ?',
-        [$dados['data'],$dados['modo_aquisicao'],$dados['autor'],$dados['observacao'],$dados['id_item']]);
+        $update = DB::UPDATE('UPDATE aquisicao_item SET data = ?, modo_aquisicao = ?, autor = ?, observacao = ? WHERE Item_id_item = ?',
+        [$dados['data_aquisicao'],$dados['modo_aquisicao'], $dados['autor_aquisicao'], $dados['observacao_aquisicao'],$dados['id_item']]);
 
-        $update_carac_estilisticas = DB::UPDATE('UPDATE caracteristicas_estilisticas_item SET materiais_constitutivos = ?, tecnica_fabricacao = ?, autoria = ? WHERE Item_id_item = ?',
-        [$dados['materiais_constitutivos'],$dados['tecnica_fabricacao'],$dados['autoria'],$dados['id_item']]);
+        $update = DB::UPDATE('UPDATE caracteristicas_estilisticas_item SET materiais_constitutivos = ?, tecnica_fabricacao = ?, autoria = ? WHERE Item_id_item = ?',
+        [$dados['materiais_cat_estilisticas'],$dados['tecnica_cat_estilisticas'], $dados['autoria_cat_estilisticas'],$dados['id_item']]);
 
-        $update_dimensao = DB::UPDATE('UPDATE dimensao_item SET altura = ?, diamentro = ?, largura = ?, peso = ?, comprimento = ? WHERE Item_id_item = ?',
-        [$dados['altura'],$dados['diamentro'],$dados['largura'], $dados['peso'], $dados['comprimento'],$dados['id_item']]);
+        $update = DB::UPDATE('UPDATE dimensao_item SET altura = ?, diamentro = ?, largura = ?, peso = ?, comprimento = ? WHERE Item_id_item = ?',
+        [$dados['altura_dimensao'],$dados['diametro_dimensao'],$dados['largura_dimensao'], $dados['peso_dimensao'], $dados['comprimento_dimensao'],$dados['id_item']]);
 
-        $update_doc_fotografica = DB::UPDATE('UPDATE documentacao_fotografica_item SET fotografo = ?, data = ?, foto_url = ? WHERE Item_id_item = ?',
-        [$dados['fotografo'],$dados['data'],$dados['foto_url'],$dados['id_item']]);
+        $update = DB::UPDATE('UPDATE documentacao_fotografica_item SET fotografo = ?, data = ?, foto_url = ? WHERE Item_id_item = ?',
+        [$dados['fotografo_doc_fotografica'],$dados['data_doc_fotografica'], $dados['foto_doc_fotografica'],$dados['id_item']]);
 
-        $update_imagem = DB::UPDATE('UPDATE item_imagem SET foto_url = ? WHERE Item_id_item = ?',
-        [$dados['foto_url'],$dados['id_item']]);
+        foreach($dados['foto_imagem'] as $f){
+            $update = DB::UPDATE('UPDATE item_imagem SET foto_url = ? WHERE Item_id_item = ?', [$f,$dados['id_item']]);
+        }
 
-
-        if  ($update_item || $update_aquisicao || $update_carac_estilisticas || $update_dimensao || $update_doc_fotografica || $update_imagem){
+        if  ($update){
             //$relatorioController->editaItem($dados['id_item'],$dados['id_usr']);
             return response()->json(true);
         } else {
@@ -156,10 +171,10 @@ class ItemController extends Controller
             return response()->json(false);
         }
     }
-
-    public function todosItensFavoritos($id_usr){
-        //FALTA COLOCAR O RETORNO CERTO
-        $busca = DB::SELECT('SELECT it.titulo, it.autor FROM favorita_item fi INNER JOIN item it ON fi.Item_id_item = it.id_item INNER JOIN usuario usr ON usr.id_usuario = ?',[$id_usr]);
+    /*RETORNA TODOS ITENS FAVORITOS*/
+    public function todosItensFavoritos($id_usuario){
+        //FALTA COLOCAR MAIS PARAMETROS PARA O RETORNO?
+        $busca = DB::SELECT('SELECT id_item, it.material, it.doador, it.funcao, it.procedencia, it.autor, it.origem, it.conservacao, it.colecao, it.categoria, it.classificacao, it.titulo, it.imagem_3d, it.estado_de_conservacao, it.iconologia, it.referencias_bibliograficas, it.descricao_objeto, it.local, it.data, it.historico FROM favorita_item fi INNER JOIN item it ON fi.Item_id_item = it.id_item INNER JOIN usuario usr ON usr.id_usuario = ?',[$id_usuario]);
         
         if ($busca == null)
             return response()->json(false);
@@ -170,7 +185,7 @@ class ItemController extends Controller
     public function removerFavorito (Request $request){
         $dados = $request->all();
 
-        $delete = DB::DELETE('DELETE FROM favorita_item WHERE favorita_item.Item_id_item = ? AND favorita_item.Usuario_id_usuario = ?', [$dados['id_item'],$dados['id_usr']]);
+        $delete = DB::DELETE('DELETE FROM favorita_item WHERE favorita_item.Item_id_item = ? AND favorita_item.Usuario_id_usuario = ?', [$dados['id_item'],$dados['id_usuario']]);
 
         if  ($delete){
             return response()->json(true);
