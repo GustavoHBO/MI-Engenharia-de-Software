@@ -89,8 +89,9 @@ class NoticiaController extends Controller{
 	/*
 	Atualiza a noticia. Atualiza todos os atributos de uma vez
 	retorna 'true' se o atualizou a tabela noticia e inseriu a informação na tabela do relatorio 
-	retorna #updateError01 se atualizou a tabela noticia, mas deu erro na inserção da tabela do relatorio
-	retorna false se não consegiu atualizar a tabela noticia.
+	retorna #updateError01 se atualizou a tabela noticia a  tabela imagem_noticia, mas deu erro na inserção da tabela do relatorio
+	retorna #updateError02 se atualizou a tabela noticia, mas nao conseguiu atualizar a tabela noticia_imagem
+	retorna false se não consegiu atualizar a tabela noticia e nem as outras.
 	*/
 	public function atualizarNoticia(Request $request){
 
@@ -104,14 +105,25 @@ class NoticiaController extends Controller{
 								  WHERE id_noticia = ? and ativo == 0', [$dados['titulo_noticia'],$dados['descricao_noticia'],$dados['ativo_noticia'], $dados['id_usuario'],$dados['id_noticia'], $dados['ativo_noticia']]);
 
 		if ($atualizado){
-			$relatorio = new RelatorioController;
-			$insere_relatorio = $relatorio->editaNoticia($dados['id_noticia'], $dados['id_funcionario']);
-			if ($insere_relatorio){
-				return response()->json(true);
+			
+			$atualizado_imagem = DB::UPDATE('UPDATE noticia_imagem SET foto_url = ? WHERE id_noticia_imagem = ?', [$dados['foto_url'], $dados['id_noticia_imagem']]);
+			if ($atualizado_imagem){
+				$relatorio = new RelatorioController;
+				$insere_relatorio = $relatorio->editaNoticia($dados['id_noticia'], $dados['id_funcionario']);
+
+				if ($insere_relatorio){
+					return response()->json(true);
+				}
+				else{
+					return response()->json("#updateError01");
+			}
+
 			}
 			else{
-				return response()->json("#updateError01");
+				return response()->json("#updateError02")
 			}
+
+			
 		} 
 		else{
 			return response()->json(false);
@@ -159,7 +171,7 @@ class NoticiaController extends Controller{
 	Esta ação é armazenada no relatorio.
 
 	retorna 'true' se o setou ativo = 1 na tabela noticia e inseriu a informação na tabela do relatorio 
-	retorna '#updateError01' setou ativo = 1 a tabela noticia, mas deu erro na inserção da tabela do relatorio
+	retorna '#excluiError01' setou ativo = 1 a tabela noticia, mas deu erro na inserção da tabela do relatorio
 	retorna 'false' se não consegiu setar ativo = 1 na tabela noticia.
 	*/
 	public function excluirNoticia (Request $request){
@@ -176,7 +188,7 @@ class NoticiaController extends Controller{
 				return response()->json(true);
 			}
 			else{
-				return response()->json("#updateError01");
+				return response()->json("#excluiError01");
 			}	
 		}
 		else{
