@@ -101,6 +101,14 @@
 								</ul>
 							</div>
 						</li>
+						<li>
+							<a href="#pesquisa" data-toggle="collapse" class="collapsed"><i class="lnr lnr-pie-chart"></i> <span>Pesquisa</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="pesquisa" class="collapse in">
+								<ul class="nav">
+									<li><a href="nova-pesquisa.html" class="">Nova pesquisa</a></li>
+								</ul>
+							</div>
+						</li>
 					</ul>
 				</nav>
 			</div>
@@ -138,7 +146,7 @@
 									<br>
 									<p>Envie aqui uma imagem:</p>
 									<input v-on:change="fotoAdd" type="file" class="form-control" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"
-									    id="imagens" name="arquivos" accept=".png, .jpg, .jpeg" required/>
+									id="imagens" name="arquivos" accept=".png, .jpg, .jpeg" required/>
 									<br>
 									<button v-on:click="cadastrar()" class="submit btn btn-primary">Criar Evento</button>
 								</form>
@@ -164,32 +172,32 @@
 	<script>
 		// Initialize Firebase
 		var config = {
-			apiKey: "AIzaSyD-AzHfDGqFPjk0CX3aEG_dkxDngxpWsLg",
-			authDomain: "pblengsoft-9128d.firebaseapp.com",
-			databaseURL: "https://pblengsoft-9128d.firebaseio.com",
-			projectId: "pblengsoft-9128d",
-			storageBucket: "pblengsoft-9128d.appspot.com",
-			messagingSenderId: "277046336190"
-		};
-		firebase.initializeApp(config);
-	</script>
-	<script src="assets/vendor/jquery/jquery.min.js"></script>
-	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="assets/scripts/klorofil-common.js"></script>
+		apiKey: "AIzaSyD-AzHfDGqFPjk0CX3aEG_dkxDngxpWsLg",
+		authDomain: "pblengsoft-9128d.firebaseapp.com",
+		databaseURL: "https://pblengsoft-9128d.firebaseio.com",
+		projectId: "pblengsoft-9128d",
+		storageBucket: "pblengsoft-9128d.appspot.com",
+		messagingSenderId: "277046336190"
+	};
+	firebase.initializeApp(config);
+</script>
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="assets/scripts/klorofil-common.js"></script>
 
-	<!-- VUE.JS CDN -->
-	<script src="https://unpkg.com/vue"></script>
-	<!-- Page JS -->
-	<script src="assets/model/evento.js"></script>
-	<script src="assets/scripts/controllerEvento.js"></script>
-	<script src="assets/scripts/controllerGeral.js"></script>
-	<script>
-		new ControllerGeral();
-	</script>
-	<script>
-		new ControllerEvento().novoEvento();
-	</script>
+<!-- VUE.JS CDN -->
+<script src="https://unpkg.com/vue"></script>
+<!-- Page JS -->
+<script src="assets/model/evento.js"></script>
+<script src="assets/scripts/controllerEvento.js"></script>
+<script src="assets/scripts/controllerGeral.js"></script>
+<script>
+	new ControllerGeral();
+</script>
+<script>
+	new ControllerEvento().novoEvento();
+</script>
 
 </body>
 
