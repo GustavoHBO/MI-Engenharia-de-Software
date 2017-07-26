@@ -32,7 +32,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>{{user.nome}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
-							<ul class="dropdown-menu"> 
+							<ul class="dropdown-menu">
 								<li><a v-on:click="logout()"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
 						</li>
@@ -119,35 +119,31 @@
 						</div>
 						<div class="panel-body">
 							<div id="editarEvento" class="row">
-
-								<input id="nome" type="text" class="form-control" v-model="nome" required>
-								<br>
-								<input id="local" type="text" class="form-control" v-model="local" required>
-								<br>
-								<input id="responsavel" type="text" class="form-control" v-model="responsavel" required>
-								<br>
-								<div class="col-md-6 col-sm-12" >
-									Data de início atual:
-									<input id="data_inicio_atual" type="text" class="form-control" v-model.data="dataInicio" required>
+								<form>
+									<input v-model="evento.titulo" type="text" class="form-control" placeholder="Título" required>
 									<br>
-								</div>
-								<div class="col-md-6 col-sm-12">
-									Nova data de início:
-									<input id="data_inicio" type="date" class="form-control" required>
+									<input v-model="evento.local" type="text" class="form-control" placeholder="Local" required>
 									<br>
-								</div>
-								<div class="col-md-6 col-sm-12">
-									Data de término atual:
-									<input id="data_termino_atual" type="text" class="form-control" v-model="dataTermino" required>
+									<input v-model="evento.responsavel" type="text" class="form-control" placeholder="Responsável" required>
 									<br>
-								</div>
-								<div class="col-md-6 col-sm-12">
-									Nova data de término:
-									<input id="data_termino" type="date" class="form-control" required>
+									<input v-model="evento.artista" type="text" class="form-control" placeholder="Artista" required>
 									<br>
-								</div>
-								<button class="btn btn-primary">Enviar</button>
-
+									<input v-model="evento.categoria" type="text" class="form-control" placeholder="Categoria" required>
+									<br>
+									<input v-model="evento.horario_visitacao" type="text" class="form-control" placeholder="Horário de visitação (EX: 9h - 15h)"
+									    required>
+									<br> Data de Início:
+									<input v-model="evento.data_inicio" type="date" class="form-control" placeholder="Data de Início" required>
+									<br> Data de Término:
+									<input v-model="evento.data_fim" type="date" class="form-control" placeholder="Data de Término" required>
+									<br>
+									<p>Imagem atual:  {{evento.foto_url}}</p>
+									<p>Envie aqui uma imagem: (opcional)</p>
+									<input v-on:change="fotoAdd" type="file" class="form-control" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"
+									    id="imagens" name="arquivos" accept=".png, .jpg, .jpeg"/>
+									<br>
+									<button v-on:click="salvar()" class="submit btn btn-primary">Salvar Evento</button>
+								</form>
 							</div>
 
 						</div>
@@ -193,7 +189,7 @@
 		new ControllerGeral();
 		new ControllerEvento().editarEvento();
 	</script>>
-	
+
 
 </body>
 
