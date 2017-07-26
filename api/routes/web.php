@@ -51,6 +51,7 @@ $app->group(['prefix' => 'exposicao'], function () use ($app){
     $app->post('/cadastrar', 'ExposicaoContoller@cadastrarExposicao');
 
     $app->post('/listar', 'ExposicaoContoller@listarExposicao');
+    $app->post('/listar', 'ExposicaoContoller@listarExposicao');
 
     $app->get('/atualizar', 'ExposicaoContoller@atualizarExposicao');
 
