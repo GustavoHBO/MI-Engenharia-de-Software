@@ -51,7 +51,7 @@ class ExposicaoController extends Controller{
 		$dados = $security->addbarras($request);
 		$id_itens = $dados['id_item'];
 
-		$adicionado = DB::INSERT('INSERT INTO exposicao (data_inicio, data_termino, categoria, descricao, ativo, titulo) VALUES (?,?,?,?,?)',[$dados['data_inicio'], $dados['data_termino'], $dados['categoria'], $dados['descricao'], 0, $dados['titulo']]);
+		$adicionado = DB::INSERT('INSERT INTO exposicao (data_inicio, data_termino, categoria, descricao, ativo, titulo) VALUES (?,?,?,?,?,?)',[$dados['data_inicio'], $dados['data_termino'], $dados['categoria'], $dados['descricao'], 0, $dados['titulo']]);
 
 		if ($adicionado){
 			$id_exposicao = DB::SELECT('SELECT id_exposicao FROM exposicao WHERE titulo = ? and descricao = ?', [$dados['titulo'], $dados['descricao']]);
@@ -130,7 +130,7 @@ class ExposicaoController extends Controller{
 
 	}
 
-	
+	//#excluirError01 erro na inserção do relatorio
 	public function excluirExposicao(Request $request){
 		//$id_exposicao, $id_funcionario
 		$security = new SecurityController;
@@ -145,7 +145,7 @@ class ExposicaoController extends Controller{
 				return response()->json(true);
 			}
 			else{
-				return response()->json(false);
+				return response()->json('#excluirError01');
 			}
 		}
 

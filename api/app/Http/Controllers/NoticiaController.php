@@ -14,7 +14,7 @@ class NoticiaController extends Controller{
 	public function listarNoticia(){
 		$dados = DB::SELECT('SELECT * FROM noticia WHERE ativo = ?', [0]);
 		foreach ($dados as $vetor) {
-			$res_fotos = DB::SELECT('SELECT * FROM noticia_imagem WHERE Noticia_id_noticia = ?', [$vetor->id_noticia]);
+			$res_fotos = DB::SELECT('SELECT * FROM noticia_imagem WHERE Noticia_id_noticia = ?', [(int)$vetor->id_noticia]);
 			$vetor->info_imagens = array();
 			$vetor->info_imagens = $res_fotos;
 		}
@@ -46,7 +46,6 @@ class NoticiaController extends Controller{
 	public function buscarNoticia($key_word){
 		$key_word = addslashes("%" . $key_word ."%");
 		$resultados = DB::SELECT('SELECT * FROM noticia WHERE titulo LIKE ? and ativo = ?', [$key_word, 0]);
-		
 		foreach ($resultados as $vetor) {
 			$res_fotos = DB::SELECT('SELECT * FROM noticia_imagem WHERE Noticia_id_noticia = ?', [$vetor->id_noticia]);
 			$vetor->info_imagens = array();
@@ -69,11 +68,11 @@ class NoticiaController extends Controller{
 		$security = new SecurityController;
 		$dados = $security->addbarras($request);
 
-		$adicionado = DB::INSERT('INSERT INTO noticia (titulo, descricao, data_publicacao, ativo, Usuario_id_user) VALUES (?,?,?,?,?)', [$dados['titulo_noticia'], $dados['descricao_noticia'], $data , 0, $dados['id_usuario']]);
+		$adicionado = DB::INSERT('INSERT INTO noticia (titulo, descricao, data_publicacao, ativo, Usuario_id_user) VALUES (?,?,?,?,?)', [$dados['titulo_noticia'], $dados['descricao_noticia'], $data , 0, $dados['id_funcionario']]);
 
 		if ($adicionado){
 			$id_noticia = DB::SELECT('SELECT id_noticia FROM noticia WHERE titulo = ? AND descricao = ?',[$dados['titulo_noticia'], $dados['descricao_noticia']]);
-			$add = DB::INSERT('INSERT INTO noticia_imagem VALUES (Noticia_id_noticia, foto_url)', [$id_noticia, $dados['foto_url']]);
+			$add = DB::INSERT('INSERT INTO noticia_imagem (Noticia_id_noticia, foto_url) VALUES (?,?) ', [(int)$id_noticia, $dados['foto_url']]);
 			if ($add){
 				return response()->json(true);
 			}
@@ -100,8 +99,8 @@ class NoticiaController extends Controller{
 
 		$atualizado = DB::UPDATE('UPDATE noticia 
 								  SET titulo = ?,
-								      descricao = ?,
-								  WHERE id_noticia = ? and ativo == 0', [$dados['titulo_noticia'],$dados['descricao_noticia'], $dados['id_noticia'], $dados['ativo_noticia']]);
+								      descricao = ?
+								  WHERE id_noticia = ? AND ativo = ?', [$dados['titulo_noticia'],$dados['descricao_noticia'], $dados['id_noticia'], 0]);
 
 		if ($atualizado){
 			
@@ -115,11 +114,10 @@ class NoticiaController extends Controller{
 				}
 				else{
 					return response()->json("#updateError01");
-			}
-
+				}
 			}
 			else{
-				return response()->json("#updateError02")
+				return response()->json("#updateError02");
 			}
 
 			
