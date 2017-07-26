@@ -43,6 +43,7 @@ $app->group(['prefix' => 'exposicao'], function () use ($app){
 	});
 
 	$app->get('/buscar/{key_word}', 'ExposicaoContoller@buscarExposicao');
+	$app->get('/get/{id_exposicao}', 'ExposicaoContoller@buscarExposicao_id');
 
     $app->get('/get/{id_exposicao}','ExposicaoContoller@buscarExposicao_PorID');
 
@@ -50,9 +51,9 @@ $app->group(['prefix' => 'exposicao'], function () use ($app){
 
     $app->post('/listar', 'ExposicaoContoller@listarExposicao');
 
-    $app->get('/editar/{idexposicao}', 'ExposicaoContoller@atualizarExposicao');
+    $app->get('/atualizar', 'ExposicaoContoller@atualizarExposicao');
 
-    $app->get('/excluir/{idexposicao}', 'ExposicaoContoller@excluirExposicao');
+    $app->get('/excluir', 'ExposicaoContoller@excluirExposicao');
 
 });
 
