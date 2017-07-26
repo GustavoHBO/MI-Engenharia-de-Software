@@ -131,20 +131,10 @@
 								<textarea  v-model="noticia.descricao" class="form-control" placeholder="Texto" rows="12" required></textarea>
 								<br>
 								<p>Envie aqui uma imagem:</p>
-<<<<<<< HEAD
-								<input type="file" class="form-control" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" id="imagens"
-								name="arquivos" accept=".png, .jpg, .jpeg" required/>
-								<br>
-								<button class="btn btn-primary">Enviar</button>
-							</div>
-=======
-								<input v-on:change="fotoAdd" type="file" class="form-control" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" id="imagens"
-                                                name="arquivos" accept=".png, .jpg, .jpeg" required/>
+								<input v-on:change="fotoAdd" type="file" class="form-control" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" id="imagens" name="arquivos" accept=".png, .jpg, .jpeg" required/>
 								<br>
 								<button v-on:click="cadastrar()" class="btn btn-primary">Enviar</button>
 							</form>
-
->>>>>>> 3e218728af3293f947752992c2d6a3961cf9ef34
 						</div>
 					</div>
 				</div>
