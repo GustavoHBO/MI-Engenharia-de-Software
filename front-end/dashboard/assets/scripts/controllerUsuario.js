@@ -14,11 +14,18 @@ class ControllerUsuario {
                     location.href = "editar-usuario.html?id=" + idUsuario;
                 },*/
                 desativar: (idUsuario) => { // função para desativar o usuario
-                    $.post("http://localhost:8000/api/public/usuario/deletar?id=" + idUsuario)
+                    $.post("http://localhost:8000/api/public/usuario/desativar?id=" + idUsuario)
                         .done(function (data) {
                             if (data) {
                                 $.get("http://localhost:8000/api/public/usuario", data => {
                                     lista_usuarios.usuarios = data;
+                                });
+                                $.gritter.add({
+                                    // (string | mandatory) the heading of the notification
+                                    title: 'Sucesso',
+                                    // (string | mandatory) the text inside the notification
+                                    text: 'Usuário desativado com sucesso',
+                                    class_name: 'gritter-light'
                                 });
                             } else {
                                 $.gritter.add({

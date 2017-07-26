@@ -15,7 +15,7 @@ class ControllerNoticia {
                     location.href = "editar-noticia.html?noticia=" + idNoticia;
                 },
                 pesquisar: () => {
-                    $.get("http://localhost:8000/api/public/noticia/listar/" + pesquisa.pesquisa, data => {
+                    $.get("http://localhost:8000/api/public/noticia/buscar/" + pesquisa.pesquisa, data => {
                     lista_noticias.noticias = data;
                 });
                 }

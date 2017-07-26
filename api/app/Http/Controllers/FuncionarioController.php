@@ -8,7 +8,7 @@ use App\Http\Controllers\SecurityController;
 
 class FuncionarioController extends Controller
 {
-    //Método para cadastrar usuário
+    //Método para cadastrar funcionario
     public function create(Request $request){
         $security = new SecurityController;
         $dados =  $security->addbarras($request);
@@ -28,7 +28,7 @@ class FuncionarioController extends Controller
         }
     }
     
-    //Lendo todos os usuarios do banco
+    //Lendo todos os funcionario do banco
     public function readAll(){
         $busca = DB::SELECT('SELECT * FROM usuario WHERE tipo = ? ORDER BY nome',['f']);
         foreach ($busca as $b){
@@ -39,7 +39,7 @@ class FuncionarioController extends Controller
         return response()->json($busca);
     }
 
-    //Buscar um usuario
+    //Buscar um funcionario
     public function read($id){
         $busca = DB::SELECT('SELECT * FROM usuario WHERE id_usuario = ?', [$id]);
         if ($busca == null)
@@ -51,7 +51,7 @@ class FuncionarioController extends Controller
         return response()->json($busca);
     }
 
-    //Alterando os usuarios
+    //Alterando os funcionarios
     public function update(Request $request) {
         $security = new SecurityController;
         $dados =  $security->addbarras($request);

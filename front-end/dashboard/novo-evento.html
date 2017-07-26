@@ -119,21 +119,29 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-
-								<input id="nome" type="text" class="form-control" placeholder="Nome" required>
-								<br>
-								<input id="local" type="text" class="form-control" placeholder="Local" required>
-								<br>
-								<input id="responsavel" type="text" class="form-control" placeholder="Responsável" required>
-								<br>
-								Data de Início:
-								<input id="data_inicio" type="date" class="form-control" placeholder="Data de Início" required>
-								<br>
-								Data de Término:
-								<input id="data_termino" type="date" class="form-control" placeholder="Data de Término" required>
-								<br>
-								<button class="btn btn-primary">Enviar</button>
-
+								<form>
+									<input v-model="evento.titulo" type="text" class="form-control" placeholder="Título" required>
+									<br>
+									<input v-model="evento.local" type="text" class="form-control" placeholder="Local" required>
+									<br>
+									<input v-model="evento.responsavel" type="text" class="form-control" placeholder="Responsável" required>
+									<br>
+									<input v-model="evento.artista" type="text" class="form-control" placeholder="Artista" required>
+									<br>
+									<input v-model="evento.categoria" type="text" class="form-control" placeholder="Categoria" required>
+									<br>
+									<input v-model="evento.horario_visitacao" type="text" class="form-control" placeholder="Horário de visitação (EX: 9h - 15h)" required>
+									<br> Data de Início:
+									<input v-model="evento.data_inicio" type="date" class="form-control" placeholder="Data de Início" required>
+									<br> Data de Término:
+									<input v-model="evento.data_fim" type="date" class="form-control" placeholder="Data de Término" required>
+									<br>
+									<p>Envie aqui uma imagem:</p>
+									<input v-on:change="fotoAdd" type="file" class="form-control" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"
+									    id="imagens" name="arquivos" accept=".png, .jpg, .jpeg" required/>
+									<br>
+									<button v-on:click="cadastrar()" class="submit btn btn-primary">Criar Evento</button>
+								</form>
 							</div>
 
 						</div>
@@ -153,18 +161,18 @@
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
 	<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyD-AzHfDGqFPjk0CX3aEG_dkxDngxpWsLg",
-            authDomain: "pblengsoft-9128d.firebaseapp.com",
-            databaseURL: "https://pblengsoft-9128d.firebaseio.com",
-            projectId: "pblengsoft-9128d",
-            storageBucket: "pblengsoft-9128d.appspot.com",
-            messagingSenderId: "277046336190"
-        };
-        firebase.initializeApp(config);
-    </script>
+	<script>
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyD-AzHfDGqFPjk0CX3aEG_dkxDngxpWsLg",
+			authDomain: "pblengsoft-9128d.firebaseapp.com",
+			databaseURL: "https://pblengsoft-9128d.firebaseio.com",
+			projectId: "pblengsoft-9128d",
+			storageBucket: "pblengsoft-9128d.appspot.com",
+			messagingSenderId: "277046336190"
+		};
+		firebase.initializeApp(config);
+	</script>
 	<script src="assets/vendor/jquery/jquery.min.js"></script>
 	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
@@ -173,14 +181,15 @@
 	<!-- VUE.JS CDN -->
 	<script src="https://unpkg.com/vue"></script>
 	<!-- Page JS -->
+	<script src="assets/model/evento.js"></script>
 	<script src="assets/scripts/controllerEvento.js"></script>
 	<script src="assets/scripts/controllerGeral.js"></script>
 	<script>
 		new ControllerGeral();
 	</script>
 	<script>
-        new ControllerEvento().novoEvento();
-    </script>
+		new ControllerEvento().novoEvento();
+	</script>
 
 </body>
 

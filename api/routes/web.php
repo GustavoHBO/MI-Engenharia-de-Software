@@ -27,6 +27,7 @@ Grupo do dashboard da exposicao
 
 $app->group(['prefix' => 'funcionario'], function () use ($app){
     $app->get('/', 'FuncionarioController@readAll');
+    $app->get('/{id}', 'FuncionarioController@read');
     $app->post('/new', 'FuncionarioController@create');
 	$app->post('/update', 'FuncionarioController@update');
 	$app->post('/desativar', 'FuncionarioController@desativar');
@@ -70,7 +71,7 @@ $app->group(['prefix' => 'exposicao'], function () use ($app){
 $app->group(['prefix' => 'noticia'], function () use ($app){
     // mudei para ter apenas um modulo com tudo referente a noticia (facilita a interpretação das rotas visto que muitas serão usadas tanto pra func quanto pra usr comum)
     $app->get('/buscar/{key_word}', 'NoticiaController@buscarNoticia'); 
-    $app->get('/get/{id}', 'NoticiaController@busca_Id_Noticia')
+    $app->get('/get/{id}', 'NoticiaController@busca_Id_Noticia');
 	$app->get('/listar', 'NoticiaController@listarNoticia');
     $app->post('/cadastrar', 'NoticiaController@cadastrarNoticia');
 	$app->post('/excluir', 'NoticiaController@excluirNoticia');
@@ -122,7 +123,7 @@ $app->group(['prefix' => '/evento'], function () use ($app) {
     //pesquisar evento pelo titulo
     $app->get('/pesquisar/{titulo}', 'EventoController@pesquisarEvento');
     //cadastra evento
-    $app->post('/', 'EventoController@cadastroEvento');
+    $app->post('/cadastrar', 'EventoController@cadastroEvento');
     //editar um evento
     $app->post('/editar', 'EventoController@editarEvento');
     //desativa evento

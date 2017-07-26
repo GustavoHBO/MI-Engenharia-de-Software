@@ -131,7 +131,6 @@
 									<thead>
 										<tr>
 											<th>Nome</th>
-											<th>Email</th>
 											<th>Gerenciar Itens</th>
 											<th>Gerenciar Eventos</th>
 											<th>Gerenciar Noticias</th>
@@ -140,8 +139,7 @@
 									</thead>
 									<tbody id="lista_funcionarios">
 										<tr v-for="funcionario in funcionarios">
-											<td>{{funcionario.nome}}</td>
-											<td>{{funcionario.email}}</td>
+											<td>{{funcionario.nome}} {{funcionario.sobrenome}}</td>
 											<td>
 											<div v-if="funcionario.gerencia_itens"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
 											<div v-else="funcionario.gerencia_itens"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
@@ -192,6 +190,7 @@
 <script src="assets/scripts/klorofil-common.js"></script>
 
 <script src="https://unpkg.com/vue"></script>
+<script src="assets/model/usuario.js"></script>
 <script src="assets/scripts/controllerFuncionario.js"></script>
 <script src="assets/scripts/controllerGeral.js"></script>
 	<script>
