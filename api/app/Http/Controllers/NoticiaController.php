@@ -69,7 +69,7 @@ class NoticiaController extends Controller{
 		$security = new SecurityController;
 		$dados = $security->addbarras($request);
 
-		$adicionado = DB::INSERT('INSERT INTO noticia (titulo, descricao, data_publicacao, ativo, Usuario_id_user) VALUES (?,?,?,?,?)', [$dados['titulo_noticia'], $dados['descricao_noticia'], $data , $dados['ativo_noticia'], $dados['id_usuario']]);
+		$adicionado = DB::INSERT('INSERT INTO noticia (titulo, descricao, data_publicacao, ativo, Usuario_id_user) VALUES (?,?,?,?,?)', [$dados['titulo_noticia'], $dados['descricao_noticia'], $data , 0, $dados['id_usuario']]);
 
 		if ($adicionado){
 			$id_noticia = DB::SELECT('SELECT id_noticia FROM noticia WHERE titulo = ? AND descricao = ?',[$dados['titulo_noticia'], $dados['descricao_noticia']]);
@@ -101,8 +101,7 @@ class NoticiaController extends Controller{
 		$atualizado = DB::UPDATE('UPDATE noticia 
 								  SET titulo = ?,
 								      descricao = ?,
-								      ativo = ?
-								  WHERE id_noticia = ? and ativo == 0', [$dados['titulo_noticia'],$dados['descricao_noticia'],$dados['ativo_noticia'], $dados['id_usuario'],$dados['id_noticia'], $dados['ativo_noticia']]);
+								  WHERE id_noticia = ? and ativo == 0', [$dados['titulo_noticia'],$dados['descricao_noticia'], $dados['id_noticia'], $dados['ativo_noticia']]);
 
 		if ($atualizado){
 			
