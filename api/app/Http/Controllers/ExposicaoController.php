@@ -29,7 +29,7 @@ class ExposicaoController extends Controller{
 	
 	*/
 	public function buscarExposicao_id($id_exposicao){
-			$id_exposicao = addslashes($id_exposicao);
+		$id_exposicao = addslashes($id_exposicao);
 		$dados = DB::SELECT('SELECT * FROM exposicao WHERE id_exposicao = ? and ativo = ?', [$id_exposicao, 0]);
 		foreach ($dados as $vetor) {
 			$dados_item = DB::SELECT('SELECT item_exposicao.Item_id_item, item.titulo FROM item INNER JOIN item_exposicao ON item_exposicao.Item_id_item = item.id_item AND item_exposicao.Exposicao_id_exposicao = ? and item.ativo = ?',[$vetor->id_exposicao, 0]);
@@ -51,7 +51,7 @@ class ExposicaoController extends Controller{
 		$dados = $security->addbarras($request);
 		$id_itens = $dados['id_item'];
 
-		$adicionado = DB::INSERT('INSERT INTO exposicao (data_inicio, data_termino, categoria, descricao, ativo, titulo)VALUES (?,?,?,?,?)',[$dados['data_inicio'], $dados['data_termino'], $dados['categoria'], $dados['descricao'], 0, $dados['titulo']]);
+		$adicionado = DB::INSERT('INSERT INTO exposicao (data_inicio, data_termino, categoria, descricao, ativo, titulo) VALUES (?,?,?,?,?)',[$dados['data_inicio'], $dados['data_termino'], $dados['categoria'], $dados['descricao'], 0, $dados['titulo']]);
 
 		if ($adicionado){
 			$id_exposicao = DB::SELECT('SELECT id_exposicao FROM exposicao WHERE titulo = ? and descricao = ?', [$dados['titulo'], $dados['descricao']]);
@@ -60,9 +60,9 @@ class ExposicaoController extends Controller{
 			if($foi){
 				for ($i = 0; $i < count($id_itens); $i++){
 					$adicionado_item_exposicao = DB::INSERT('INSERT INTO item_exposicao (Item_id_item, Exposicao_id_exposicao) VALUES (?,?) ', [$id_itens[$i], (int)$id_exposicao]);
-			}
+				}
 			
-			return response()->json(true);
+				return response()->json(true);
 			}
 			else{
 				return response()->json('#cadastroError01');
@@ -80,6 +80,16 @@ class ExposicaoController extends Controller{
 		$dados = DB::SELECT('SELECT * FROM exposicao WHERE ativo = ?',  [0]);
 		foreach ($dados as $vetor) {
 			$dados_item = DB::SELECT('SELECT item_exposicao.Item_id_item, item.titulo FROM item INNER JOIN item_exposicao ON item_exposicao.Item_id_item = item.id_item AND item_exposicao.Exposicao_id_exposicao = ? and item.ativo = ?',[$vetor->id_exposicao, 0]);
+			$vetor->info_item = array();
+			$vetor->info_item = $dados_item;
+		}
+		return response()->json($dados);
+	}
+
+	public function listarExposicaoTodos(){
+		$dados = DB::SELECT('SELECT * FROM exposicao');
+		foreach ($dados as $vetor) {
+			$dados_item = DB::SELECT('SELECT item_exposicao.Item_id_item, item.titulo FROM item INNER JOIN item_exposicao ON item_exposicao.Item_id_item = item.id_item AND item_exposicao.Exposicao_id_exposicao = ?',[$vetor->id_exposicao]);
 			$vetor->info_item = array();
 			$vetor->info_item = $dados_item;
 		}
@@ -106,8 +116,9 @@ class ExposicaoController extends Controller{
 			if($atualizado){
 				$relatorio = new RelatorioController;
 				$foi = $relatorio->editaExposicao($dados['id_exposicao'], $dados['id_usuario']);
-				if ($foi)
+				if ($foi){
 					return response()->json(true);
+				}
 				else{
 					return response()->json('#updateError01'); 
 				}

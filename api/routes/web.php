@@ -39,19 +39,12 @@ Grupo da exposicao
 */
 $app->group(['prefix' => 'exposicao'], function () use ($app){
 
-	$app->get('/', function (){
-    return 'pagina principal da exposicao';
-	});
-
+    $app->get('/listar', 'ExposicaoContoller@listarExposicao');
+    $app->get('/listartodos', 'ExposicaoContoller@listarExposicaoTodos');
 	$app->get('/buscar/{key_word}', 'ExposicaoContoller@buscarExposicao');
 	$app->get('/get/{id_exposicao}', 'ExposicaoContoller@buscarExposicao_id');
-
     $app->post('/cadastrar', 'ExposicaoContoller@cadastrarExposicao');
-
-    $app->get('/listar', 'ExposicaoContoller@listarExposicao');
-
     $app->post('/atualizar', 'ExposicaoContoller@atualizarExposicao');
-
     $app->post('/excluir', 'ExposicaoContoller@excluirExposicao');
 
 });
