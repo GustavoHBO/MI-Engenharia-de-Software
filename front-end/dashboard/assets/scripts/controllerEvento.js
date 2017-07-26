@@ -54,7 +54,7 @@ class ControllerEvento {
             },
             methods: {
                 fotoAdd: (event) => {
-                    novoEvento.evento.foto_url = "img.png";
+                    novoEvento.evento.foto_url = "imagem.png";
                     /*
                     var file = event.target.files[0];
                     //converter a imagem para BASE64

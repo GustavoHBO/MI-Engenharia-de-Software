@@ -30,13 +30,39 @@ class ControllerNoticia {
     }
 
     novaNoticia() {
-        var NovanoticiaPage = new Vue({
-            el: '#nova-noticia',
-            data: {
-
-            },
-            methods: {
-
+       var novaNoticia = new Vue({ 
+            el: '#nova-noticia', 
+            data: { 
+                noticia: {
+                    titulo: 'oi',
+                    descricao: '',
+                    foto_url: '',
+                    id_usuario: '',
+                 }, 
+            }, 
+            methods: { 
+                cadastrar: () => { 
+                    novaNoticia.noticia.id_usuario = firebase.auth().currentUser.uid; 
+                    $.post("http://localhost:8000/api/public/noticia/cadastrar", novaNoticia.novaNoticia). 
+                    done((data) => { 
+                        location.href = "http://localhost:8000/front-end/dashboard/gerenciar-noticias.html"; 
+                    }).fail(() => { 
+                        console.log("error"); 
+                    });
+                    
+                },
+                fotoAdd: (event) => {
+                    novaNoticia.noticia.foto_url = "img.png";
+                    /*
+                    var file = event.target.files[0];
+                    //converter a imagem para BASE64
+                    var reader = new FileReader();
+                    reader.onloadend = function () {
+                        this.evento.foto_url = reader.result;
+                    }
+                    reader.readAsDataURL(file);
+                    */
+                },
             },
         });
 

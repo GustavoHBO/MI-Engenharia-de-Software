@@ -118,21 +118,21 @@
 							<!--p class="panel-subtitle">Period: Oct 14, 2016 - Oct 21, 2016</p-->
 						</div>
 						<div class="panel-body">
-							<div class="row">
-								<input id="nome" type="text" class="form-control" placeholder="Nome" required>
+							<form>
+								<input v-model="exposicao.titulo" type="text" class="form-control" placeholder="Título" required>
 								<br>
-								<input id="titulo" type="text" class="form-control" placeholder="Título" required>
+								<input v-model="exposicao.descricao" type="text" class="form-control" placeholder="Descrição" required>
 								<br>
-								<input id="descricao" type="text" class="form-control" placeholder="Descrição" required>
+								<input v-model="exposicao.categoria" type="text" class="form-control" placeholder="Categoria" required>
 								<br>
 								Data de Início:
-								<input id="data_inicio" type="date" class="form-control" placeholder="Data de Início" required>
+								<input v-model="exposicao.data_inicio" type="date" class="form-control" placeholder="Data de Início" required>
 								<br>
 								Data de Término:
-								<input id="data_termino" type="date" class="form-control" placeholder="Data de Término" required>
+								<input v-model="exposicao.fim" type="date" class="form-control" placeholder="Data de Término" required>
 								<br>
-								<button class="btn btn-primary">Enviar</button>
-							</div>
+								<button v-on:click="cadastrar()" class="btn btn-primary">Criar Exposição</button>
+							</form>
 
 						</div>
 

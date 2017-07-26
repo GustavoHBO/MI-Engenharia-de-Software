@@ -77,6 +77,16 @@ class ExposicaoController extends Controller{
 
 
 	public function listarExposicao(){
+		$dados = DB::SELECT('SELECT * FROM exposicao');
+		foreach ($dados as $vetor) {
+			$dados_item = DB::SELECT('SELECT item_exposicao.Item_id_item, item.titulo FROM item INNER JOIN item_exposicao ON item_exposicao.Item_id_item = item.id_item AND item_exposicao.Exposicao_id_exposicao = ? and item.ativo = ?',[$vetor->id_exposicao, 0]);
+			$vetor->info_item = array();
+			$vetor->info_item = $dados_item;
+		}
+		return response()->json($dados);
+	}
+
+	public function listarExposicaoAtivos(){
 		$dados = DB::SELECT('SELECT * FROM exposicao WHERE ativo = ?',  [0]);
 		foreach ($dados as $vetor) {
 			$dados_item = DB::SELECT('SELECT item_exposicao.Item_id_item, item.titulo FROM item INNER JOIN item_exposicao ON item_exposicao.Item_id_item = item.id_item AND item_exposicao.Exposicao_id_exposicao = ? and item.ativo = ?',[$vetor->id_exposicao, 0]);
