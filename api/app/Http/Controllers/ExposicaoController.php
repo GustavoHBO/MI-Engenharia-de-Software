@@ -125,7 +125,7 @@ class ExposicaoController extends Controller{
 
 			if($atualizado){
 				$relatorio = new RelatorioController;
-				$foi = $relatorio->editaExposicao($dados['id_exposicao'], $dados['id_usuario']);
+				$foi = $relatorio->editaExposicao($dados['id_exposicao'], $dados['id_funcionario']);
 				if ($foi){
 					return response()->json(true);
 				}
