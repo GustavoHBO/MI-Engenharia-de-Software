@@ -32,9 +32,9 @@
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>{{user.nome}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+								<li><a v-on:click="logout()"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
 						</li>
 					</ul>
@@ -108,21 +108,21 @@
 		</div>
 		<!-- END LEFT SIDEBAR -->
 		<!-- MAIN -->
-		<div class="main" id="novo-item">
+		<div class="main" id="editar-item">
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
 					<!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
-							<h3 class="panel-title">Novo Item</h3>
+							<h3 class="panel-title">Editar Item</h3>
 							<!--p class="panel-subtitle">Period: Oct 14, 2016 - Oct 21, 2016</p-->
 						</div>
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-sm-12 col-md-6">
 
-									<div id="imagens" class="row">
+									<div class="row">
 										<!-- Não é necessário imagem de destaque na tela de adição/edição de itens -->
 										<!--img src="assets/img/image-unavailable.png" class="img-responsive center-block"/>
 										<br-->
@@ -259,6 +259,11 @@
 	<!-- VUE.JS CDN -->
 	<script src="https://unpkg.com/vue"></script>
 	<!-- Page JS -->
-	<script src="assets/scripts/novo-item.js"></script>
+	<script src="assets/scripts/controllerItem.js"></script>
+	<script src="assets/scripts/controllerGeral.js"></script>
+	<script>
+		new ControllerGeral();
+		new ControllerItem().editarItem();
+	</script>
 </body>
 </html>

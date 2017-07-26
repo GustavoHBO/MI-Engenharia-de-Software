@@ -9,7 +9,8 @@
 	<!-- VENDOR CSS -->
 	<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
+    <link rel="stylesheet" href="assets/vendor/linearicons/style.css">
+    <link rel="stylesheet" href="assets/css/jquery.gritter.css">    
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/login.css">
@@ -22,7 +23,7 @@
 	<div id="wrapper">
         <div id="main-content" class="container">
         <div id="login-page" class="row login-box">
-            <div class="col-sm-4 col-sm-offset-4 login">
+            <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 login">
                 <div class="row form-box">
                     <h2>Login</h2>
                     <div class="col-xs-10 col-xs-offset-1">
@@ -42,8 +43,11 @@
                     <div class="col-xs-10 col-xs-offset-1">
                         <button class="btn btn-sm btn-block btn-google" v-on:click="loginGoogle"><i class="fa fa-google"></i> Google</button>
                         <!-- <a class="btn btn-lg btn-block" href="./dashboard/index.html">Login</a> -->
+                    </div> 
+                    <div class="col-xs-6 cadastrar">
+                        <a data-toggle="modal" data-target="#CadastroModal">Cadastrar</a>
                     </div>
-                    <div class="col-xs-12 forgetPassword">
+                    <div class="col-xs-6 forgetPassword">
                         <a href="#">Esqueci minha senha</a>
                     </div>
                 </div>
@@ -52,7 +56,37 @@
     </div>
 		<!-- NAVBAR -->
 	</div>
-    
+    <div id="CadastroModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="title-box wow fadeInDown">
+                    <h2 class="section-title">Cadastro</h2>
+                </div>
+                <form>
+                    <div class="row" id="cadastro">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <input class="form-group input-sm" type="text" placeholder="Nome" v-model="nome">
+                        </div>
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <input class="form-group input-sm" type="text" placeholder="Sobrenome" v-model="sobrenome">
+                        </div>
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <input class="form-group input-sm" type="e-mail" placeholder="E-mail" v-model="email">
+                        </div>
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <input class="form-group input-sm" type="password" placeholder="Senha" v-model="senha">
+                        </div>
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <input class="form-group input-sm" type="password" placeholder="Repetir senha" v-model="senha2">
+                        </div>
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <button class="btn btn-sm btn-block" @click="createUser($event)">Cadastrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
     <script>
         // Initialize Firebase
@@ -72,11 +106,14 @@
 	<script src="assets/vendor/jquery/jquery.min.js"></script>
 	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 
+    <!--Gritter-->
+    <script src="assets/scripts/jquery.gritter.min.js"></script>    
 
     <!-- VUE.JS CDN -->
 	<script src="https://unpkg.com/vue"></script>
 	<!-- Page JS -->
-	<script src="assets/scripts/login.js"></script>
+    <script src="assets/scripts/login.js"></script>
+    <script src="assets/scripts/cadastro.js"></script>
 </body>
 
 </html>

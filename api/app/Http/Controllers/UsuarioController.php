@@ -25,7 +25,16 @@ class UsuarioController extends Controller
     
     //Lendo todos os usuarios do banco
     public function readAll(){
-        $busca = DB::SELECT('SELECT nome, sobrenome, foto FROM usuario ORDER BY nome');
+        $busca = DB::SELECT('SELECT * FROM usuario WHERE tipo = ? ORDER BY nome', ['c']);
+        return response()->json($busca);
+    }
+
+    //Buscar um usuario
+    public function read($id){
+        $busca = DB::SELECT('SELECT * FROM usuario WHERE id_usuario = ?', [$id]);
+        if ($busca == null)
+            return response()->json(false);
+        $busca = $busca[0];
         return response()->json($busca);
     }
 
@@ -34,8 +43,8 @@ class UsuarioController extends Controller
         $security = new SecurityController;
         $dados =  $security->addbarras($request);
 
-        $update = DB::UPDATE('UPDATE usuario SET nome = ?, sobrenome = ?, foto = ? WHERE id_usuario = ?',
-        [$dados['nome'], $dados['sobrenome'], $dados['foto'], $dados['id']]);
+        $update = DB::UPDATE('UPDATE usuario SET nome = ?, sobrenome = ? WHERE id_usuario = ?',
+        [$dados['nome'], $dados['sobrenome'], $dados['id']]);
 
         if ($update){
             return response()->json(true);

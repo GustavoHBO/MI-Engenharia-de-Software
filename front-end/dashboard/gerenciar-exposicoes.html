@@ -31,12 +31,12 @@
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>{{user.nome}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
 								<li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
-								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+								<li><a v-on:click="logout()"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
 						</li>
 					</ul>
@@ -131,19 +131,25 @@
 									<thead>
 										<tr>
 											<th>Título</th>
+											<th>Categoria</th>
 											<th>Data de Início</th>
 											<th>Data de Termino</th>
+											<th>Ativo</th>
 											<th></th>
 										</tr>
 									</thead>
 									<tbody id="lista_exposicoes">
 										<tr v-for="exposicao in exposicoes">
 											<td>{{exposicao.titulo}}</td>
+											<td>{{exposicao.categoria}}</td>
 											<td>{{exposicao.data_inicio}}</td>
 											<td>{{exposicao.data_fim}}</td>
 											<td>
-												<a class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-												<a class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+												<div v-if="exposicao.ativo"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+												<div v-else="exposicao.ativo"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>}</td>
+											<td>
+												<a v-on:click="editar(exposicao.id)" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+												<a v-on:click="deletar(exposicao.id)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
 											</td>
 										</tr>
 									</tbody>
@@ -188,7 +194,14 @@
 	<!-- VUE.JS CDN -->
 	<script src="https://unpkg.com/vue"></script>
 	<!-- Page JS -->
-	<script src="assets/scripts/gerenciar-exposicoes.js"></script>
+	<script src="assets/scripts/controllerExposicao.js"></script>
+	<script src="assets/scripts/controllerGeral.js"></script>
+	<script>
+		new ControllerGeral();
+	</script>
+	<script>
+        new ControllerExposicao().gerenciarExposicao();
+    </script>
 </body>
 
 </html>

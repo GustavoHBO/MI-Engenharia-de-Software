@@ -30,9 +30,9 @@
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>{{user.nome}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a onclick="logout()"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+								<li><a v-on:click="logout()"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
 						</li>
 					</ul>
@@ -181,20 +181,16 @@
 
 	<!-- VUE.JS CDN -->
 	<script src="https://unpkg.com/vue"></script>
-	<!-- Page JS -->
-	<script src="assets/scripts/index.js"></script>
-	<script>
-		function logout(){
-			firebase.auth().signOut().then(function() {
-				window.location.href = "login.html";
-			}, function(error) {
-				console.log(error.message);
-			});
-		}
-	</script>
 
 	<!-- Page JS -->
-	<script src="assets/scripts/gerenciar-relatorios-itens.js" ></script>
+	<script src="assets/scripts/controllerRelatorio.js" ></script>
+	<script src="assets/scripts/controllerGeral.js"></script>
+	<script>
+		new ControllerGeral();
+	</script>
+	<script>
+        new ControllerRelatorio().relatorioItem();
+    </script>
 </body>
 
 </html>
