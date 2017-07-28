@@ -12,14 +12,18 @@ var fpassword = new Vue({
           title: 'E-mail enviado com sucesso!'
         });
         fpassword.emailForgot = "";
-        $('#PasswordModal').modal('toggle')
+        $('#PasswordModal').modal('toggle');
       }, function(error) {
         var errorCode = error.code;
         if (errorCode == 'auth/user-not-found') {
           $.gritter.add({
             // (string | mandatory) the heading of the notification
-            title: 'E-mail não cadastrado!'
+            title: 'E-mail não cadastrado!',
+            text: 'Realize um novo cadastro.'
           });
+          cadastroPage.email = fpassword.emailForgot;
+          $('#PasswordModal').modal('toggle');
+          $('#CadastroModal').modal('toggle');
           fpassword.emailForgot = "";
         }
       });
