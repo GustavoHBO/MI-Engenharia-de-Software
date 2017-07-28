@@ -7,9 +7,21 @@ var fpassword = new Vue({
     forgotPassword: function (event){
       event.preventDefault();
       firebase.auth().sendPasswordResetEmail(fpassword.emailForgot).then(function() {
-        console.log("e-mail enviado");
+        $.gritter.add({
+            // (string | mandatory) the heading of the notification
+          title: 'E-mail enviado com sucesso!'
+        });
+        fpassword.emailForgot = "";
+        $('#PasswordModal').modal('toggle')
       }, function(error) {
-        console.log(error.code);
+        var errorCode = error.code;
+        if (errorCode == 'auth/user-not-found') {
+          $.gritter.add({
+            // (string | mandatory) the heading of the notification
+            title: 'E-mail não cadastrado!'
+          });
+          fpassword.emailForgot = "";
+        }
       });
     }
   }
