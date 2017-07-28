@@ -7,7 +7,7 @@ Author URI: http://bootstrapthemes.co
 
 /*==========================================
  1.  PREDIFINEED (FROM 1 TO 457)
- 2.  NAVIGATION - LINE NO 465 
+ 2.  NAVIGATION - LINE NO 465
  3.  HOME - LINE NO 517
  4.  ABOUT US - LINE NO 563
  5.  TOBIAS SECTION - LINE NO 615
@@ -23,9 +23,9 @@ Author URI: http://bootstrapthemes.co
  1.   BOOTSTRAP FRAMEWORK
  2.   MATERIAL DESIGN
  3.   NAVMENU
- 4.   WOW JS 
+ 4.   WOW JS
  5.   ANIMATE CSS
- 6.   MAGNIFIC-POPUP PORTFOLIO  
+ 6.   MAGNIFIC-POPUP PORTFOLIO
  7.   MAGNIFIC-POPUP VIDEO
  8.   GOOGLE GMAPS
  9.   JQUERY EASING JS
@@ -345,10 +345,10 @@ h2{
 }
 .head_title h6{
     border-left: 2px solid #ddd;
-    padding-left: 20px; 
+    padding-left: 20px;
 }
 .head_title p{
-    padding-left: 20px; 
+    padding-left: 20px;
 }
 
 
@@ -369,14 +369,14 @@ h2{
 .modal{
     overflow-y: hidden;
     max-height: 600px;
-    background-color: rgba(0,0,0,0);  
+    background-color: rgba(0,0,0,0);
     box-shadow: none;
 }
 
 
 #sobre, #sobre h1{
     background-color: white;
-    
+
 }
 
 .carousel-indicators li{
@@ -460,7 +460,7 @@ h2{
 }
 
 /*====================================================================
-                 About Section 
+                 About Section
 ======================================================================*/
 
 .main_about_area{
@@ -485,10 +485,10 @@ h2{
 ===================================================================*/
 
 .service .container-fluid{
-    padding-right: 0px; 
-    padding-left: 0px; 
-    margin-right: auto; 
-    margin-left: auto; 
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
 }
 .main_service_content .col-sm-push-6 {
     left: 52%;
@@ -517,7 +517,7 @@ h2{
 
 
 /*=====================================================================
-                    portfolio section 
+                    portfolio section
 ====================================================================*/
 
 .main_portfolio_content{
@@ -564,7 +564,7 @@ h2{
 }
 .single_portfolio img{
     width:100%;
-    height: 280px; 
+    height: 280px;
 
 }
 .single_portfolio.height_1 img{
@@ -605,11 +605,11 @@ h2{
     animation: fadeIn 1s;
 }
 .team_socail_area{
-    -webkit-transition: max-height 1s; 
-    -moz-transition: max-height 1s; 
-    -ms-transition: max-height 1s; 
-    -o-transition: max-height 1s; 
-    transition: max-height 1s;  
+    -webkit-transition: max-height 1s;
+    -moz-transition: max-height 1s;
+    -ms-transition: max-height 1s;
+    -o-transition: max-height 1s;
+    transition: max-height 1s;
     overflow: hidden;
     max-height: 0;
 }
@@ -639,7 +639,7 @@ h2{
 }
 
 /*=====================================================================
-                    Testimonial Section 
+                    Testimonial Section
 ====================================================================*/
 
 .main_testimonial_area{
@@ -667,7 +667,7 @@ h2{
     position: absolute;
     z-index: -1;
     padding: 5px;
-    left: 9%;    
+    left: 9%;
 }
 
 .testimonial_content .single_test p{
@@ -679,7 +679,7 @@ h2{
 }
 
 /*=====================================================================
-                    Blog Section 
+                    Blog Section
 ====================================================================*/
 
 .main_blog_area{
@@ -800,11 +800,11 @@ h2{
 }
 .scrollup a:hover i{
     background: #fff;
-    color:#333; 
+    color:#333;
 }
 
 /*=====================================================================
-                    scrollup 
+                    scrollup
 ====================================================================*/
 
 /*.scrollup{
