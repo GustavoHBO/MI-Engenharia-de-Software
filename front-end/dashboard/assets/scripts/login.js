@@ -1,3 +1,20 @@
+var fpassword = new Vue({
+  el: '#forgoten',
+  data: {
+    emailForgot: ''
+  },
+  methods: {
+    forgotPassword: function (event){
+      event.preventDefault();
+      firebase.auth().sendPasswordResetEmail(fpassword.emailForgot).then(function() {
+        console.log("e-mail enviado");
+      }, function(error) {
+        console.log(error.code);
+      });
+    }
+  }
+})
+
 var loginpage = new Vue({
   el: '#login-page',
   data: {
@@ -14,7 +31,6 @@ var loginpage = new Vue({
       firebase.auth().signInWithEmailAndPassword(loginpage.email, loginpage.senha).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
-        console.log(errorCode);
         if (errorCode == 'auth/invalid-email') {
           $.gritter.add({
             // (string | mandatory) the heading of the notification
