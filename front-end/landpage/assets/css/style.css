@@ -294,6 +294,7 @@ h2{
 #logo.logo-ativo{
     color:white;
     padding-top:10px;
+    font-size: 18px;
 }
 
 #navMain li a{
@@ -803,43 +804,6 @@ h2{
     color:#333; 
 }
 
-/*=====================================================================
-                    scrollup 
-====================================================================*/
 
-/*.scrollup{
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-    opacity: .3;
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    color: #fff;
-    cursor: pointer;
-    background-color: #000;
-    z-index: 1000;
-    transition: opacity .5s, background-color .5s;
-    -moz-transition: opacity .5s, background-color .5s;
-    -webkit-transition: opacity .5s, background-color .5s;
-}
-
-.scrollup:hover {
-    background: #fff;
-    opacity: 1;
-}
-
-.scrollup i {
-    font-size: 13px;
-    position: absolute;
-    opacity: 1;
-    color: #333;
-    left: 0%;
-    top: 50%;
-    margin-top: -7px;
-    margin-left: -6px;
-    text-decoration: none;
-
-}*/
-
+            /* Configurações Sidebar */
 
