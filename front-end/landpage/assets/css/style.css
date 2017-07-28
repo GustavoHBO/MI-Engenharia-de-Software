@@ -7,7 +7,7 @@ Author URI: http://bootstrapthemes.co
 
 /*==========================================
  1.  PREDIFINEED (FROM 1 TO 457)
- 2.  NAVIGATION - LINE NO 465 
+ 2.  NAVIGATION - LINE NO 465
  3.  HOME - LINE NO 517
  4.  ABOUT US - LINE NO 563
  5.  TOBIAS SECTION - LINE NO 615
@@ -23,9 +23,9 @@ Author URI: http://bootstrapthemes.co
  1.   BOOTSTRAP FRAMEWORK
  2.   MATERIAL DESIGN
  3.   NAVMENU
- 4.   WOW JS 
+ 4.   WOW JS
  5.   ANIMATE CSS
- 6.   MAGNIFIC-POPUP PORTFOLIO  
+ 6.   MAGNIFIC-POPUP PORTFOLIO
  7.   MAGNIFIC-POPUP VIDEO
  8.   GOOGLE GMAPS
  9.   JQUERY EASING JS
@@ -346,7 +346,7 @@ h2{
 }
 .head_title h6{
     border-left: 2px solid #ddd;
-    padding-left: 20px; 
+    padding-left: 20px;
 }
 .head_title p{
     padding-left: 20px; 
@@ -370,14 +370,14 @@ h2{
 .modal{
     overflow-y: hidden;
     max-height: 600px;
-    background-color: rgba(0,0,0,0);  
+    background-color: rgba(0,0,0,0);
     box-shadow: none;
 }
 
 
 #sobre, #sobre h1{
     background-color: white;
-    
+
 }
 
 .carousel-indicators li{
@@ -461,7 +461,7 @@ h2{
 }
 
 /*====================================================================
-                 About Section 
+                 About Section
 ======================================================================*/
 
 .main_about_area{
@@ -486,10 +486,10 @@ h2{
 ===================================================================*/
 
 .service .container-fluid{
-    padding-right: 0px; 
-    padding-left: 0px; 
-    margin-right: auto; 
-    margin-left: auto; 
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
 }
 .main_service_content .col-sm-push-6 {
     left: 52%;
@@ -518,7 +518,7 @@ h2{
 
 
 /*=====================================================================
-                    portfolio section 
+                    portfolio section
 ====================================================================*/
 
 .main_portfolio_content{
@@ -565,7 +565,7 @@ h2{
 }
 .single_portfolio img{
     width:100%;
-    height: 280px; 
+    height: 280px;
 
 }
 .single_portfolio.height_1 img{
@@ -803,6 +803,48 @@ h2{
     background: #fff;
     color:#333; 
 }
+
+<<<<<<< HEAD
+=======
+/*=====================================================================
+                    scrollup
+====================================================================*/
+
+/*.scrollup{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    opacity: .3;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #000;
+    z-index: 1000;
+    transition: opacity .5s, background-color .5s;
+    -moz-transition: opacity .5s, background-color .5s;
+    -webkit-transition: opacity .5s, background-color .5s;
+}
+
+.scrollup:hover {
+    background: #fff;
+    opacity: 1;
+}
+
+.scrollup i {
+    font-size: 13px;
+    position: absolute;
+    opacity: 1;
+    color: #333;
+    left: 0%;
+    top: 50%;
+    margin-top: -7px;
+    margin-left: -6px;
+    text-decoration: none;
+
+}*/
+>>>>>>> f95dc7b7e25744181a4d3e49de49b608a433d398
 
 
             /* Configurações Sidebar */
