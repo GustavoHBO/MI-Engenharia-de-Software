@@ -15,7 +15,8 @@ class FileController extends Controller
                 $nome = str_replace(".txt", "", $f->getFileName());
                 $size = $f->getSize();
                 $size = $size / 1024;
-                $files[] = array("nome" => $nome, "size" => $size . ' KB');
+                $caminho = "https://museucasadosertao.000webhostapp.com/api/api/public/myBackup/export/" . $nome . ".sql";
+                $files[] = array("nome" => $nome, "size" => $size . ' KB', "url" => $caminho);
             }
         }
         return response()->json($files);
