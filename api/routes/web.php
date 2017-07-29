@@ -13,6 +13,11 @@
 
 $app->post('/login', 'LoginController@login');
 
+$app->group(['prefix' => 'backup'], function () use ($app){
+    $app->get('/', 'FileController@readAll');
+    $app->post('/', 'FileController@delete');
+});
+
 $app->group(['prefix' => 'usuario'], function () use ($app){
     $app->get('/', 'UsuarioController@readAll');
     $app->get('/{id}', 'UsuarioController@read');

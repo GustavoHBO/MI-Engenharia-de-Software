@@ -19,7 +19,9 @@ class FuncionarioTest extends TestCase
         ['id'        => 'abc123',
          'nome'      => 'teste',
          'sobrenome' => 'testando',
-         'permissoes'=> array(1,3)]
+         'gerenciar_itens' => false,
+         'gerenciar_eventos' => true,
+         'gerenciar_noticias' => false]
         )->seeJson([true]);
     }
 
@@ -28,7 +30,9 @@ class FuncionarioTest extends TestCase
         ['id'        => 'abc123',
          'nome'      => 'teste',
          'sobrenome' => 'testando',
-         'permissoes'=> array(1,3)]
+         'gerenciar_itens' => false,
+         'gerenciar_eventos' => true,
+         'gerenciar_noticias' => false]
         )->seeJson([false]);
     }
 
@@ -37,7 +41,9 @@ class FuncionarioTest extends TestCase
         ['id'        => 'abc123',
          'nome'      => 'teste',
          'sobrenome' => 'testa',
-         'permissoes'=> array(1,2,3)]
+         'gerenciar_itens' => false,
+         'gerenciar_eventos' => true,
+         'gerenciar_noticias' => true]
         )->seeJson([true]);
     }
 

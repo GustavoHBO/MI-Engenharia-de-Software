@@ -8,7 +8,7 @@ use App\Http\Controllers\SecurityController;
 
 class FuncionarioController extends Controller
 {
-    //Método para cadastrar funcionario
+    //Método para cadastrar usuário
     public function create(Request $request){
         $security = new SecurityController;
         $dados =  $security->addbarras($request);
@@ -16,10 +16,18 @@ class FuncionarioController extends Controller
         $add = DB::INSERT('INSERT INTO usuario (id_usuario, nome, sobrenome, tipo) VALUES (?, ?, ?, ?)',
         [$dados['id'], $dados['nome'], $dados['sobrenome'], 'f']);
 
-        foreach ($dados['permissoes'] as $p){
-            $add = DB::INSERT('INSERT INTO permissao (tipo, Usuario_id_usuario) VALUES (?, ?)',
-            [$p,$dados['id']]);
-        }
+        if ($dados['gerenciar_itens'])
+            $add = DB::INSERT('INSERT INTO permissao (tipo, Usuario_id_usuario) VALUES (0, ?)',
+            [$dados['id']]);
+        
+        if ($dados['gerenciar_eventos'])
+            $add = DB::INSERT('INSERT INTO permissao (tipo, Usuario_id_usuario) VALUES (1, ?)',
+            [$dados['id']]);
+        
+        if ($dados['gerenciar_noticias'])
+            $add = DB::INSERT('INSERT INTO permissao (tipo, Usuario_id_usuario) VALUES (2, ?)',
+            [$dados['id']]);
+        
         
         if ($add){
             return response()->json(true);
@@ -28,18 +36,31 @@ class FuncionarioController extends Controller
         }
     }
     
-    //Lendo todos os funcionario do banco
+    //Lendo todos os usuarios do banco
     public function readAll(){
         $busca = DB::SELECT('SELECT * FROM usuario WHERE tipo = ? ORDER BY nome',['f']);
         foreach ($busca as $b){
             $permissao = DB::SELECT('SELECT tipo FROM permissao WHERE Usuario_id_usuario = ?',
             [$b->id_usuario]);
-            $b->permissoes = $permissao;
+            
+            $b->gerenciar_itens = false;
+            $b->gerenciar_eventos = false;
+            $b->gerenciar_noticias = false;
+
+            foreach ($permissao as $p){
+                if ($p->tipo == 0)
+                    $b->gerenciar_itens = true;
+                else if ($p->tipo == 1)
+                    $b->gerenciar_eventos = true;
+                else
+                    $b->gerenciar_noticias = true;
+            }
+
         }
         return response()->json($busca);
     }
 
-    //Buscar um funcionario
+    //Buscar um usuario
     public function read($id){
         $busca = DB::SELECT('SELECT * FROM usuario WHERE id_usuario = ?', [$id]);
         if ($busca == null)
@@ -47,11 +68,24 @@ class FuncionarioController extends Controller
         $busca = $busca[0];
         $permissao = DB::SELECT('SELECT tipo FROM permissao WHERE Usuario_id_usuario = ?',
         [$busca->id_usuario]);
-        $busca->permissoes = $permissao;
+
+        $busca->gerenciar_itens = false;
+        $busca->gerenciar_eventos = false;
+        $busca->gerenciar_noticias = false;
+
+        foreach ($permissao as $p){
+            if ($p->tipo == 0)
+                $busca->gerenciar_itens = true;
+            else if ($p->tipo == 1)
+                $busca->gerenciar_eventos = true;
+            else
+                $busca->gerenciar_noticias = true;
+        }
+
         return response()->json($busca);
     }
 
-    //Alterando os funcionarios
+    //Alterando os usuarios
     public function update(Request $request) {
         $security = new SecurityController;
         $dados =  $security->addbarras($request);
@@ -62,10 +96,17 @@ class FuncionarioController extends Controller
         $delete = DB::DELETE('DELETE FROM permissao WHERE Usuario_id_usuario = ?',
         [$dados['id']]);
 
-        foreach ($dados['permissoes'] as $p){
-            $add = DB::INSERT('INSERT INTO permissao (tipo, Usuario_id_usuario) VALUES (?, ?)',
-            [$p,$dados['id']]);
-        }
+        if ($dados['gerenciar_itens'])
+            $add = DB::INSERT('INSERT INTO permissao (tipo, Usuario_id_usuario) VALUES (0, ?)',
+            [$dados['id']]);
+        
+        if ($dados['gerenciar_eventos'])
+            $add = DB::INSERT('INSERT INTO permissao (tipo, Usuario_id_usuario) VALUES (1, ?)',
+            [$dados['id']]);
+        
+        if ($dados['gerenciar_noticias'])
+            $add = DB::INSERT('INSERT INTO permissao (tipo, Usuario_id_usuario) VALUES (2, ?)',
+            [$dados['id']]);
 
         if ($update){
             return response()->json(true);

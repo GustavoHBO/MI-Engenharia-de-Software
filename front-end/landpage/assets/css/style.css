@@ -294,6 +294,7 @@ h2{
 #logo.logo-ativo{
     color:white;
     padding-top:10px;
+    font-size: 18px;
 }
 
 #navMain li a{
@@ -348,7 +349,7 @@ h2{
     padding-left: 20px;
 }
 .head_title p{
-    padding-left: 20px;
+    padding-left: 20px; 
 }
 
 
@@ -605,11 +606,11 @@ h2{
     animation: fadeIn 1s;
 }
 .team_socail_area{
-    -webkit-transition: max-height 1s;
-    -moz-transition: max-height 1s;
-    -ms-transition: max-height 1s;
-    -o-transition: max-height 1s;
-    transition: max-height 1s;
+    -webkit-transition: max-height 1s; 
+    -moz-transition: max-height 1s; 
+    -ms-transition: max-height 1s; 
+    -o-transition: max-height 1s; 
+    transition: max-height 1s;  
     overflow: hidden;
     max-height: 0;
 }
@@ -639,7 +640,7 @@ h2{
 }
 
 /*=====================================================================
-                    Testimonial Section
+                    Testimonial Section 
 ====================================================================*/
 
 .main_testimonial_area{
@@ -667,7 +668,7 @@ h2{
     position: absolute;
     z-index: -1;
     padding: 5px;
-    left: 9%;
+    left: 9%;    
 }
 
 .testimonial_content .single_test p{
@@ -679,7 +680,7 @@ h2{
 }
 
 /*=====================================================================
-                    Blog Section
+                    Blog Section 
 ====================================================================*/
 
 .main_blog_area{
@@ -800,9 +801,11 @@ h2{
 }
 .scrollup a:hover i{
     background: #fff;
-    color:#333;
+    color:#333; 
 }
 
+<<<<<<< HEAD
+=======
 /*=====================================================================
                     scrollup
 ====================================================================*/
@@ -841,5 +844,8 @@ h2{
     text-decoration: none;
 
 }*/
+>>>>>>> f95dc7b7e25744181a4d3e49de49b608a433d398
 
+
+            /* Configurações Sidebar */
 

@@ -48,7 +48,7 @@
                         <a data-toggle="modal" data-target="#CadastroModal">Cadastrar</a>
                     </div>
                     <div class="col-xs-6 forgetPassword">
-                        <a href="#">Esqueci minha senha</a>
+                        <a data-toggle="modal" data-target="#PasswordModal">Esqueci minha senha</a>
                     </div>
                 </div>
             </div>
@@ -81,6 +81,25 @@
                         </div>
                         <div class="col-xs-10 col-xs-offset-1">
                             <button class="btn btn-sm btn-block" @click="createUser($event)">Cadastrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="PasswordModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="title-box wow fadeInDown">
+                    <h2 class="section-title">Esqueci a senha</h2>
+                </div>
+                <form>
+                    <div class="row" id="forgoten">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <input class="form-group input-sm" type="e-mail" placeholder="E-mail" v-model="emailForgot">
+                        </div>
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <button class="btn btn-sm btn-block" @click="forgotPassword($event)">Enviar e-mail</button>
                         </div>
                     </div>
                 </form>

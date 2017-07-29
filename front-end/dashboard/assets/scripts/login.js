@@ -1,3 +1,36 @@
+var fpassword = new Vue({
+  el: '#forgoten',
+  data: {
+    emailForgot: ''
+  },
+  methods: {
+    forgotPassword: function (event){
+      event.preventDefault();
+      firebase.auth().sendPasswordResetEmail(fpassword.emailForgot).then(function() {
+        $.gritter.add({
+            // (string | mandatory) the heading of the notification
+          title: 'E-mail enviado com sucesso!'
+        });
+        fpassword.emailForgot = "";
+        $('#PasswordModal').modal('toggle');
+      }, function(error) {
+        var errorCode = error.code;
+        if (errorCode == 'auth/user-not-found') {
+          $.gritter.add({
+            // (string | mandatory) the heading of the notification
+            title: 'E-mail não cadastrado!',
+            text: 'Realize um novo cadastro.'
+          });
+          cadastroPage.email = fpassword.emailForgot;
+          $('#PasswordModal').modal('toggle');
+          $('#CadastroModal').modal('toggle');
+          fpassword.emailForgot = "";
+        }
+      });
+    }
+  }
+})
+
 var loginpage = new Vue({
   el: '#login-page',
   data: {
@@ -14,7 +47,6 @@ var loginpage = new Vue({
       firebase.auth().signInWithEmailAndPassword(loginpage.email, loginpage.senha).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
-        console.log(errorCode);
         if (errorCode == 'auth/invalid-email') {
           $.gritter.add({
             // (string | mandatory) the heading of the notification
