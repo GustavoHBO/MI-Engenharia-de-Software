@@ -14,7 +14,7 @@
 $app->post('/login', 'LoginController@login');
 
 $app->group(['prefix' => 'backup'], function () use ($app){
-    $app->get('/', 'FileController@readlAll');
+    $app->get('/', 'FileController@readAll');
     $app->post('/', 'FileController@delete');
 });
 

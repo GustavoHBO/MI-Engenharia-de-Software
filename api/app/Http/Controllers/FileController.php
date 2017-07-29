@@ -14,7 +14,7 @@ class FileController extends Controller
             if ($f->isFile()){
                 $nome = str_replace(".txt", "", $f->getFileName());
                 $size = $f->getSize();
-                $size = $size / 8;
+                $size = $size / 1024;
                 $files[] = array("nome" => $nome, "size" => $size . ' KB');
             }
         }
