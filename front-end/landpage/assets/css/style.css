@@ -238,6 +238,29 @@ nav ul li {
     margin-top: 2%;
 }
 
+
+.img-item{
+    width: 100%;
+    height: auto;
+    padding-top: 90px;
+}
+
+.item-mini{
+    width:100%;
+    height: auto;
+    padding-top: 20px;
+}
+
+.star {
+  font-size: 40px;
+	color:#FFCD2B;
+    padding-top: 90px;
+}
+
+.item-desc{
+    padding-top: 90px;
+}
+
 /***********************************************************************
 *  OPAQUE NAVBAR SECTION
 ***********************************************************************/
