@@ -87,6 +87,8 @@ $app->group(['prefix' => '/item'], function () use ($app) {
     $app->get('/', 'ItemController@todosItens');
     //lista todos itens ativos
     $app->get('/ativos', 'ItemController@todosItensAtivos');
+    //lista todos itens ativos por uma faixa de valores definida
+    $app->get('/ativos/{faixa}', 'ItemController@todosItensAtivosPorFaixa');
     //buscar um item id
     $app->get('/{id}', 'ItemController@buscarItem');
     //pesquisar item

@@ -34,6 +34,32 @@ class ItemController extends Controller
         }
         return response()->json($busca);
     }
+    /*RETORNA TODOS OS ITENS ATIVOS POR FAIXA*/
+    public function todosItensAtivosPorFaixa($faixa){
+        $busca = DB::SELECT('SELECT * FROM item it, aquisicao_item aq_it, caracteristicas_estilisticas_item carac_est_it, dimensao_item dim_it,documentacao_fotografica_item doc_fot_it WHERE it.id_item = aq_it.Item_id_item AND it.id_item = carac_est_it.Item_id_item AND it.id_item = dim_it.Item_id_item AND it.id_item = doc_fot_it.Item_id_item AND it.ativo = 1 ORDER BY it.id_item');
+        
+        foreach($busca as $b){
+            $imagens = DB::SELECT('SELECT foto_url FROM item_imagem WHERE Item_id_item = ?',[$b->id_item]);
+            $b->foto_imagem = $imagens;
+        }
+        
+        if($faixa >= 0){
+            $faixa = $faixa * 10;
+            $valores = null;
+            for($i = 0;$i < 10; $i++){
+                if(array_key_exists($faixa + $i, $busca))
+                    $valores[$i] = $busca[$faixa + $i];
+                    
+            }
+            if($valores == null)
+                return response()->json(false);
+
+            return response()->json($valores);
+        }else{
+            return response()->json(false);
+        }
+        
+    }
     /*BUSCAR ITEM PELO ID*/
     public function buscarItem($id){
         $busca = DB::SELECT('SELECT * FROM item it, aquisicao_item aq_it, caracteristicas_estilisticas_item carac_est_it, dimensao_item dim_it,documentacao_fotografica_item doc_fot_it WHERE id_item = ? AND aq_it.Item_id_item = ? AND carac_est_it.Item_id_item = ? AND dim_it.Item_id_item = ? AND doc_fot_it.Item_id_item = ?',
