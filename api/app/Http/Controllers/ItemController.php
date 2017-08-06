@@ -44,9 +44,9 @@ class ItemController extends Controller
         }
         
         if($faixa >= 0){
-            $faixa = $faixa * 10;
+            $faixa = $faixa * 12;
             $valores = null;
-            for($i = 0;$i < 10; $i++){
+            for($i = 0;$i < 12; $i++){
                 if(array_key_exists($faixa + $i, $busca))
                     $valores[$i] = $busca[$faixa + $i];
                     
@@ -59,6 +59,12 @@ class ItemController extends Controller
             return response()->json(false);
         }
         
+    }
+    /*RETORNA O NÚMERO DE ITENS*/
+    public function numeroDeItensAtivos(){
+        $valor = DB::SELECT('SELECT COUNT(id_item) FROM item');
+
+         return response()->json($valor);
     }
     /*BUSCAR ITEM PELO ID*/
     public function buscarItem($id){

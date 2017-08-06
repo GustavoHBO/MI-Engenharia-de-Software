@@ -116,6 +116,8 @@ $app->group(['prefix' => '/evento'], function () use ($app) {
     $app->get('/', 'EventoController@todosEventos');
     //lista todos eventos ativos
     $app->get('/ativos', 'EventoController@todosEventosAtivos');
+    //numero de itens ativos
+    $app->get('/ativos/num', 'ItemController@numeroDeItensAtivos');
     //buscar evento pelo id
     $app->get('/{id}', 'EventoController@buscarEvento');
     //pesquisar evento pelo titulo
