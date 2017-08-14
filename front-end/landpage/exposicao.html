@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Museu Casa do Sertão - Exposições</title>
+    <title>Museu Casa do Sertão - Itens</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -130,59 +130,19 @@
 
 
         <!-- Page Content -->
+        
         <div id="page-content-wrapper">
-            <div class="container-fluid" id="">
-                    <div class="row exposicao-principal">
-                        <div class="col-sm-6">
-                            <img class="img-responsive img-expo" src="http://placehold.it/400x300" alt="">
-                        </div>
-                   
-                        <div class="col-sm-4 col-sm-offset-1 expo-prin">
-                            <h4>Título da Exposição</h4>
-                            <p>Descrição</p>
-                            <h4>Categoria: categoria</h4>
-                            <h4>Data inicio: 32/23/43</h4>
-                            <h4>Data término: 24/23/32</h4>
-                            <h4>Descrição: </h4>
-                            <p>Insira aqui uma breve descrição do evento. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                    </div>
-                   
+            <div class="container-fluid" id="itens">
+                <div class="col-sm-12" id="lista-itens">
                     
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <img class="img-responsive item-mini" src="http://placehold.it/400x300" alt="">
-                                
-                            </div>
-                            <div class="col-sm-3 expo-desc">
-                                <h4>Título da Exposição</h4>
-                                <p>Descrição</p>
-                                <h4>Categoria: categoria</h4>
-                                <h4>Data inicio: 32/23/43</h4>
-                                <h4>Data término: 24/23/32</h4>
-                            </div>
-
-                            
-                            <div class="col-sm-3">
-                                <img class="img-responsive item-mini" src="http://placehold.it/400x300" alt="">
-                                
-                            </div>
-                            <div class="col-sm-3 expo-desc">
-                                <h4>Título da Exposição</h4>
-                                <p>Descrição</p>
-                                <h4>Categoria: categoria</h4>
-                                <h4>Data inicio: 32/23/43</h4>
-                                <h4>Data término: 24/23/32</h4>
-                            </div>
-
-
-                            
+                        <div v-for="item in itens" class="foto_Item col-lg-2 col-md-3 col-xs-6 thumb">
+                            <p class="nome_item">{{item.nome}}</p>
+                            <p>{{item.autor}}</p>
+                            <a class="thumbnail" href="#">
+                                <img class="img-responsive" v-bind:src="item.image" v-bind:alt="item.descricao" src="http://placehold.it/400x300" alt="">
+                            </a>
                         </div>
+                 </div>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
@@ -210,5 +170,12 @@
 <script src="assets/js/sidebar.js"></script>
 
 </body>
-
+<!-- VUE.JS CDN -->
+<script src="https://unpkg.com/vue"></script>
+<!-- Javascript -->
+<script src="assets/js/controllerItem.js"></script>
+<!-- Instanciando o controller desta página -->
+<script>
+    new ControllerItem().listaItens();
+</script>
 </html>
