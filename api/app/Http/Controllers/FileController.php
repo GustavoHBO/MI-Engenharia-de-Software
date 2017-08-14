@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 class FileController extends Controller
 {
-
+    /**
+     * Método para exibir todos os backups feitos no sistema.
+     * @author Lindelmo Havallon
+     * @return response - Todos os backups.
+     */
     public function readAll(){
         $dir = new \DirectoryIterator('export');
         $files = array();
@@ -21,6 +25,13 @@ class FileController extends Controller
         }
         return response()->json($files);
     }
+
+    /**
+     * Método para deletar um backup especificos no sistema.
+     * @author Lindelmo Havallon
+     * @param Resquest $request
+     * @return boolean - Se o arquivo foi deletado com sucesso.
+     */
 
     public function delete(Request $request){
         $nome = $request->input('nome');

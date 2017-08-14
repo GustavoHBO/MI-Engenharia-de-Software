@@ -8,7 +8,12 @@ use App\Http\Controllers\SecurityController;
 
 class LoginController extends Controller
 {
-    
+    /**
+     * Método logar no sistema..
+     * @author Lindelmo Havallon
+     * @param Resquest $request
+     * @return response - O usuario conectado ao sistema.
+     */
     public function login(Request $request){
         $dados = $request->all();
         $security = new SecurityController;
