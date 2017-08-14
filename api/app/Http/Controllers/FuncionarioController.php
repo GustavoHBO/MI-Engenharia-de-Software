@@ -8,7 +8,12 @@ use App\Http\Controllers\SecurityController;
 
 class FuncionarioController extends Controller
 {
-    //Método para cadastrar usuário
+    /**
+     * Método para criar um novo funcionario no sistema.
+     * @author Lindelmo Havallon
+     * @param  Request  $request
+     * @return boolean - Retorna se o funcionário foi cadastrado com sucesso.
+     */
     public function create(Request $request){
         $security = new SecurityController;
         $dados =  $security->addbarras($request);
@@ -36,7 +41,11 @@ class FuncionarioController extends Controller
         }
     }
     
-    //Lendo todos os usuarios do banco
+    /**
+     * Método para listar todos os funcionarios do sistema.
+     * @author Lindelmo Havallon
+     * @return response - Funcionários previamente cadastrados.
+     */
     public function readAll(){
         $busca = DB::SELECT('SELECT * FROM usuario WHERE tipo = ? ORDER BY nome',['f']);
         foreach ($busca as $b){
@@ -60,7 +69,12 @@ class FuncionarioController extends Controller
         return response()->json($busca);
     }
 
-    //Buscar um usuario
+    /**
+     * Método para exibir um funcionario especifico no sistema.
+     * @author Lindelmo Havallon
+     * @param int - Id do funcionario.
+     * @return response - Funcionário correspondente ao id de entrada.
+     */
     public function read($id){
         $busca = DB::SELECT('SELECT * FROM usuario WHERE id_usuario = ?', [$id]);
         if ($busca == null)
@@ -85,7 +99,12 @@ class FuncionarioController extends Controller
         return response()->json($busca);
     }
 
-    //Alterando os usuarios
+    /**
+     * Método para alterar um funcionario previamente cadastrado no sistema.
+     * @author Lindelmo Havallon
+     * @param Resquest  $request
+     * @return boolean - Retorna se a alteração foi feita com sucesso.
+     */
     public function update(Request $request) {
         $security = new SecurityController;
         $dados =  $security->addbarras($request);
@@ -115,6 +134,12 @@ class FuncionarioController extends Controller
         }
     }
 
+    /**
+     * Método para desativar um funcionario previamente cadastrado no sistema.
+     * @author Lindelmo Havallon
+     * @param Resquest  $request
+     * @return boolean - Retorna se o funcionario foi desativado com sucesso.
+     */
     public function desativar(Request $request){
         $security = new SecurityController;
         $dados =  $security->addbarras($request);
