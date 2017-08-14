@@ -921,6 +921,16 @@ hr{
     margin-top: 40px;
 }
 
+.imagem-noticia-container{
+    margin-bottom: 40px;
+    height: 400px;
+}
+
+.imagem-noticia-container img{
+    max-height: 100%;
+    max-width: 100%;
+}
+
 
 <<<<<<< HEAD
 =======
