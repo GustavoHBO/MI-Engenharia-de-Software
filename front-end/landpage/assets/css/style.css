@@ -279,11 +279,42 @@ nav ul li {
     padding-top: 90px;
 }
 
+#calendario{
+
+}
+
+/*=====================================================================
+                   PÁGINA DE NOTÍCIAS 
+====================================================================*/
+
+.nome-noticia{
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+.titulo-pagina{
+    text-align: center;
+}
+
+.titulo-wrapper{
+    margin-top: 40px;
+}
+
+.btn-secondary{
+    color: white;
+    background-color: #678D58;
+}
+
+.botao {
+    color: white !important;
+}
+
 /***********************************************************************
 *  OPAQUE NAVBAR SECTION
 ***********************************************************************/
 .opaque-navbar {
-    background-color:rgba(0,0,0,0);
+    background-color:rgba(255,255,255,0.3);
   /* Transparent = rgba(0,0,0,0) / Translucent = (0,0,0,0.5)  rgba(141,69,60,0.5) */
     height: 60px;
     border-bottom: 0px;
@@ -401,20 +432,22 @@ h2{
     height: auto;
 }
 
+#evento{
+    padding-top: 90px;
+}
+
+
 .texto-lateral{
     border-left: 2px solid #ddd;
     padding-left: 20px;
 }
 
-#noticias{
-    background: url(../img/bg2.jpg);
-    background-size: cover;
+hr{
+    max-width: 15%;
+    border-width: 1px;
+    border-color: rgba(87,91,32,0.5)
 }
 
-#calendario{
-    background: url(../img/bg4.jpg);
-    background-size: cover;
-    }
 
 /*=============================================================
                     Configurações do modal
@@ -517,10 +550,10 @@ h2{
 
 }
 
-
-#calendario{
-    padding-bottom: 50px;
+.ver-mais{
+    line-height: 1.2px;
 }
+
 
 /*====================================================================
                  About Section
@@ -541,7 +574,9 @@ h2{
     margin-bottom:1.875rem;
 }
 
-
+#fb{
+    color: #3b5998;
+}
 
 /*=================================================================
                         Service Section
@@ -638,9 +673,7 @@ h2{
 
 .carousel{
     height: auto !important;
-    border-width: 10px;
-    border-style: solid;
-    border-color: white;
+    
 }
 
 
