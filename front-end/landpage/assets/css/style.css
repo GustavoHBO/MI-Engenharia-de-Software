@@ -310,6 +310,7 @@ nav ul li {
     color: white !important;
 }
 
+
 /***********************************************************************
 *  OPAQUE NAVBAR SECTION
 ***********************************************************************/
@@ -391,8 +392,6 @@ h2{
 
 
 #login{
-	padding-top: 8px;
-	padding-bottom: 15px;
 	text-transform: capitalize;
     background-color: white !important;
     color: black !important;
@@ -574,8 +573,8 @@ hr{
     margin-bottom:1.875rem;
 }
 
-#fb{
-    color: #3b5998;
+.compartilhar{
+    color: #383838;
 }
 
 /*=================================================================
