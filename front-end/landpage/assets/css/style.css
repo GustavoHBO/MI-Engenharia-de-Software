@@ -320,6 +320,7 @@ nav ul li {
     height: 60px;
     border-bottom: 0px;
     transition: background-color .5s ease 0s;
+    margin-bottom: 40px;
 }
 
 .opaque-navbar.opaque {
@@ -938,6 +939,17 @@ hr{
 .exposicao-principal{
     margin-bottom: 30px;
 }
+
+
+/*=====================================================================
+                   PÁGINA DE EVENTOS 
+====================================================================*/
+
+.evento{
+    margin-top:20px;
+}
+
+
 
 
 <<<<<<< HEAD
