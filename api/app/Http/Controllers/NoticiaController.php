@@ -8,8 +8,11 @@ use App\Http\Controllers\RelatorioController;
 class NoticiaController extends Controller{
 
 
-	/*
-	Lista todas as noticias com as fotos
+	/**
+	 * Método que lista todas as noticias e imagem relacionada a notícia
+	 *@author Murilo Lopes
+	 *@return response - todas as notícias cadastradas
+
 	*/
 	public function listarNoticia(){
 		$dados = DB::SELECT('SELECT * FROM noticia WHERE ativo = ?', [0]);
@@ -21,10 +24,11 @@ class NoticiaController extends Controller{
 		return response()->json($dados);
 	}
 
-	/*
-	Busca uma noticia especifica pelo id. 
-	$id_not é o id da noticia.
-	retorna um vetor com os dados buscados.
+	/**
+	*Busca uma noticia especifica pelo id. 
+	*@author Murilo Lopes
+	*@param $id_not
+	*@return Response - Um vetor com os dados buscados.
 	*/
 	public function buscar_Id_Noticia($id_not){
 		$id_not = addslashes($id_not);
@@ -39,9 +43,12 @@ class NoticiaController extends Controller{
 		return response()->json($resultados);
 	}
 
-	/*
-		Busca uma noticia especifica pelo titulo
-		retorna um vetor com os dados buscados
+	/**
+	*Busca uma noticia especifica pelo titulo
+	*retorna um vetor com os dados buscados
+	*@author Murilo Lopes
+	*@param $key_word
+	*@return Response - Um vetor com os dados buscados.
 	*/
 	public function buscarNoticia($key_word){
 		$key_word = addslashes("%" . $key_word ."%");
@@ -55,11 +62,11 @@ class NoticiaController extends Controller{
 		return response()->json($resultados);
 	}
 	
-	/*
-	Metodo para cadastrar as noticias
-	retorna 'true' se o inseriu tanto na tabela noticia quanto na noticia_imagem 
-	retorna #insertError01 se inseriu na tabela noticia e deu erro na inserção da tabela noticia_imagem
-	retorna false se não consegiu inserir nem na tabela noticia nem na tabela noticia_image,
+	/**
+	*Metodo para cadastrar as noticias
+	*@author Murilo Lopes
+	*@param Request $request 
+	*@return retorna booleano se a notícia foi cadastrada com sucesso ou não. E uma string se ocorreu erro de insercao no relatorio.
 	*/
 	public function cadastrarNoticia(Request $request){
 		
@@ -85,12 +92,15 @@ class NoticiaController extends Controller{
 		}
 	}
 
-	/*
-	Atualiza a noticia. Atualiza todos os atributos de uma vez
-	retorna 'true' se o atualizou a tabela noticia e inseriu a informação na tabela do relatorio 
-	retorna #updateError01 se atualizou a tabela noticia a  tabela imagem_noticia, mas deu erro na inserção da tabela do relatorio
-	retorna #updateError02 se atualizou a tabela noticia, mas nao conseguiu atualizar a tabela noticia_imagem
-	retorna false se não consegiu atualizar a tabela noticia e nem as outras.
+	/**
+	*Atualiza a noticia. Atualiza todos os atributos de uma vez
+	*retorna 'true' se o atualizou a tabela noticia e inseriu a informação na tabela do relatorio 
+	*retorna #updateError01 se atualizou a tabela noticia a  tabela imagem_noticia, mas deu erro na inserção da tabela do relatorio
+	*retorna #updateError02 se atualizou a tabela noticia, mas nao conseguiu atualizar a tabela noticia_imagem
+	*retorna false se não consegiu atualizar a tabela noticia e nem as outras.
+	*@author Murilo Lopes
+	*@param Request $request
+	*@return Booleano se ocorreu ou não a atualizacao. String se ocorreu erro de insercao no relatorio
 	*/
 	public function atualizarNoticia(Request $request){
 
@@ -127,15 +137,18 @@ class NoticiaController extends Controller{
 		}
 	}
 
-	/*
-	Metodo que atualiza a imgem da noticia.
-	Request recebe como dados a foto da noticia (foto_url).
-	o id da notcia que (id_noticia) e o id do funcionario (id_funcionairo) para inserir a info no relatorio
-
-
-	retorna 'true' se o atualizou a tabela noticia_imagem e inseriu a informação na tabela do relatorio 
-	retorna #updateError01 se atualizou a tabela noticia_imagem, mas deu erro na inserção da tabela do relatorio
-	retorna 'false' se não consegiu atualizar a tabela noticia_imagem.
+	/**
+	*Metodo que atualiza a imgem da noticia.
+	*Request recebe como dados a foto da noticia (foto_url).
+	*o id da notcia que (id_noticia) e o id do funcionario (id_funcionairo) para inserir a info no relatorio
+	*
+	*
+	*retorna 'true' se o atualizou a tabela noticia_imagem e inseriu a informação na tabela do relatorio 
+	*retorna #updateError01 se atualizou a tabela noticia_imagem, mas deu erro na inserção da tabela do relatorio
+	*retorna 'false' se não consegiu atualizar a tabela noticia_imagem.
+	*@author Murilo Lopes
+	*@param Request $request
+	*@return Booleano se ocorreu ou não a atualizacao. String se ocorreu erro de insercao no relatorio
 	*/
 	public function atualizar_imagem_noticia(Request $request){
 
@@ -161,15 +174,18 @@ class NoticiaController extends Controller{
 
 
 
-	/*
-	Este metodo eh responsavel por desativar uma noticia
-	$id_noticia eh o id da noticia que vai ser desativa
-	$id_funcionario eh o id do funcionario que está desativando.
-	Esta ação é armazenada no relatorio.
-
-	retorna 'true' se o setou ativo = 1 na tabela noticia e inseriu a informação na tabela do relatorio 
-	retorna '#excluiError01' setou ativo = 1 a tabela noticia, mas deu erro na inserção da tabela do relatorio
-	retorna 'false' se não consegiu setar ativo = 1 na tabela noticia.
+	/**
+	*Este metodo eh responsavel por desativar uma noticia
+	*$id_noticia eh o id da noticia que vai ser desativa
+	*$id_funcionario eh o id do funcionario que está desativando.
+	*Esta ação é armazenada no relatorio.
+	*
+	*retorna 'true' se o setou ativo = 1 na tabela noticia e inseriu a informação na tabela do relatorio 
+	*retorna '#excluiError01' setou ativo = 1 a tabela noticia, mas deu erro na inserção da tabela do relatorio
+	*retorna 'false' se não consegiu setar ativo = 1 na tabela noticia.
+	*@author Murilo Lopes
+	*@param Request $request
+	*@return Booleano se ocorreu ou não a remoção. String se ocorreu erro de insercao no relatorio
 	*/
 	public function excluirNoticia (Request $request){
 
