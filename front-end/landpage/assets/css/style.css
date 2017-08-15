@@ -868,7 +868,7 @@ hr{
     overflow: hidden;
     display: inline-block;
     width:100%;
-    padding: 40px 0px;
+    padding-top: 15px;
     border-top: 1px solid #555;
     margin-top: 40px;
 }
