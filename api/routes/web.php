@@ -66,7 +66,7 @@ $app->group(['prefix' => 'exposicao'], function () use ($app){
 */
 $app->group(['prefix' => 'noticia'], function () use ($app){
     // mudei para ter apenas um modulo com tudo referente a noticia (facilita a interpretação das rotas visto que muitas serão usadas tanto pra func quanto pra usr comum)
-    $app->get('/buscar/{key_word}', 'NoticiaController@buscarNoticia'); 
+    $app->get('/buscar/{key_word}', 'NoticiaController@buscarNoticia');
     $app->get('/get/{id}', 'NoticiaController@busca_Id_Noticia');
 	$app->get('/listar', 'NoticiaController@listarNoticia');
     $app->post('/cadastrar', 'NoticiaController@cadastrarNoticia');
@@ -106,8 +106,8 @@ $app->group(['prefix' => '/item'], function () use ($app) {
     //itens favoritos de um usuario
     $app->get('/favoritos/{id_usr}', 'ItemController@todosItensFavoritos');
     //remover item favorito
-    $app->post('/favoritos/remover', 'ItemController@removerFavorito');    
-    
+    $app->post('/favoritos/remover', 'ItemController@removerFavorito');
+
 });
 
 /*EVENTO*/
@@ -127,15 +127,15 @@ $app->group(['prefix' => '/evento'], function () use ($app) {
     //editar um evento
     $app->post('/editar', 'EventoController@editarEvento');
     //desativa evento
-    $app->post('/desativa', 'EventoController@desativaEvento'); 
+    $app->post('/desativa', 'EventoController@desativaEvento');
     //ativa evento
-    $app->post('/ativa', 'EventoController@ativaEvento');   
+    $app->post('/ativa', 'EventoController@ativaEvento');
     //favorita evento
     $app->post('/favoritos/add', 'EventoController@favoritaEvento');
     //eventos favoritos de um usuario
     $app->get('/favoritos/{id_usr}', 'EventoController@todosEventosFavoritos');
     //remover evento favorito
-    $app->post('/favoritos/remover', 'EventoController@removerFavorito'); 
+    $app->post('/favoritos/remover', 'EventoController@removerFavorito');
 });
 
 
@@ -150,6 +150,5 @@ $app->group(['prefix' => 'pesquisa'], function () use ($app) {
 });
 
 $app->group(['prefix' => 'relatorio'], function () use ($app) {
-    $app->get('cadastro', 'RelatorioController@novo');
-    $app->get('{datainicial}/{datafinal}', 'RelatorioController@get');
+    $app->get('listar/{datainicial}/{datafinal}', 'RelatorioController@get');
 });
