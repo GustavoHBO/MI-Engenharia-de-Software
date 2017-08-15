@@ -8,31 +8,7 @@ class ControllerItem {
         var lista_item = new Vue({
             el: '#lista_item',
             data: {
-                itens: [{
-                        id: 1,
-                        titulo: 'Chapeu da independencia',
-                        classificacao: 'Coisa Velha',
-                        categoria: 'Colonial'
-                    },
-                    {
-                        id: 2,
-                        titulo: 'Miniatura de boi',
-                        classificacao: 'Bom',
-                        categoria: 'Colonial'
-                    },
-                    {
-                        id: 3,
-                        titulo: 'Espingarda',
-                        classificacao: 'Não sei',
-                        categoria: 'Ditadura'
-                    },
-                    {
-                        id: 4,
-                        titulo: 'Carroça de Madeira',
-                        classificacao: 'Coisa Velha',
-                        categoria: 'Automotivo'
-                    }
-                ]
+                itens: []
             },
             methods: {
                 editar: (idItem) => {
