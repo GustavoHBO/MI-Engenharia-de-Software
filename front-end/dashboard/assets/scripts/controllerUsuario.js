@@ -54,7 +54,7 @@ class ControllerUsuario {
                     lista_usuarios.usuarios = data;
                 });
             }
-        })
+        });
     }
 
     editarUsuario() {
