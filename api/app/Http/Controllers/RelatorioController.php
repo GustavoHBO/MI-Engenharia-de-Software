@@ -10,20 +10,23 @@ class RelatorioController extends Controller
 {
 
      //Método para cadastrar item em relatorio
-     public function novo() {
+     public function get($datainicial, $datafinal) {
 
-      //  return response()->json($this->criarEvento(1, 1));
-      //  return response()->json($this->criarExposicao(1, 1));
-      // return response()->json($this->criarItem(1, 1));
-      // return response()->json($this->desabilitaPesquisa(1, 2));
-      // return response()->json($this->editaEvento(1, 2));
-      // return response()->json($this->editaExposicao(1, 2));
-      // return response()->json($this->editaItem(1, 2));
-      // return response()->json($this->editaNoticia(1, 2));
-      // return response()->json($this->removeEvento(1, 2));
-      // return response()->json($this->removeExposicao(2, 3));
-      // return response()->json($this->removeItem(2, 3));
-      //  return response()->json($this->removeNoticia(2, 3));
+       $relatorios = DB::select("select e.data, u.nome, 'criou evento' as descricao, i.titulo from cria_evento e left join evento i on (e.Evento_id_evento = i.id_evento) left join usuario u on (e.Usuario_id_usuario = u.id_usuario) WHERE e.data BETWEEN ? AND ? union
+       select e.data, u.nome, 'criou exposição' as descricao, i.titulo from cria_exposicao e left join exposicao i on (e.Exposicao_id_exposicao = i.id_exposicao) left join usuario u on (e.Usuario_id_usuario = u.id_usuario) WHERE e.data BETWEEN ? AND ? union
+       select e.data, u.nome, 'adicionou item' as descricao, i.titulo from cria_item e left join item i on (e.Item_id_item = i.id_item) left join usuario u on (e.Usuario_id_usuario = u.id_usuario) WHERE e.data BETWEEN ? AND ? union
+       select e.data, u.nome, 'editou evento' as descricao, i.titulo from edita_evento e left join evento i on (e.Evento_id_evento = i.id_evento) left join usuario u on (e.Usuario_id_usuario = u.id_usuario) WHERE e.data BETWEEN ? AND ? union
+       select e.data, u.nome, 'editou exposição' as descricao, i.titulo from edita_exposicao e left join exposicao i on (e.Exposicao_id_exposicao = i.id_exposicao) left join usuario u on (e.Usuario_id_usuario = u.id_usuario) WHERE e.data BETWEEN ? AND ? union
+       select e.data, u.nome, 'editou item' as descricao, i.titulo from edita_item e left join item i on (e.Item_id_item = i.id_item) left join usuario u on (e.Usuario_id_usuario = u.id_usuario) WHERE e.data BETWEEN ? AND ? union
+       select e.data, u.nome, 'editou notícia' as descricao, i.titulo from editar_noticia e left join noticia i on (e.Noticia_id_noticia = i.id_noticia) left join usuario u on (e.Usuario_id_user = u.id_usuario) WHERE e.data BETWEEN ? AND ? union
+       select e.data, u.nome, 'removeu evento' as descricao, i.titulo from remove_evento e left join evento i on (e.Evento_id_evento = i.id_evento) left join usuario u on (e.Usuario_id_usuario = u.id_usuario) WHERE e.data BETWEEN ? AND ? union
+       select e.data, u.nome, 'removeu exposição' as descricao, i.titulo from remove_exposicao e left join exposicao i on (e.Exposicao_id_exposicao = i.id_exposicao) left join usuario u on (e.Usuario_id_usuario = u.id_usuario) WHERE e.data BETWEEN ? AND ? union
+       select e.data, u.nome, 'removeu item' as descricao, i.titulo from remove_item e left join item i on (e.Item_id_item = i.id_item) left join usuario u on (e.Usuario_id_usuario = u.id_usuario) WHERE e.data BETWEEN ? AND ? union
+       select e.data, u.nome, 'removeu notícia' as descricao, i.titulo from remove_noticia e left join noticia i on (e.Noticia_id_noticia = i.id_noticia) left join usuario u on (e.Usuario_id_user = u.id_usuario) WHERE e.data BETWEEN ? AND ? union
+       select e.data, u.nome, 'desabilitou pesquisa' as descricao, i.titulo from desabilita_pesquisa e left join pesquisa i on (e.Pesquisa_id_pesquisa = i.id_pesquisa) left join usuario u on (e.Usuario_id_usuario = u.id_usuario) WHERE e.data BETWEEN ? AND ?
+       ", [$datainicial, $datafinal,$datainicial, $datafinal,$datainicial, $datafinal,$datainicial, $datafinal,$datainicial, $datafinal,$datainicial, $datafinal,$datainicial, $datafinal,$datainicial, $datafinal,$datainicial, $datafinal,$datainicial, $datafinal,$datainicial, $datafinal,$datainicial, $datafinal]);
+
+       return response()->json($relatorios);
 
      }
 
