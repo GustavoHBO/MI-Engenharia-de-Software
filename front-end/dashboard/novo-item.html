@@ -135,7 +135,7 @@
 										<!--img src="assets/img/image-unavailable.png" class="img-responsive center-block"/>
 										<br-->
 										<p class="text-center">Clique no "+" para adicionar imagens:</p>
-										<div v-for="imagem in imagens" class=" col-xs-6 col-sm-3 col-md-3">
+										<div v-for="imagem in item.imagens" class=" col-xs-6 col-sm-3 col-md-3">
 											<div class="add">
 												<p>{{imagem.url}}</p>
 											</div>
@@ -150,88 +150,90 @@
 									</div>
 									<p class="text-center">Envie aqui o seu modelo 3D:</p>
 
-									<input type="file" class="form-control" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" id="modelo_3d"
-									    name="arquivos" accept=".png, .jpg, .jpeg" required/>
+									<input type="file" class="form-control" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" v-model="modelo_3d"
+									name="arquivos" accept=".png, .jpg, .jpeg" required/>
 									<br>
 									<p class="text-left">Características Estílisticas:</p>
-									<textarea rows="4" id="materiais_constitutivos" type="text" class="form-control" placeholder="Materiais Constitutivos" required></textarea>
+									<textarea rows="4" v-model="materiais_constitutivos" type="text" class="form-control" placeholder="Materiais Constitutivos" required></textarea>
 									<br>
-									<textarea rows="4" id="tecnicas_fabricacao" type="text" class="form-control" placeholder="Técnicas de fabricação" required></textarea>
+									<textarea rows="4" v-model="tecnicas_fabricacao" type="text" class="form-control" placeholder="Técnicas de fabricação" required></textarea>
 									<br>
-									<textarea rows="4" id="autoria" type="text" class="form-control" placeholder="Autoria" required></textarea>
+									<textarea rows="4" v-model="autoria" type="text" class="form-control" placeholder="Autoria" required></textarea>
 									<br>
 									<p class="text-left">Mode de aquisição:</p>
-									<div class="radio">
-										<label><input type="radio" name="mode_aquisicao" >Coleta</label>
-									</div>
-									<div class="radio">
-										<label><input type="radio" name="mode_aquisicao" >Compra</label>
-									</div>
-									<div class="radio">
-										<label><input type="radio" name="mode_aquisicao" >Doação</label>
-									</div>
-									<div class="radio">
-										<label><input type="radio" name="mode_aquisicao" >Permuta</label>
-									</div>
-									<div class="radio">
-										<label><input type="radio" name="mode_aquisicao" >Produto de oficina</label>
-									</div>
-									<div class="radio">
-										<label><input type="radio" name="mode_aquisicao" >Transferência</label>
+									<div id="mode_aq">
+										<div class="radio">
+											<label><input type="radio" name="mode_aquisicao" value="Coleta">Coleta</label>
+										</div>
+										<div class="radio">
+											<label><input type="radio" name="mode_aquisicao" value="Compra">Compra</label>
+										</div>
+										<div class="radio">
+											<label><input type="radio" name="mode_aquisicao" value="Doação">Doação</label>
+										</div>
+										<div class="radio">
+											<label><input type="radio" name="mode_aquisicao" value="Permuta">Permuta</label>
+										</div>
+										<div class="radio">
+											<label><input type="radio" name="mode_aquisicao" value="Produto de oficina">Produto de oficina</label>
+										</div>
+										<div class="radio">
+											<label><input type="radio" name="mode_aquisicao" value="Transferência">Transferência</label>
+										</div>
 									</div>
 									<br>
-									<input id="data" type="text" class="form-control" placeholder="Data" required>
+									<input v-model="data" type="text" class="form-control" placeholder="Data" required>
 									<br>
-									<input id="autor" type="text" class="form-control" placeholder="Autor" required>
+									<input v-model="autor" type="text" class="form-control" placeholder="Autor" required>
 									<br>
-									<textarea rows="4" id="observacoes" type="text" class="form-control" placeholder="Observações" required></textarea>
+									<textarea rows="4" v-model="observacoes" type="text" class="form-control" placeholder="Observações" required></textarea>
 
 								</div>
 								<div class="col-sm-12 col-md-6">
 									<br>
-									<input id="numero_inventario" type="text" class="form-control" placeholder="Nº do inventário" required>
+									<input v-model="numero_inventario" type="text" class="form-control" placeholder="Nº do inventário" required>
 									<br>
-									<input id="colecao" type="text" class="form-control" placeholder="Coleção" required>
+									<input v-model="colecao" type="text" class="form-control" placeholder="Coleção" required>
 									<br>
-									<input id="classificacao" type="text" class="form-control" placeholder="Classificação" required>
+									<input v-model="classificacao" type="text" class="form-control" placeholder="Classificação" required>
 									<br>
-									<input id="nome" type="text" class="form-control" placeholder="Nome" required>
+									<input v-model="nome" type="text" class="form-control" placeholder="Nome" required>
 									<br>
-									<input id="titulo" type="text" class="form-control" placeholder="Título" required>
+									<input v-model="titulo" type="text" class="form-control" placeholder="Título" required>
 									<br>
-									<input id="funcao" type="text" class="form-control" placeholder="Função" required>
+									<input v-model="funcao" type="text" class="form-control" placeholder="Função" required>
 									<br>
-									<input id="origem" type="text" class="form-control" placeholder="Origem" required>
+									<input v-model="origem" type="text" class="form-control" placeholder="Origem" required>
 									<br>
-									<input id="procedencia" type="text" class="form-control" placeholder="Procedência" required>
+									<input v-model="procedencia" type="text" class="form-control" placeholder="Procedência" required>
 									<br>
-									<textarea rows="4" id="descricao" type="text" class="form-control" placeholder="Descrição" required></textarea>
+									<textarea rows="4" v-model="descricao" type="text" class="form-control" placeholder="Descrição" required></textarea>
 									<br>
-									<input id="dimensoes" type="text" class="form-control" placeholder="Dimensões" required>
+									<input v-model="dimensoes" type="text" class="form-control" placeholder="Dimensões" required>
 									<br>
-									<input id="altura" type="text" class="form-control" placeholder="Altura" required>
+									<input v-model="altura" type="text" class="form-control" placeholder="Altura" required>
 									<br>
-									<input id="largura" type="text" class="form-control" placeholder="Largura" required>
+									<input v-model="largura" type="text" class="form-control" placeholder="Largura" required>
 									<br>
-									<input id="diametro" type="text" class="form-control" placeholder="Diâmetro" required>
+									<input v-model="diametro" type="text" class="form-control" placeholder="Diâmetro" required>
 									<br>
-									<input id="peso" type="text" class="form-control" placeholder="Peso" required>
+									<input v-model="peso" type="text" class="form-control" placeholder="Peso" required>
 									<br>
-									<input id="comprimento" type="text" class="form-control" placeholder="Comprimento" required>
+									<input v-model="comprimento" type="text" class="form-control" placeholder="Comprimento" required>
 									<br>
-									<textarea rows="4" id="estado_conservacao" type="text" class="form-control" placeholder="Estado de Conservação" required></textarea>
+									<textarea rows="4" v-model="estado_conservacao" type="text" class="form-control" placeholder="Estado de Conservação" required></textarea>
 									<br>
-									<textarea rows="4" id="historico_objeto" type="text" class="form-control" placeholder="Histórico do objeto" required></textarea>
+									<textarea rows="4" v-model="historico_objeto" type="text" class="form-control" placeholder="Histórico do objeto" required></textarea>
 									<br>
-									<textarea rows="4" id="referencia_bibliografica" type="text" class="form-control" placeholder="Referência bibliográfica"
-									    required></textarea>
+									<textarea rows="4" v-model="referencia_bibliografica" type="text" class="form-control" placeholder="Referência bibliográfica"
+									required></textarea>
 									<br>
-									<textarea rows="4" id="local_data" type="text" class="form-control" placeholder="Local e data" required></textarea>
+									<textarea rows="4" v-model="local_data" type="text" class="form-control" placeholder="Local e data" required></textarea>
 								</div>
 
 								<div class="col-sm-12 col-md-12">
 									<br>
-									<button class="btn btn-primary ">Enviar</button>
+									<a v-on:click="cadastrar()" class="btn btn-primary">Enviar</a>
 								</div>
 							</div>
 
@@ -247,33 +249,33 @@
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
 	<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyD-AzHfDGqFPjk0CX3aEG_dkxDngxpWsLg",
-            authDomain: "pblengsoft-9128d.firebaseapp.com",
-            databaseURL: "https://pblengsoft-9128d.firebaseio.com",
-            projectId: "pblengsoft-9128d",
-            storageBucket: "pblengsoft-9128d.appspot.com",
-            messagingSenderId: "277046336190"
-        };
-        firebase.initializeApp(config);
-    </script>
-	<script src="assets/vendor/jquery/jquery.min.js"></script>
-	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="assets/scripts/klorofil-common.js"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+		apiKey: "AIzaSyD-AzHfDGqFPjk0CX3aEG_dkxDngxpWsLg",
+		authDomain: "pblengsoft-9128d.firebaseapp.com",
+		databaseURL: "https://pblengsoft-9128d.firebaseio.com",
+		projectId: "pblengsoft-9128d",
+		storageBucket: "pblengsoft-9128d.appspot.com",
+		messagingSenderId: "277046336190"
+	};
+	firebase.initializeApp(config);
+</script>
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="assets/scripts/klorofil-common.js"></script>
 
-	<!-- VUE.JS CDN -->
-	<script src="https://unpkg.com/vue"></script>
-	<!-- Page JS -->
-	<script src="assets/scripts/controllerItem.js"></script>
-	<script src="assets/scripts/controllerGeral.js"></script>
-	<script>
-		new ControllerGeral();
-	</script>
-	<script>
-        new ControllerItem().novoItem();
-    </script>
+<!-- VUE.JS CDN -->
+<script src="https://unpkg.com/vue"></script>
+<!-- Page JS -->
+<script src="assets/scripts/controllerItem.js"></script>
+<script src="assets/scripts/controllerGeral.js"></script>
+<script>
+	new ControllerGeral();
+</script>
+<script>
+	new ControllerItem().novoItem();
+</script>
 </body>
 </html>

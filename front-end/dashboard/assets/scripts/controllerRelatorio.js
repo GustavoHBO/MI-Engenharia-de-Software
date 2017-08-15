@@ -20,7 +20,7 @@ class ControllerRelatorio {
                 ]
             },
             methods: {
-                
+
             }
         });
     }
@@ -42,7 +42,7 @@ class ControllerRelatorio {
                 ]
             },
             methods: {
-                
+
             }
         });
 
