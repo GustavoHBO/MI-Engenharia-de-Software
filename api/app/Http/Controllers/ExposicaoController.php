@@ -8,9 +8,11 @@ use App\Http\Controllers\SecurityController;
 class ExposicaoController extends Controller{
 
 
-	/*
-	Busca por uma palavra chave
-	
+	/**
+	*Busca por uma palavra chave
+	*@author Murilo Lopes
+	*@param $key_word
+	*@return Response - um vetor com as exposicoes
 	*/
 	public function buscarExposicao($key_word){
 		$key_word = addslashes("%".$key_word."%");
@@ -24,9 +26,11 @@ class ExposicaoController extends Controller{
 		return response()->json($dados);
 	}
 
-	/*
-	Busca pelo id
-	
+	/**
+	*Busca pelo id
+	*@author Murilo Lopes
+	*@param $id_exposicao
+	*@return Response - um vetor com as exposicoes
 	*/
 	public function buscarExposicao_id($id_exposicao){
 		$id_exposicao = addslashes($id_exposicao);
@@ -40,12 +44,13 @@ class ExposicaoController extends Controller{
 		return response()->json($dados);
 	}
 
-	/*
-	#cadastroError01 erro na hora de inserir no relatorio
-	//data_inicio,data_termino,categoria,descricao,titulo, id_item, id_usuario
+	/**
+	*Metodo responsavel pelo cadastro de novas exposicoes
+	*@author Murilo Lopes
+	*@param Request $request
+	*@return Boolean se ocorreu a insercao ou nao. String caso ocorra erro na hora de inserir no relatorio
 	*/
 	public function cadastrarExposicao(Request $request){
-		//$id_item = array('1','2','3');
 
 		$security = new SecurityController;
 		$dados = $security->addbarras($request);
@@ -75,7 +80,11 @@ class ExposicaoController extends Controller{
 	}
 
 
-
+	/**
+	*Metodo que retorna as exposicoes que possuem os item ativos
+	*@author Murilo Lopes
+	*@return Response - response com os dados obtidos
+	*/
 	public function listarExposicao(){
 		$dados = DB::SELECT('SELECT * FROM exposicao');
 		foreach ($dados as $vetor) {
@@ -85,7 +94,11 @@ class ExposicaoController extends Controller{
 		}
 		return response()->json($dados);
 	}
-
+	/**
+	*Metodo que retorna todas as exposicoes que estao ativas.
+	*@author Murilo Lopes
+	*@return Response - response com os dados obtidos
+	*/
 	public function listarExposicaoAtivos(){
 		$dados = DB::SELECT('SELECT * FROM exposicao WHERE ativo = ?',  [0]);
 		foreach ($dados as $vetor) {
@@ -96,6 +109,11 @@ class ExposicaoController extends Controller{
 		return response()->json($dados);
 	}
 
+	/**
+	*Metodo que retorna todas as exposicoes que nao possui itens ativos
+	*@author Murilo Lopes
+	*@return Response - response com os dados obtidos
+	*/
 	public function listarExposicaoTodos(){
 		$dados = DB::SELECT('SELECT * FROM exposicao');
 		foreach ($dados as $vetor) {
@@ -106,8 +124,13 @@ class ExposicaoController extends Controller{
 		return response()->json($dados);
 	}
 
-	//Nomes dos vetores no metodo request
-	//data_inicio, data_termino, categoria, descricao, titulo, id_exposicao, id_usuario
+
+	/**
+	*Metodo que realiza a atualizao de uma exposicao
+	*@author Murilo Lopes
+	*@param Request $request
+	*@return  Booleano se ocorreu ou nao a atualizacao com sucesso. String caso tenha ocorrido erro de insercao no relatorio
+	*/
 	public function atualizarExposicao(Request $request){
 			
 			$security = new SecurityController;
@@ -140,7 +163,12 @@ class ExposicaoController extends Controller{
 
 	}
 
-	//#excluirError01 erro na inserção do relatorio
+	/**
+	*Metodo que torna inativo uma exposicao
+	*@author Murilo Lopes
+	*@param Request $request
+	*@return Booleano se ocorreu ou nao a remocao com sucesso. String caso tenha ocorrido erro de insercao no relatorio
+	*/
 	public function excluirExposicao(Request $request){
 		//$id_exposicao, $id_funcionario
 		$security = new SecurityController;
