@@ -128,10 +128,10 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div class="col-sm-12 col-md-6">
-
-									<div id="imagens" class="row">
-										<!-- Não é necessário imagem de destaque na tela de adição/edição de itens -->
+								<div id="cadastrarItem">
+									<div class="col-sm-12 col-md-6">
+										<div id="imagens" class="row">
+											<!-- Não é necessário imagem de destaque na tela de adição/edição de itens -->
 										<!--img src="assets/img/image-unavailable.png" class="img-responsive center-block"/>
 										<br-->
 										<p class="text-center">Clique no "+" para adicionar imagens:</p>
@@ -230,36 +230,39 @@
 									<br>
 									<textarea rows="4" v-model="local_data" type="text" class="form-control" placeholder="Local e data" required></textarea>
 								</div>
-
-								<div class="col-sm-12 col-md-12">
-									<br>
-									<a v-on:click="cadastrar()" class="btn btn-primary">Enviar</a>
-								</div>
+								<p>Olha aqui</p>
+								<p>{{item.numero_inventario}}</p>
 							</div>
 
+							<div class="col-sm-12 col-md-12">
+								<br>
+								<a v-on:click="cadastrar()" class="btn btn-primary">Enviar</a>
+							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
-			<!-- END MAIN CONTENT -->
 		</div>
-		<!-- END MAIN -->
-		<div class="clearfix"></div>
+		<!-- END MAIN CONTENT -->
 	</div>
-	<!-- END WRAPPER -->
-	<!-- Javascript -->
-	<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
-	<script>
-		// Initialize Firebase
-		var config = {
-		apiKey: "AIzaSyD-AzHfDGqFPjk0CX3aEG_dkxDngxpWsLg",
-		authDomain: "pblengsoft-9128d.firebaseapp.com",
-		databaseURL: "https://pblengsoft-9128d.firebaseio.com",
-		projectId: "pblengsoft-9128d",
-		storageBucket: "pblengsoft-9128d.appspot.com",
-		messagingSenderId: "277046336190"
-	};
-	firebase.initializeApp(config);
+	<!-- END MAIN -->
+	<div class="clearfix"></div>
+</div>
+<!-- END WRAPPER -->
+<!-- Javascript -->
+<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+<script>
+	// Initialize Firebase
+	var config = {
+	apiKey: "AIzaSyD-AzHfDGqFPjk0CX3aEG_dkxDngxpWsLg",
+	authDomain: "pblengsoft-9128d.firebaseapp.com",
+	databaseURL: "https://pblengsoft-9128d.firebaseio.com",
+	projectId: "pblengsoft-9128d",
+	storageBucket: "pblengsoft-9128d.appspot.com",
+	messagingSenderId: "277046336190"
+};
+firebase.initializeApp(config);
 </script>
 <script src="assets/vendor/jquery/jquery.min.js"></script>
 <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>

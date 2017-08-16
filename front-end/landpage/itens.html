@@ -130,13 +130,13 @@
 
 
         <!-- Page Content -->
-        
+
         <div id="page-content-wrapper">
             <div class="container-fluid" id="itens">
                 <div class="col-sm-12" id="lista-itens">
-                    
+
                         <div v-for="item in itens" class="foto_Item col-lg-2 col-md-3 col-xs-6 thumb">
-                            <p class="nome_item">{{item.nome}}</p>
+                            <p class="nome_item"><strong>{{item.nome}}</strong></p>
                             <p>{{item.autor}}</p>
                             <a class="thumbnail" href="#">
                                 <img class="img-responsive" v-bind:src="item.image" v-bind:alt="item.descricao" src="http://placehold.it/400x300" alt="">

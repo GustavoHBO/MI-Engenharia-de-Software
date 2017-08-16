@@ -61,4 +61,27 @@ class ControllerItem {
             }
         });
     }
+
+    item() {
+        var item = new Vue({
+            el: '#item',
+            data: {
+                favorito:  false
+            },
+            methods: {
+                cliquei: () => {
+                    if(this.favorito){
+                        $(".star.glyphicon").click(function() {
+                            $(this).toggleClass("glyphicon-star-empty");
+                        });
+                    } else{
+                        $(".star.glyphicon").click(function() {
+                            $(this).toggleClass("glyphicon-star");
+                        });
+                    }
+                    this.favorito = !this.favorito;
+                }
+            }
+        });
+    }
 }

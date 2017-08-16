@@ -37,8 +37,8 @@ class ControllerItem {
     }
 
     novoItem() {
-        var imagens = new Vue({
-            el: '#imagens',
+        var cadastrarItem = new Vue({
+            el: '#cadastrarItem',
             data: {
                 item: {
                     numero_inventario: "",
@@ -75,8 +75,9 @@ class ControllerItem {
             },
             methods: {
                 cadastrar: () => {
-                    imagens.item.aquisicao = getElementsByName("mode_aquisicao");
-                    $.post("http://localhost:8000/api/public/item/cadastrar", novoItem.item).
+                    this.item.aquisicao = getElementsByName("mode_aquisicao");
+
+                    $.post("http://localhost:8000/api/public/item/cadastrar", item).
                     done((data) => {
                         location.href = "http://localhost:8000/front-end/dashboard/gerenciar-itens.html";
                     }).fail(() => {

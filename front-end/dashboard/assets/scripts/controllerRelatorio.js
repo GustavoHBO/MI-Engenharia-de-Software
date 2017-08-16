@@ -21,7 +21,13 @@ class ControllerRelatorio {
             },
             methods: {
 
-            }
+            },
+            /*created: () => {
+                //Pega a lista de relatórios
+                $.get("http://localhost:8000/api/public/usuario", data => {
+                    lista_relatorio.relatorios = data;
+                });
+            }*/
         });
     }
 
