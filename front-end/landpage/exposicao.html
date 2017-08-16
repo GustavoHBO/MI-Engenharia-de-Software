@@ -61,8 +61,6 @@
 
     <!--Old browser  JS-->
     <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="assets/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/slick/slick-theme.css"/>
 
 </head>
 
@@ -107,7 +105,8 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div>
-                <p>caminho p/ voltar etc</p>
+                <a name="Home" href="index.html#home">Home ></a>
+                <a name="Exposicoes" href="exposicoes.html">Exposições</a>
             </div>
             <div class="row exposicao-principal">
                 <div class="col-sm-6">
@@ -138,7 +137,7 @@
                 <div class="col-sm-12" id="lista-itens">
                     
                         <div v-for="item in itens" class="foto_Item col-lg-2 col-md-3 col-xs-6 thumb">
-                            <p class="nome_item">{{item.nome}}</p>
+                            <p class="nome_item"><strong>{{item.nome}}</strong></p>
                             <p>{{item.autor}}</p>
                             <a class="thumbnail" href="#">
                                 <img class="img-responsive" v-bind:src="item.image" v-bind:alt="item.descricao" src="http://placehold.it/400x300" alt="">

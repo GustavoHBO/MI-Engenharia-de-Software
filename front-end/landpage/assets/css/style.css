@@ -242,7 +242,7 @@ nav ul li {
 .img-item{
     width: 100%;
     height: auto;
-    padding-top: 90px;
+    padding-top: 20px;
 }
 
 .item-mini{
@@ -269,14 +269,17 @@ nav ul li {
     padding-top: 15px;
 }
 
+.caminho-wrapper ul li{
+}
+
 .star {
   font-size: 40px;
 	color:#FFCD2B;
-    padding-top: 90px;
+    padding-top: 20px;
 }
 
 .item-desc{
-    padding-top: 90px;
+    padding-top: 20px;
 }
 
 #calendario{
@@ -910,7 +913,6 @@ hr{
 .nome-noticia{
     font-weight: bold;
     font-size: 20px;
-
 }
 
 .titulo-pagina{
@@ -919,6 +921,11 @@ hr{
 
 .titulo-wrapper{
     margin-top: 40px;
+}
+
+.caminho-wrapper{
+    margin-top: 80px;
+    position: relative;
 }
 
 .imagem-noticia-container{
