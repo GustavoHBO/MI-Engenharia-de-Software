@@ -62,7 +62,7 @@ class ItemController extends Controller
     }
     /*RETORNA O NÚMERO DE ITENS*/
     public function numeroDeItensAtivos(){
-        $valor = DB::SELECT('SELECT COUNT(id_item) FROM item');
+        $valor = DB::SELECT('SELECT COUNT(id_item) FROM item WHERE ativo = 1');
 
          return response()->json($valor);
     }
@@ -94,31 +94,29 @@ class ItemController extends Controller
     public function cadastroItem(Request $request){
         $dados = $request->all();
         
-        //verifica se já não existe
-        $busca = DB::SELECT('SELECT id_item FROM item WHERE id_item = ?',
-        [$dados['id_item']]);
+        $add = DB::INSERT('INSERT INTO item (material, doador, funcao, procedencia, autor, origem, conservacao, colecao, categoria, classificacao, titulo,imagem_3d, estado_de_conservacao, iconologia, referencias_bibliograficas, descricao_objeto, local, data, historico, ativo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+        [$dados['material'],$dados['doador'], $dados['funcao'], $dados['procedencia'], $dados['autor'], $dados['origem'], $dados['conservacao'], $dados['colecao'], $dados['categoria'], $dados['classificacao'],$dados['titulo'],$dados['imagem_3d'], $dados['estado_de_conservacao'], $dados['iconologia'],$dados['referencias_bibliograficas'],$dados['descricao_objeto'],$dados['local'],$dados['data'], $dados['historico'], 1]);
 
-        if ($busca != null)
-            return response()->json(false);
 
-        $add = DB::INSERT('INSERT INTO item (id_item,material, doador, funcao, procedencia, autor, origem, conservacao, colecao, categoria, classificacao, titulo,imagem_3d, estado_de_conservacao, iconologia, referencias_bibliograficas, descricao_objeto, local, data, historico, ativo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
-        [$dados['id_item'],$dados['material'],$dados['doador'], $dados['funcao'], $dados['procedencia'], $dados['autor'], $dados['origem'], $dados['conservacao'], $dados['colecao'], $dados['categoria'], $dados['classificacao'],$dados['titulo'],$dados['imagem_3d'], $dados['estado_de_conservacao'], $dados['iconologia'],$dados['referencias_bibliograficas'],$dados['descricao_objeto'],$dados['local'],$dados['data'], $dados['historico'], 1]);
+        $id = DB::SELECT('SELECT id_item FROM item WHERE material = ? AND doador = ? AND funcao = ? AND procedencia = ? AND autor = ? AND origem = ? AND conservacao = ? AND colecao = ? AND categoria = ? AND classificacao = ? AND titulo = ? AND imagem_3d = ? AND estado_de_conservacao = ? AND iconologia = ? AND referencias_bibliograficas = ? AND descricao_objeto = ? AND local = ? AND data = ? AND historico = ? AND ativo',[$dados['material'],$dados['doador'], $dados['funcao'], $dados['procedencia'], $dados['autor'], $dados['origem'], $dados['conservacao'], $dados['colecao'], $dados['categoria'], $dados['classificacao'],$dados['titulo'],$dados['imagem_3d'], $dados['estado_de_conservacao'], $dados['iconologia'],$dados['referencias_bibliograficas'],$dados['descricao_objeto'],$dados['local'],$dados['data'], $dados['historico'], 1]);
 
         $add = DB::INSERT('INSERT INTO aquisicao_item (Item_id_item, data, modo_aquisicao, autor, observacao) VALUES (?,?,?,?,?)',
-        [$dados['id_item'],$dados['data_aquisicao'],$dados['modo_aquisicao'], $dados['autor_aquisicao'], $dados['observacao_aquisicao']]);
+        [$id[0]->id_item, $dados['data_aquisicao'],$dados['modo_aquisicao'], $dados['autor_aquisicao'], $dados['observacao_aquisicao']]);
+
+        
 
         $add = DB::INSERT('INSERT INTO caracteristicas_estilisticas_item (Item_id_item, materiais_constitutivos, tecnica_fabricacao, autoria) VALUES (?,?,?,?)',
-        [$dados['id_item'],$dados['materiais_cat_estilisticas'],$dados['tecnica_cat_estilisticas'], $dados['autoria_cat_estilisticas']]);
+        [$id[0]->id_item,$dados['materiais_cat_estilisticas'],$dados['tecnica_cat_estilisticas'], $dados['autoria_cat_estilisticas']]);
 
         $add = DB::INSERT('INSERT INTO dimensao_item (Item_id_item, altura, diamentro, largura, peso, comprimento) VALUES (?,?,?,?,?,?)',
-        [$dados['id_item'],$dados['altura_dimensao'],$dados['diametro_dimensao'],$dados['largura_dimensao'], $dados['peso_dimensao'], $dados['comprimento_dimensao']]);
+        [$id[0]->id_item,$dados['altura_dimensao'],$dados['diametro_dimensao'],$dados['largura_dimensao'], $dados['peso_dimensao'], $dados['comprimento_dimensao']]);
 
         $add = DB::INSERT('INSERT INTO documentacao_fotografica_item (Item_id_item, fotografo, data, foto_url) VALUES (?,?,?,?)',
-        [$dados['id_item'],$dados['fotografo_doc_fotografica'],$dados['data_doc_fotografica'], $dados['foto_doc_fotografica']]);
-
+        [$id[0]->id_item,$dados['fotografo_doc_fotografica'],$dados['data_doc_fotografica'], $dados['foto_doc_fotografica']]);
+        
 
         foreach($dados['foto_imagem'] as $f){
-            $add = DB::INSERT('INSERT INTO item_imagem (Item_id_item, foto_url) VALUES (?,?)', [$dados['id_item'],$f]);
+            $add = DB::INSERT('INSERT INTO item_imagem (Item_id_item, foto_url) VALUES (?,?)', [$id[0]->id_item, $f]);
         }
 
         if  ($add){
