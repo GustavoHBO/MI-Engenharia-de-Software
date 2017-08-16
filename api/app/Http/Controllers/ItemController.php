@@ -14,7 +14,12 @@ class ItemController extends Controller
     {
         $this->relatorioController = new RelatorioController;
     }
-    /*RETORNA TODOS OS DADOS DE TODOS ITENS*/
+    
+    /** 
+     * MÉTODO QUE RETORNA TODOS OS DADOS DE TODOS ITENS
+     * @author Gabriel Gomes
+     * @return todos itens cadastrados
+     */  
     public function todosItens(){
         $busca = DB::SELECT('SELECT * FROM item it, aquisicao_item aq_it, caracteristicas_estilisticas_item carac_est_it, dimensao_item dim_it,documentacao_fotografica_item doc_fot_it WHERE it.id_item = aq_it.Item_id_item AND it.id_item = carac_est_it.Item_id_item AND it.id_item = dim_it.Item_id_item AND it.id_item = doc_fot_it.Item_id_item ORDER BY it.id_item');
         
@@ -24,7 +29,12 @@ class ItemController extends Controller
         }
         return response()->json($busca);
     }
-    /*RETORNA TODOS OS ITENS ATIVOS*/
+    
+    /**
+     * MÉTODO RETORNA TODOS OS ITENS ATIVOS
+     * @author Gabriel Gomes
+     * @return todos itens ativos
+     */
     public function todosItensAtivos(){
         $busca = DB::SELECT('SELECT * FROM item it, aquisicao_item aq_it, caracteristicas_estilisticas_item carac_est_it, dimensao_item dim_it,documentacao_fotografica_item doc_fot_it WHERE it.id_item = aq_it.Item_id_item AND it.id_item = carac_est_it.Item_id_item AND it.id_item = dim_it.Item_id_item AND it.id_item = doc_fot_it.Item_id_item AND it.ativo = 1 ORDER BY it.id_item');
         
@@ -34,7 +44,12 @@ class ItemController extends Controller
         }
         return response()->json($busca);
     }
-    /*RETORNA TODOS OS ITENS ATIVOS POR FAIXA*/
+    /**
+     * MÉTODO RETORNA TODOS OS ITENS ATIVOS POR FAIXA
+     * @author Gabriel Gomes
+     * @param número para faixa de valores
+     * @return todos itens ativos por faixa de valores
+     */
     public function todosItensAtivosPorFaixa($faixa){
         $busca = DB::SELECT('SELECT * FROM item it, aquisicao_item aq_it, caracteristicas_estilisticas_item carac_est_it, dimensao_item dim_it,documentacao_fotografica_item doc_fot_it WHERE it.id_item = aq_it.Item_id_item AND it.id_item = carac_est_it.Item_id_item AND it.id_item = dim_it.Item_id_item AND it.id_item = doc_fot_it.Item_id_item AND it.ativo = 1 ORDER BY it.id_item');
         
@@ -59,14 +74,23 @@ class ItemController extends Controller
             return response()->json(false);
         }
         
-    }
-    /*RETORNA O NÚMERO DE ITENS*/
+    }    
+    /**
+     * MÉTODO RETORNA O NÚMERO DE ITENS
+     * @author Gabriel Gomes
+     * @return número de itens
+     */
     public function numeroDeItensAtivos(){
         $valor = DB::SELECT('SELECT COUNT(id_item) FROM item WHERE ativo = 1');
 
          return response()->json($valor);
     }
-    /*BUSCAR ITEM PELO ID*/
+    /**
+     * MÉTODO BUSCAR ITEM PELO ID
+     * @author Gabriel Gomes
+     * @param id
+     * @return item
+     */
     public function buscarItem($id){
         $busca = DB::SELECT('SELECT * FROM item it, aquisicao_item aq_it, caracteristicas_estilisticas_item carac_est_it, dimensao_item dim_it,documentacao_fotografica_item doc_fot_it WHERE id_item = ? AND aq_it.Item_id_item = ? AND carac_est_it.Item_id_item = ? AND dim_it.Item_id_item = ? AND doc_fot_it.Item_id_item = ?',
         [$id,$id,$id,$id,$id]);
@@ -80,7 +104,12 @@ class ItemController extends Controller
         $busca->foto_imagem = $imagens;
         return response()->json($busca);
     }
-    /*PESQUISAR ITEM PELO TITULO OBS: só retornar os dados da tabela "item"*/
+    /**
+     * MÉTODO PESQUISAR ITEM PELO TITULO OBS: só retornar os dados da tabela "item"
+     * @author Gabriel Gomes
+     * @param titulo
+     * @return item
+     */
     public function pesquisarItem($titulo){
         $busca = DB::SELECT('SELECT * FROM item WHERE titulo LIKE  ? ORDER BY titulo',
         ["%".$titulo."%"]);
@@ -90,7 +119,12 @@ class ItemController extends Controller
         $busca = $busca;
         return response()->json($busca);
     }
-    /*CADASTRO DE ITEM*/
+    /**
+     * MÉTODO CADASTRO DE ITEM
+     * @author Gabriel Gomes
+     * @param Request
+     * @return boolean, retorna se o item foi cadastrado
+     */
     public function cadastroItem(Request $request){
         $dados = $request->all();
         
@@ -126,7 +160,12 @@ class ItemController extends Controller
             return response()->json(false);
         }
     }
-    /*EDITAR ITEM*/
+    /**
+     * MÉTODO EDITAR ITEM
+     * @author Gabriel Gomes
+     * @param Request
+     * @return boolean, retorna se o item foi alterado
+     */
     public function editarItem (Request $request){
         $dados = $request->all();
 
@@ -157,7 +196,12 @@ class ItemController extends Controller
         }
 
     }
-    /*DESATIVA ITEM*/
+    /**
+     * MÉTODO DESATIVA ITEM
+     * @author Gabriel Gomes
+     * @param Request
+     * @return boolean, retorna se o item foi desativado
+     */
     public function desativaItem (Request $request){
         $dados = $request->all();
 
@@ -169,8 +213,12 @@ class ItemController extends Controller
             return response()->json(false);
         }
     }
-
-    /*ATIVA ITEM*/
+    /**
+     * MÉTODO ATIVA ITEM
+     * @author Gabriel Gomes
+     * @param Request
+     * @return boolean, retorna se o item foi ativado
+     */
     public function ativaItem (Request $request){
         $dados = $request->all();
 
@@ -182,7 +230,12 @@ class ItemController extends Controller
             return response()->json(false);
         }
     }
-    /*FAVORITA ITEM*/
+    /**
+     * MÉTODO FAVORITA ITEM
+     * @author Gabriel Gomes
+     * @param Request
+     * @return boolean, retorna se o item foi favoritado
+     */
     public function favoritaItem(Request $request){
         $dados = $request->all();
 
@@ -201,9 +254,14 @@ class ItemController extends Controller
             return response()->json(false);
         }
     }
-    /*RETORNA TODOS ITENS FAVORITOS*/
+   
+    /**
+     * MÉTODO RETORNA TODOS ITENS FAVORITOS
+     * @author Gabriel Gomes
+     * @param id do usuario
+     * @return retorna todos itens favoritados por um usuário
+     */
     public function todosItensFavoritos($id_usuario){
-        //FALTA COLOCAR MAIS PARAMETROS PARA O RETORNO?
         $busca = DB::SELECT('SELECT id_item, it.material, it.doador, it.funcao, it.procedencia, it.autor, it.origem, it.conservacao, it.colecao, it.categoria, it.classificacao, it.titulo, it.imagem_3d, it.estado_de_conservacao, it.iconologia, it.referencias_bibliograficas, it.descricao_objeto, it.local, it.data, it.historico FROM favorita_item fi INNER JOIN item it ON fi.Item_id_item = it.id_item INNER JOIN usuario usr ON usr.id_usuario = ?',[$id_usuario]);
         
         if ($busca == null)
@@ -211,7 +269,12 @@ class ItemController extends Controller
         
         return response()->json($busca);
     }
-    /*REMOVE FAVORITO*/
+    /**
+     * MÉTODO REMOVE FAVORITO
+     * @author Gabriel Gomes
+     * @param Request
+     * @return boolean, se o item foi removido dos favoritos
+     */
     public function removerFavorito (Request $request){
         $dados = $request->all();
 
