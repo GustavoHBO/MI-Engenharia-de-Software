@@ -13,17 +13,15 @@ class EventoController extends Controller
     {
         $this->relatorioController = new RelatorioController;
     }
-    /*CADASTRO DE EVENTO. obs:o evento já fica ativo*/
+    /**
+     * MÉTODO CADASTRO DE EVENTO. obs:o evento já fica ativo
+     * @author Gabriel Gomes
+     * @param  Request
+     * @return boolean, se cadastrou evento
+     */
     public function cadastroEvento(Request $request){
         $dados = $request->all();
-        
-        //verifica se já não existe um evento cadastrado
-        //$busca = DB::SELECT('SELECT titulo FROM evento WHERE titulo = ?',
-        //[$dados['titulo']]);
-
-        //if ($busca != null)
-        //    return response()->json(false);            
-       
+   
         $add = DB::INSERT('INSERT INTO evento (titulo, local, responsavel, foto_url, artista, horario_visitacao, data_inicio, data_fim, categoria, ativo) VALUES (?,?,?,?,?,?,?,?,?,?)',
         [$dados['titulo'],$dados['local'], $dados['responsavel'], $dados['foto_url'], $dados['artista'], $dados['horario_visitacao'], $dados['data_inicio'], $dados['data_fim'], $dados['categoria'],1]);
 
@@ -35,19 +33,30 @@ class EventoController extends Controller
             return response()->json(false);
         }
     }
-    /*BUSCA TODOS EVENTOS*/
+    /**
+     * MÉTODO BUSCA TODOS EVENTOS
+     * @author Gabriel Gomes
+     * @return todos eventos
+     */
     public function todosEventos(){
         $busca = DB::SELECT('SELECT * FROM evento ORDER BY id_evento');
         return response()->json($busca);
     }
-
-    /*TODOS EVENTOS ATIVOS*/
+    /**
+     * MÉTODO TODOS EVENTOS ATIVOS
+     * @author Gabriel Gomes
+     * @return todos eventos ativos
+     */
     public function todosEventosAtivos(){
         $busca = DB::SELECT('SELECT * FROM evento WHERE ativo = 1 ORDER BY id_evento');
         return response()->json($busca);
     }
-
-    /*BUSCA UM EVENTO PELO ID*/
+    /**
+     * MÉTODO BUSCA UM EVENTO PELO ID
+     * @author Gabriel Gomes
+     * @param id
+     * @return evento
+     */
     public function buscarEvento($id){
         $busca = DB::SELECT('SELECT * FROM evento WHERE id_evento = ?',
         [$id]);
@@ -57,8 +66,12 @@ class EventoController extends Controller
         $busca = $busca[0];
         return response()->json($busca);
     }
-
-    /*PESQUISAR UM EVENTO PELO TITULO*/
+    /**
+     * MÉTODO PESQUISAR UM EVENTO PELO TITULO
+     * @author Gabriel Gomes
+     * @param titulo
+     * @return evento
+     */
     public function pesquisarEvento($titulo){
         $busca = DB::SELECT('SELECT * FROM evento WHERE titulo LIKE ? ORDER BY titulo',
         ["%".$titulo."%"]);
@@ -67,9 +80,12 @@ class EventoController extends Controller
     
         return response()->json($busca);
     }
-
-    
-    /*EDITAR EVENTO*/
+    /**
+     * MÉTODO EDITAR EVENTO
+     * @author Gabriel Gomes
+     * @param Request
+     * @return boolean, se o evento foi alterado
+     */
     public function editarEvento (Request $request){
         $dados = $request->all();
 
@@ -84,7 +100,12 @@ class EventoController extends Controller
         }
 
     }
-    /*DESATIVA EVENTO*/
+    /**
+     * MÉTODO DESATIVA EVENTO
+     * @author Gabriel Gomes
+     * @param Request
+     * @return boolean, se o evento foi desativado
+     */
     public function desativaEvento (Request $request){
         $dados = $request->all();
 
@@ -98,7 +119,12 @@ class EventoController extends Controller
         }
 
     }
-    /*ATIVA EVENTO*/
+    /**
+     * MÉTODO ATIVA EVENTO
+     * @author Gabriel Gomes
+     * @param  Request
+     * @return boolean, se o evento foi ativado
+     */
     public function ativaEvento (Request $request){
         $dados = $request->all();
 
@@ -111,7 +137,12 @@ class EventoController extends Controller
         }
 
     }
-    /*FAVORITA EVENTO*/
+    /**
+     * MÉTODO FAVORITA EVENTO
+     * @author Gabriel Gomes
+     * @param Request
+     * @return boolean, se o evento foi favoritado
+     */
     public function favoritaEvento(Request $request){
         $dados = $request->all();
 
@@ -130,8 +161,12 @@ class EventoController extends Controller
             return response()->json(false);
         }
     }
-
-    /*LISTA TODOS EVENTOS FAVORITOS*/
+    /**
+     * MÉTODO LISTA TODOS EVENTOS FAVORITOS
+     * @author Gabriel Gomes
+     * @param id do usuário
+     * @return todos eventos favoritados por um usuario
+     */
     public function todosEventosFavoritos($id_usuario){
         $busca = DB::SELECT('SELECT ev.titulo,ev.local, ev.responsavel,  ev.foto_url,  ev.artista,  ev.horario_visitacao,  ev.data_inicio,  ev.data_fim,  ev.categoria FROM favorita_evento fe INNER JOIN evento ev ON fe.Evento_id_evento = ev.id_evento INNER JOIN usuario usr ON usr.id_usuario = ?',[$id_usuario]);
         
@@ -140,7 +175,12 @@ class EventoController extends Controller
         
         return response()->json($busca);
     }
-    /*REMOVE EVENTO DOS FAVORITOS*/
+    /**
+     * MÉTODO REMOVE EVENTO DOS FAVORITOS
+     * @author Gabriel Gomes
+     * @param Request
+     * @return boolean, se o evento foi removido dos favoritos
+     */
     public function removerFavorito (Request $request){
         $dados = $request->all();
 
