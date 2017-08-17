@@ -286,23 +286,6 @@ nav ul li {
 
 }
 
-/*=====================================================================
-                   PÁGINA DE NOTÍCIAS 
-====================================================================*/
-
-.nome-noticia{
-    font-weight: bold;
-    font-size: 20px;
-
-}
-
-.titulo-pagina{
-    text-align: center;
-}
-
-.titulo-wrapper{
-    margin-top: 40px;
-}
 
 .btn-secondary{
     color: white;
@@ -912,7 +895,7 @@ hr{
 
 .nome-noticia{
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .titulo-pagina{
