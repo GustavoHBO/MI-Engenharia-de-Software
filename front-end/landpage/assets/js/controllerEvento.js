@@ -7,6 +7,7 @@ class ControllerEvento {
             el: '#lista-eventos',
             data: {
                 events: [{
+                    id: '1',
                     titulo: 'Exposição de Obras',
                     artista: 'Fulano',
                     data: '25/04/2017 a 05/05/2017',
@@ -18,6 +19,7 @@ class ControllerEvento {
                     imagem: 'http://placehold.it/300x400'
                 },
                 {
+                    id: '2',
                     titulo: 'Exposição de Obras',
                     artista: 'Fulano',
                     data: '25/04/2017 a 05/05/2017',
@@ -29,6 +31,7 @@ class ControllerEvento {
                     imagem: 'http://placehold.it/300x400'
                 },
                 {
+                    id: '3',
                     titulo: 'Exposição de Obras',
                     artista: 'Fulano',
                     data: '25/04/2017 a 05/05/2017',
