@@ -278,6 +278,11 @@ nav ul li {
     padding-top: 20px;
 }
 
+.star:hover{
+    -webkit-transform:scale(1.3);
+    cursor: pointer;
+}
+
 .item-desc{
     padding-top: 20px;
 }
