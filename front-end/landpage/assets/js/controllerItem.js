@@ -19,37 +19,37 @@ class ControllerItem {
                     image: 'http://placehold.it/400x300',
                     descricao: 'Chapéu de couro de cavalo de 1941'
                 },{
-                    id: 2,
+                    id: 3,
                     nome: 'Chapéu',
                     autor: 'Carlos Manoel',
                     image: 'http://placehold.it/400x300',
                     descricao: 'Chapéu de couro de cavalo de 1941'
                 },{
-                    id: 2,
+                    id: 4,
                     nome: 'Chapéu',
                     autor: 'Carlos Manoel',
                     image: 'http://placehold.it/400x300',
                     descricao: 'Chapéu de couro de cavalo de 1941'
                 },{
-                    id: 2,
+                    id: 5,
                     nome: 'Chapéu',
                     autor: 'Carlos Manoel',
                     image: 'http://placehold.it/400x300',
                     descricao: 'Chapéu de couro de cavalo de 1941'
                 },{
-                    id: 2,
+                    id: 6,
                     nome: 'Chapéu',
                     autor: 'Carlos Manoel',
                     image: 'http://placehold.it/400x300',
                     descricao: 'Chapéu de couro de cavalo de 1941'
                 },{
-                    id: 2,
+                    id: 7,
                     nome: 'Chapéu',
                     autor: 'Carlos Manoel',
                     image: 'http://placehold.it/400x300',
                     descricao: 'Chapéu de couro de cavalo de 1941'
                 },{
-                    id: 2,
+                    id: 8,
                     nome: 'Chapéu',
                     autor: 'Carlos Manoel',
                     image: 'http://placehold.it/400x300',
