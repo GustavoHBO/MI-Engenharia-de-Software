@@ -269,9 +269,6 @@ nav ul li {
     padding-top: 15px;
 }
 
-.caminho-wrapper ul li{
-}
-
 .star {
   font-size: 40px;
 	color:#FFCD2B;
@@ -944,6 +941,12 @@ hr{
 .caminho-wrapper{
     margin-top: 80px;
     position: relative;
+}
+
+.logo-caminho{
+    width: 20px;
+    height: auto;
+    float: left;
 }
 
 .imagem-noticia-container{
