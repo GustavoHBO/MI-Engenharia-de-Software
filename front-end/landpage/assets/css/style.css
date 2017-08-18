@@ -223,16 +223,16 @@ nav ul li {
     height: 15%;
 }
 
-#main-nav li a {
+#main-nav li a, #login {
     position: relative;
     display: block;
     height: 100%;
     border-bottom: 1px solid #dfdbec;
-    color: #d90939;
     font-size: 20px;
     font-size: 1.25rem;
     font-weight: bold;
 }
+
 .brand-logo img{
     width:50%;
     margin-top: 2%;
@@ -287,20 +287,25 @@ nav ul li {
     padding-top: 20px;
 }
 
-#calendario{
-
-}
 
 
 .btn-secondary{
     color: white;
-    background-color: #678D58;
+    background-color: #A07D4A;
+}
+
+.lembrar-me{
+    background-color: #678D58; 
 }
 
 .botao {
     color: white !important;
 }
 
+#main-footer h6{
+    font-family: 'Freckle Face', cursive;
+    color: white;
+}
 
 /***********************************************************************
 *  OPAQUE NAVBAR SECTION
@@ -395,6 +400,31 @@ h2{
 
 .nome-itens{
     font-family: 'Open Sans', sans-serif;
+}
+
+img {
+    display: block;
+}
+
+.img-noticias {
+    position: relative;
+    display: inline-block;
+}
+
+.manchete {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    transform: translate( -50%, -50% );
+    text-align: center;
+    color: white !important;
+    font-weight: bold;
+}
+
+.texto{
+    font-size: 1rem;
 }
 
 /*==============================================================

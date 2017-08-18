@@ -12,7 +12,7 @@
     
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- FALTA trocar esse logo -->
-    <link rel="icon" type="image/png" href="assets/img/logo.png">
+    <link rel="icon" type="image/png" href="assets/img/logo2.png">
 
     <!-- Fontes  -->
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,400italic,500,100italic,700' rel='stylesheet' type='text/css'>
@@ -91,9 +91,10 @@
                 <li><a href="#noticias">Notícias</a></li> 
                 <li><a href="#eventos">Eventos</a></li> 
                 <li><a href="#calendario">Calendário</a></li> 
-                <li><a href="#contatos">Contatos</a></li> 
                 <li><a href="#acervo">Acervo</a></li>
-                <li><buton><a href="#login" class="btn btn-secondary-outline btn-lg" id="login">Log In!</a></button></li>
+                <li><a href="#contatos">Contatos</a></li> 
+                
+                <li><buton><a href="#login" class="btn btn-secondary-outline btn-lg" id="login">Login</a></button></li>
             </ul>
             </div>
         </div>
@@ -212,60 +213,39 @@
                         </div><!-- End of col-md-12 -->
                     </div><!-- End of row -->
 
-
-                                    <!-- Inicializa Carousel -->
                                     <div class="row">
-
-                                    <div class="col-sm-4 col-sm-offset-4">              
-                                        <div id="myCarouselNoticias" class="carousel slide" data-ride="carousel">
-                                        <!-- Indicators -->
-                                        <ol class="carousel-indicators">
-                                            <li data-target="#myCarouselNoticias" data-slide-to="0" class="active"></li>
-                                            <li data-target="#myCarouselNoticias" data-slide-to="1"></li>
-                                            <li data-target="#myCarouselNoticias" data-slide-to="2"></li>
-                                        </ol>
-
-                                        <!-- Wrapper for slides -->
-
-                                        <div class="carousel-inner">
-                                            <!-- FALTA método pra buscar 3 notícias no banco --> 
-
-                                            <div class="item active"> 
-                                            <img src="assets/img/artefatos-museu-red.jpg" alt="Noticia 1">
-                                            <div class="carousel-caption">
-                                                <h3>Manchete da Notícia 1</h3>
+                                       <div class="col-sm-6 col-md-4 col-lg-3">
+                                            <div class="row">
+                                             <div class="img-noticias">
+                                                    <a href=""><img src="assets/img/noticia1.jpg" alt=""></a>
+                                                    <div class="manchete">
+                                                        <h4 class="texto">Acervo do Diário de Feira é doado ao Museu Casa do Sertão</h4>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            </div>
-
-                                            <div class="item">
-                                            <img src="assets/img/couro-museu-re.jpg" alt="Noticia 2" style="width:100%;">
-                                            <div class="carousel-caption">
-                                                <h3>Manchete da Notícia 2</h3>
-                                            </div>
-                                            </div>
-
-                                            <div class="item">
-                                            <img src="assets/img/expo-museu-red.jpg" alt="Noticia 3" style="width:100%;">
-                                            <div class="carousel-caption">
-                                                <h3>Manchete da Notícia 3</h3>
-                                            </div>
+                                            <div class="row">
+                                                <div class="img-noticias">
+                                                    <a href=""><img src="assets/img/noticia3.jpg" alt=""></a>
+                                                    <div class="manchete">
+                                                        <h4 class="texto">UEFS faz conservação preventiva do Museu Casa do Sertão</h4>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-
-                                            <!-- Left and right controls -->
-                                        <a class="left carousel-control" href="#myCarouselNoticias" data-slide="prev">
-                                            <span class="glyphicon glyphicon-chevron-left"></span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                        <a class="right carousel-control" href="#myCarouselNoticias" data-slide="next">
-                                            <span class="glyphicon glyphicon-chevron-right"></span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-                                        </div>
+                                       
+                                       
+                                        <div class="col-sm-6 col-md-8 col-lg-6 text-center">
+                                                   <div class="img-noticias">
+                                                    <a href=""><img src="assets/img/noticia2.jpg" alt=""></a>
+                                                    <div class="manchete">
+                                                        <h4 class="texto">Abertura da Exposição Indígenas do Nordeste</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                
                                         
-                                        <br>
                                     </div>
-
+                                    <br>
                                     <div class="row">
                                         <div class="col-sm-12 text-center">
                                             <button type="button" class="btn btn-secondary ver-mais"><a class="botao" href="noticias.html">Ver mais <i class="fa-fw fa fa-chevron-right" aria-hidden="true"></i></a>
@@ -307,7 +287,7 @@
                                          <img src="assets/img/evento1.jpg" alt="Fotografias em preto e branco expostas no Museu">
                                             <!-- Título do evento -->
                                           <div class="caption">
-                                             <h6>Exposição Feira Livre da Feira de Santana</h6>
+                                             <h6><b>Exposição Feira Livre da Feira de Santana</b></h6>
                                           </div>
                                         </div>
                                     </div>
@@ -318,7 +298,7 @@
                                          <img src="assets/img/evento2.jpg" alt="Casa sertaneja em miniatura">
                                             <!-- Título do evento -->
                                           <div class="caption">
-                                             <h6>Exposição de Obras em Miniatura</h6>
+                                             <h6><b>Exposição de Obras em Miniatura</b></h6>
                                           </div>
                                         </div>
                                     </div>
@@ -329,7 +309,7 @@
                                          <img src="assets/img/evento3.jpg" alt="Foto de um grupo de indígenas na Universidade Estadual de Feira de Santana">
                                             <!-- Título do evento -->
                                           <div class="caption">
-                                             <h6>Exposição Indígenas do Nordeste</h6>
+                                             <h6><b>Exposição Indígenas do Nordeste</b></h6>
                                           </div>
                                         </div>
                                     </div>
@@ -363,7 +343,7 @@
                                     </div>
                                 </div>    
                                 <br>                                                          
-                                <div class="page col-sm-6 col-sm-offset-4">
+                                <div class="page col-sm-6 col-xs-offset-4">
                                           <div style="width:100%; max-width:500px; display:inline-block;">
                                             <div class="monthly" id="mycalendar"></div>
                                           </div>
@@ -378,10 +358,47 @@
                     <br>
                     <hr>
                 </div><!-- End of container -->
-                
             </section><!-- End of Team Section -->
 
-            <section id="eventos" class="service colorsbg">
+
+            
+            <section id="acervo" class="service colorsbg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main_service_area">
+                                <div class="head_title m-y-3 p-t-3 wow fadeInUp">
+                                    <div class="row">
+                                        <div class="col-md-4 head_title">
+                                            <h1>Acervo</h1>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h6>Conheça os itens do museu</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                        <h3 class="text-center">Deseja conhecer o acervo do Museu Casa do Sertão?</h3>
+                                        <h5 class="text-center">Nosso site disponibiliza fotos e informações gerais sobre os itens armazenados no museu para usuários cadastrados.</h5> 
+                                        <br>
+                                        <h5 class="text-center">Faça login e saiba mais!</h5>
+                                        <br>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-xs-8 col-xs-offset-2 col-sm-2 col-sm-offset-5">
+                                        <img src="assets/img/logo.png" alt="">
+                                    </div>
+                                </div>
+                                
+                             <hr>
+                </div><!-- End of container -->
+            </section><!-- End of Service Section -->
+
+
+            <section id="pesquisa" class="service colorsbg">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -396,15 +413,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <div class="row">
-                                    <!-- FALTA método pra buscar 3 eventos no banco -->
-
                                     <div class="col-sm-6">
                                         <p>Inserir pesquisa aqui!</p>
                                     </div>
                                 </div>
-                                
                              <hr>
                 </div><!-- End of container -->
             </section><!-- End of Service Section -->
@@ -470,12 +483,14 @@
 
                                         </div>
                                         <!-- Copyright -->
-                                        <div class="row">
+                                        <div id="main-footer" class="row">
                                             <div class="main_footer">
-                                                <div class="col-md-3">
+                                                <div class="col-md-2 col-xs-4">
                                                     <div class="footer_logo text-xs-center m-b-2"> 
                                                             <!-- FALTA logo do museu -->
-                                                        <img src="assets/img/logo.png" alt="" />
+                                                        <img src="assets/img/logo2.png" alt="" />
+                                                        <br>
+                                                        <h6>Museu Casa do Sertão</h6>
                                                     </div>
                                                 </div>
 
