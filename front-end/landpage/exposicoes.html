@@ -1,14 +1,11 @@
 <!doctype html>
-
 <html lang="">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Museu Casa do Sertão - Exposições</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Fontes  -->
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,400italic,500,100italic,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto:500" rel="stylesheet">
@@ -19,16 +16,9 @@
     <link href="https://fonts.googleapis.com/css?family=Kurale" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
-
-
-
-
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-
-
-
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/fonticons.css">
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
@@ -36,53 +26,36 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/collapse-nav.css">
-
     <!-- For navmenu css -->
     <link rel="stylesheet" href="assets/css/navmenu.css" />
-
     <!--For Plugins external css-->
     <link rel="stylesheet" href="assets/css/plugins.css" />
-
     <!--Theme custom css -->
     <link rel="stylesheet" href="assets/css/style.css">
-
     <!--Theme Responsive css-->
     <link rel="stylesheet" href="assets/css/responsive.css" />
-
     <link href="assets/css/simple-sidebar.css" rel="stylesheet">
-
     <!--Theme Colors css-->
     <!--<link rel="stylesheet" href="assets/css/white.css">-->
-
     <!--Theme Colors css-->
     <!--<link rel="stylesheet" href="assets/css/white.css">-->
-
-
-
     <!--Old browser  JS-->
     <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-
 </head>
-
 <!-- Começo do corpo -->
-
-
 <body data-spy="scroll" data-target="#scrollspy">
-
     <!-- Navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top opaque-navbar opaque">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navMain">
-                   <span class="icon-bar" style="color:white;"></span>
-                   <span class="icon-bar" style="color:white;"></span>
-                   <span class="icon-bar" style="color:white;"></span>
-               </button>
-
-               <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i> <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
-</a>
-
-               <a class="logo-ativo" id="logo" href="#">Museu Casa do Sertão</a>
+                    <span class="icon-bar" style="color:white;"></span>
+                    <span class="icon-bar" style="color:white;"></span>
+                    <span class="icon-bar" style="color:white;"></span>
+                </button>
+                <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i> <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </a>
+                <a class="logo-ativo" id="logo" href="#">Museu Casa do Sertão</a>
             </div>
             <div class="collapse navbar-collapse" id="navMain">
                 <ul class="nav navbar-nav pull-right">
@@ -98,11 +71,9 @@
             </div>
         </div>
     </div>
-
-
     <div class="container-fluid">
         <div class="row">
-        <!-- Menu Lateral -->
+            <!-- Menu Lateral -->
             <div id="wrapper">
                 <!-- Sidebar -->
                 <div id="sidebar-wrapper">
@@ -114,91 +85,71 @@
                             <li><a class="subtopico" href="#">Geral</a></li>
                             <li><a class="subtopico" href="#">Favoritos </a></li>
                         </ul>
-
                         <li>
                             <a href="#">Exposições</a>
                         </li>
                     </ul>
                 </div>        <!-- /#sidebar-wrapper -->
+                <!-- Page Content -->
+                <div id="page-content-wrapper">
+                    <div class="container-fluid" id="lista-exposicoes">
 
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid" id="">
-                    
-                    <!-- Exposição principal -->
-                    <div class="row exposicao-principal">
-                        <div class="col-sm-6">
-                            <img class="img-responsive img-expo" src="http://placehold.it/400x300" alt="">
-                        </div>
-                   
-                        <div class="col-sm-4 col-sm-offset-1 expo-prin">
-                            <h4>Título da Exposição</h4>
-                            <p>Descrição</p>
-                            <h4>Categoria: categoria</h4>
-                            <h4>Data inicio: 32/23/43</h4>
-                            <h4>Data término: 24/23/32</h4>
-                            <h4>Descrição: </h4>
-                            <p>Insira aqui uma breve descrição do evento. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                    </div> <!-- Fim da exposição principal -->
-                   
+                        <!-- Exposição principal -->
+                        <div class="row exposicao-principal" >
+                            <div class="col-sm-6">
+                                <img class="img-responsive img-expo" :src="exposicao_principal.imagem" alt="">
+                            </div>
+                            <div class="col-sm-4 col-sm-offset-1 expo-prin">
+                                <h4>{{exposicao_principal.titulo}}</h4>
+                                <h4>Categoria: {{exposicao_principal.categoria}}</h4>
+                                <h4>Data inicio: {{exposicao_principal.data_inicio}}</h4>
+                                <h4>Data término: {{exposicao_principal.data_fim}}</h4>
+                                <h4>Descrição: </h4>
+                                <p>{{exposicao_principal.descricao}}</p>
+                            </div>
+                        </div> <!-- Fim da exposição principal -->
                         <!-- Linha de exposições secundárias -->
                         <div class="row">
                             <!-- Início de uma exposição -->
-                            <div class="col-sm-3">
-                                <img class="img-responsive item-mini" src="http://placehold.it/400x300" alt="">
-                            </div>
-                            <div class="col-sm-3 expo-desc">
-                                <h4>Título da Exposição</h4>
-                                <p>Descrição</p>
-                                <h4>Categoria: categoria</h4>
-                                <h4>Data inicio: 32/23/43</h4>
-                                <h4>Data término: 24/23/32</h4>
-                            </div>
-                            <!-- Fim de uma exposição -->
-                            
-                            <div class="col-sm-3">
-                                <img class="img-responsive item-mini" src="http://placehold.it/400x300" alt="">
-                            </div>
-                            <div class="col-sm-3 expo-desc">
-                                <h4>Título da Exposição</h4>
-                                <p>Descrição</p>
-                                <h4>Categoria: categoria</h4>
-                                <h4>Data inicio: 32/23/43</h4>
-                                <h4>Data término: 24/23/32</h4>
+                            <div v-if="exposicoes.length != 0">
+                                <div v-for="exposicao in exposicoes">
+                                    <div class="col-sm-3">
+                                        <img class="img-responsive item-mini" :src="exposicao.imagem" alt="">
+                                    </div>
+                                    <div class="col-sm-3 expo-desc">
+                                        <h4>{{exposicao.titulo}}</h4>
+                                        <p>{{exposicao.descricao}}</p>
+                                        <h4>Categoria: {{exposicao.categoria}}</h4>
+                                        <h4>Data inicio: {{exposicao.data_inicio}}</h4>
+                                        <h4>Data término: {{exposicao.data_fim}}</h4>
+                                    </div>
+                                    <!-- Fim de uma exposição -->
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-        <!-- /#page-content-wrapper -->
+                <!-- /#page-content-wrapper -->
             </div>
-    <!-- /#wrapper -->
+            <!-- /#wrapper -->
         </div>
     </div>
-
-
-
-
     <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
     <script src="assets/js/vendor/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <script src="assets/js/jquery.easing.1.3.js"></script>
-
     <script>
         $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-</script>
-
-<script src="assets/js/sidebar.js"></script>
-
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+    <script src="assets/js/sidebar.js"></script>
+    <!-- VUE.JS CDN -->
+    <script src="https://unpkg.com/vue"></script>
+    <!-- Javascript -->
+    <script src="assets/js/ControllerExposicao.js"></script>
+    <!-- Instanciando o controller desta página -->
+    <script>new ControllerExposicao().listarExposicoes();</script>
 </body>
-
 </html>
