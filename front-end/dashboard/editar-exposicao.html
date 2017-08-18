@@ -127,30 +127,20 @@
 						</div>
 						<div class="panel-body">
 							<div id="editarExposicao" class="row">
-								<input id="nome" type="text" class="form-control" v-model="nome" required>
+								<input id="nome" type="text" class="form-control" v-model="exposicao.nome" required>
 								<br>
-								<input id="titulo" type="text" class="form-control" v-model="titulo" required>
+								<input id="titulo" type="text" class="form-control" v-model="exposicao.titulo" required>
 								<br>
-								<input id="descricao" type="text" class="form-control" v-model="descricao" required>
+								<input id="descricao" type="text" class="form-control" v-model="exposicao.descricao" required>
 								<br>
 								<div class="col-md-6 col-sm-12" >
-									Data de início atual:
-									<input id="data_inicio_atual" type="text" class="form-control" v-model.data="dataInicio" required>
+									Data de início:
+									<input id="data_inicio_atual" type="data" class="form-control" v-model.data="exposicao.data_inicio" required>
 									<br>
 								</div>
 								<div class="col-md-6 col-sm-12">
-									Nova data de início:
-									<input id="data_inicio" type="date" class="form-control" required>
-									<br>
-								</div>
-								<div class="col-md-6 col-sm-12">
-									Data de término atual:
-									<input id="data_termino_atual" type="text" class="form-control" v-model="dataTermino" required>
-									<br>
-								</div>
-								<div class="col-md-6 col-sm-12">
-									Nova data de término:
-									<input id="data_termino" type="date" class="form-control" required>
+									Data de término:
+									<input id="data_termino" type="date" class="form-control" v-model.data="exposicao.data_termino" required>
 									<br>
 								</div>
 								<button class="btn btn-primary">Enviar</button>

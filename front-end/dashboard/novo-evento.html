@@ -127,7 +127,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<form>
+								<form v-on:submit="cadastrar()">
 									<input v-model="evento.titulo" type="text" class="form-control" placeholder="Título" required>
 									<br>
 									<input v-model="evento.local" type="text" class="form-control" placeholder="Local" required>
@@ -148,7 +148,7 @@
 									<input v-on:change="fotoAdd" type="file" class="form-control" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"
 									id="imagens" name="arquivos" accept=".png, .jpg, .jpeg" required/>
 									<br>
-									<button v-on:click="cadastrar()" class="submit btn btn-primary">Criar Evento</button>
+									<button class="submit btn btn-primary">Criar Evento</button>
 								</form>
 							</div>
 

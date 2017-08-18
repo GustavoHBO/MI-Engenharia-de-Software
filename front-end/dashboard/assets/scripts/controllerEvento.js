@@ -54,16 +54,13 @@ class ControllerEvento {
             },
             methods: {
                 fotoAdd: (event) => {
-                    novoEvento.evento.foto_url = "imagem.png";
-                    /*
                     var file = event.target.files[0];
                     //converter a imagem para BASE64
                     var reader = new FileReader();
                     reader.onloadend = function () {
-                        this.evento.foto_url = reader.result;
+                        novoEvento.evento.foto_url = reader.result;
                     }
                     reader.readAsDataURL(file);
-                    */
                 },
                 cadastrar: () => {
 
@@ -87,16 +84,13 @@ class ControllerEvento {
             },
             methods: {
                 fotoAdd: (event) => {
-                    novoEvento.evento.foto_url = "img.png";
-                    /*
                     var file = event.target.files[0];
                     //converter a imagem para BASE64
                     var reader = new FileReader();
                     reader.onloadend = function () {
-                        this.evento.foto_url = reader.result;
+                        editarEvento.evento.foto_url = reader.result;
                     }
                     reader.readAsDataURL(file);
-                    */
                 },
                 salvar: () => {
                     $.post("http://localhost:8000/api/public/evento/editar", editarEvento.evento).

@@ -82,7 +82,7 @@ $app->group(['prefix' => 'noticia'], function () use ($app){
 
 
 /*ITEM*/
-$app->group(['prefix' => '/item'], function () use ($app) {
+$app->group(['prefix' => 'item'], function () use ($app) {
     //lista todos itens
     $app->get('/', 'ItemController@todosItens');
     //lista todos itens ativos
@@ -111,7 +111,7 @@ $app->group(['prefix' => '/item'], function () use ($app) {
 });
 
 /*EVENTO*/
-$app->group(['prefix' => '/evento'], function () use ($app) {
+$app->group(['prefix' => 'evento'], function () use ($app) {
     //lista todos eventos
     $app->get('/', 'EventoController@todosEventos');
     //lista todos eventos ativos

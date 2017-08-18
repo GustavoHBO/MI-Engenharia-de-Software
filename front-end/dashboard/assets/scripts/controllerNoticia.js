@@ -4,7 +4,7 @@ class ControllerNoticia {
     }
 
     gerenciarNoticia() {
-        var pesquisa = new Vue({
+        var lista_noticias = new Vue({
             el: '#lista_noticias',
             data: {
                 noticias: {},
@@ -15,9 +15,9 @@ class ControllerNoticia {
                     location.href = "editar-noticia.html?noticia=" + idNoticia;
                 },
                 pesquisar: () => {
-                    $.get("http://localhost:8000/api/public/noticia/buscar/" + pesquisa.pesquisa, data => {
+                    $.get("http://localhost:8000/api/public/noticia/buscar/" + lista_noticias.pesquisa, data => {
                     lista_noticias.noticias = data;
-                });
+                    });
                 }
             },
             created: () => {
@@ -34,34 +34,31 @@ class ControllerNoticia {
             el: '#nova-noticia',
             data: {
                 noticia: {
-                    titulo: '',
-                    descricao: '',
+                    titulo_noticia: '',
+                    descricao_noticia: '',
                     foto_url: '',
-                    id_usuario: '',
-                 },
-            },
-            methods: {
-                cadastrar: () => {
-                    novaNoticia.noticia.id_usuario = firebase.auth().currentUser.uid;
-                    $.post("http://localhost:8000/api/public/noticia/cadastrar", novaNoticia.novaNoticia).
-                    done((data) => {
-                        location.href = "http://localhost:8000/gerenciar-noticias.html";
-                    }).fail(() => {
-                        console.log("error");
+                    id_funcionario: '',
+                 }, 
+            }, 
+            methods: { 
+                cadastrar: () => { 
+                    novaNoticia.noticia.id_funcionario = firebase.auth().currentUser.uid; 
+                    $.post("http://localhost:8000/api/public/noticia/cadastrar", novaNoticia.noticia). 
+                    done((data) => { 
+                        location.href = "http://localhost:8000/front-end/dashboard/gerenciar-noticias.html"; 
+                    }).fail(() => { 
+                        console.log("erro"); 
                     });
 
                 },
                 fotoAdd: (event) => {
-                    novaNoticia.noticia.foto_url = "img.png";
-                    /*
                     var file = event.target.files[0];
                     //converter a imagem para BASE64
                     var reader = new FileReader();
                     reader.onloadend = function () {
-                        this.evento.foto_url = reader.result;
+                        novaNoticia.noticia.foto_url = reader.result;
                     }
                     reader.readAsDataURL(file);
-                    */
                 },
             },
         });

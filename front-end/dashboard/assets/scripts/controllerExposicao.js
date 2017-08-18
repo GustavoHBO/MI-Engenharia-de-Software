@@ -11,6 +11,16 @@ class ControllerExposicao {
             methods: {
                 editar: (idExposicao) => {
                     location.href = "editar-exposicao.html?exposicao=" + idExposicao;
+                },
+                deletar: (exposicao) => {
+                    $.post("http://localhost:8000/api/public/exposicao/excluir", exposicao).
+                        done((data) => {
+                            $.get("http://localhost:8000/api/public/exposicao/listar", data => {
+                                lista_exposicoes.exposicoes = data;
+                            });
+                        }).fail(() => {
+                            console.log("error");
+                        });
                 }
             },
             created: () =>{
@@ -47,6 +57,7 @@ class ControllerExposicao {
        var editarExposicao = new Vue({
         el: '#editar-exposicao',
         data: {
+            exposicao: {}
         },
         methods: {
 
@@ -54,7 +65,9 @@ class ControllerExposicao {
         created: () => {
             let query = location.search.slice(1); //pega a parte depois da ?
             let id = query.split('=')[1]; // pega o id do evento enviado
-            console.log(id);
+            $.get("http://localhost:8000/api/public/exposicao/get/"+ id, data => {
+                editarExposicao.exposicao = data;
+            });
         }
     });
    }

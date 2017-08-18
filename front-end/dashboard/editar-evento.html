@@ -145,7 +145,8 @@
 									<br> Data de Término:
 									<input v-model="evento.data_fim" type="date" class="form-control" placeholder="Data de Término" required>
 									<br>
-									<p>Imagem atual:  {{evento.foto_url}}</p>
+									<p>Imagem atual:</p>
+									<img :src="evento.foto_url" alt="">
 									<p>Envie aqui uma imagem: (opcional)</p>
 									<input v-on:change="fotoAdd" type="file" class="form-control" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"
 									    id="imagens" name="arquivos" accept=".png, .jpg, .jpeg"/>

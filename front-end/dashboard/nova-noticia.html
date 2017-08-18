@@ -126,9 +126,9 @@
 						</div>
 						<div id="nova-noticia" class="panel-body">
 							<form>
-								<input v-model="noticia.titulo" type="text" class="form-control" placeholder="Título" required>
+								<input v-model="noticia.titulo_noticia" type="text" class="form-control" placeholder="Título" required>
 								<br>
-								<textarea  v-model="noticia.descricao" class="form-control" placeholder="Texto" rows="12" required></textarea>
+								<textarea v-model="noticia.descricao_noticia" class="form-control" placeholder="Texto" rows="12" required></textarea>
 								<br>
 								<p>Envie aqui uma imagem:</p>
 								<input v-on:change="fotoAdd" type="file" class="form-control" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" id="imagens" name="arquivos" accept=".png, .jpg, .jpeg" required/>

@@ -129,59 +129,59 @@
 							<div class="row">
 								<div class="col-sm-12 col-md-6">
 									<br>
-									<input id="nome" type="text" class="form-control" placeholder="Nome" required>
+									<input v-model="funcionario.nome" id="nome" type="text" class="form-control" placeholder="Nome" required>
 								</div>
 								<div class="col-sm-12 col-md-6">
 									<br>
-									<input id="sobrenome" type="text" class="form-control" placeholder="Sobrenome" required>
+									<input v-model="funcionario.sobrenome" id="sobrenome" type="text" class="form-control" placeholder="Sobrenome" required>
 								</div>
 								<div class="col-sm-12">
 									<br>
-									<input id="email" type="text" class="form-control" placeholder="E-Mail" required>
+									<input v-model="funcionario.email" id="email" type="email" class="form-control" placeholder="E-Mail" required>
 								</div>
 
 								<div class="col-sm-12 col-md-6">
 									<br>
-									<input type="password" id="senha" type="text" class="form-control" placeholder="Senha" required>
+									<input v-model="funcionario.senha" type="password" id="senha" class="form-control" placeholder="Senha" required>
 								</div>
 								<div class="col-sm-12 col-md-6">
 									<br>
-									<input type="password" id="senha_confirmacao" type="text" class="form-control" placeholder="Confirme a senha" required>
+									<input v-model="repsenha" type="password" id="senha_confirmacao" class="form-control" placeholder="Confirme a senha" required>
 								</div>
 								<div class="col-sm-12 col-md-6">
 									<br>
 									<p class="text-left">Permissões:</p>
 									<div class="checkbox">
-										<label><input type="checkbox" name="gerenciar_itens" value="">Gerenciar Itens</label>
+										<label><input type="checkbox" name="gerenciar_itens" v-model="funcionario.gerenciar_itens">Gerenciar Itens</label>
 									</div>
 									<div class="checkbox">
-										<label><input type="checkbox" name="gerenciar_eventos" value="">Gerenciar Eventos</label>
+										<label><input type="checkbox" name="gerenciar_eventos" v-model="funcionario.gerenciar_eventos">Gerenciar Eventos</label>
 									</div>
 									<div class="checkbox">
-										<label><input type="checkbox" name="gerenciar_noticias" value="">Gerenciar Notícias</label>
+										<label><input type="checkbox" name="gerenciar_noticias" v-model="funcionario.gerenciar_noticias">Gerenciar Notícias</label>
 									</div>
 								</div>
 								<div class="col-sm-12 col-md-12">
 									<br>
-									<button class="btn btn-primary ">Cadastrar</button>
-									<button class="btn btn-danger ">Cancelar</button>
+									<button v-on:click="cadastrar()" class="btn btn-primary submit">Cadastrar</button>
 								</div>
-
 							</div>
-
 						</div>
+						
+
 					</div>
 				</div>
 			</div>
-			<!-- END MAIN CONTENT -->
 		</div>
-		<!-- END MAIN -->
-		<div class="clearfix"></div>
-		<footer>
-			<div class="container-fluid">
-				<p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved.</p>
-			</div>
-		</footer>
+		<!-- END MAIN CONTENT -->
+	</div>
+	<!-- END MAIN -->
+	<div class="clearfix"></div>
+	<footer>
+		<div class="container-fluid">
+			<p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved.</p>
+		</div>
+	</footer>
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
@@ -189,30 +189,30 @@
 	<script>
 		// Initialize Firebase
 		var config = {
-		apiKey: "AIzaSyD-AzHfDGqFPjk0CX3aEG_dkxDngxpWsLg",
-		authDomain: "pblengsoft-9128d.firebaseapp.com",
-		databaseURL: "https://pblengsoft-9128d.firebaseio.com",
-		projectId: "pblengsoft-9128d",
-		storageBucket: "pblengsoft-9128d.appspot.com",
-		messagingSenderId: "277046336190"
-	};
-	firebase.initializeApp(config);
-</script>
-<script src="assets/vendor/jquery/jquery.min.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="assets/scripts/klorofil-common.js"></script>
+			apiKey: "AIzaSyD-AzHfDGqFPjk0CX3aEG_dkxDngxpWsLg",
+			authDomain: "pblengsoft-9128d.firebaseapp.com",
+			databaseURL: "https://pblengsoft-9128d.firebaseio.com",
+			projectId: "pblengsoft-9128d",
+			storageBucket: "pblengsoft-9128d.appspot.com",
+			messagingSenderId: "277046336190"
+		};
+		firebase.initializeApp(config);
+	</script>
+	<script src="assets/vendor/jquery/jquery.min.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/scripts/klorofil-common.js"></script>
 
-<script src="https://unpkg.com/vue"></script>
-<script src="assets/model/usuario.js"></script>
-<script src="assets/scripts/controllerFuncionario.js"></script>
-<script src="assets/scripts/controllerGeral.js"></script>
-<script>
-	new ControllerGeral();
-</script>
-<script>
-	new ControllerFuncionario().novoFuncionario();
-</script>
+	<script src="https://unpkg.com/vue"></script>
+	<script src="assets/model/usuario.js"></script>
+	<script src="assets/scripts/controllerFuncionario.js"></script>
+	<script src="assets/scripts/controllerGeral.js"></script>
+	<script>
+		new ControllerGeral();
+	</script>
+	<script>
+		new ControllerFuncionario().novoFuncionario();
+	</script>
 </body>
 
 </html>
