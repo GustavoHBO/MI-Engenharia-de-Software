@@ -99,7 +99,7 @@
                         <!-- Exposição principal -->
                         <div class="row exposicao-principal" >
                             <div class="col-sm-6">
-                                <img class="img-responsive img-expo" :src="exposicao_principal.imagem" alt="">
+                                <a href=""><img class="img-responsive img-expo" :src="exposicao_principal.imagem" alt=""></a>
                             </div>
                             <div class="col-sm-4 col-sm-offset-1 expo-prin">
                                 <h4>{{exposicao_principal.titulo}}</h4>
@@ -116,7 +116,7 @@
                             <div v-if="exposicoes.length != 0">
                                 <div v-for="exposicao in exposicoes">
                                     <div class="col-sm-3">
-                                        <img class="img-responsive item-mini" :src="exposicao.imagem" alt="">
+                                        <a href=""><img class="img-responsive item-mini" :src="exposicao.imagem" alt=""></a>
                                     </div>
                                     <div class="col-sm-3 expo-desc">
                                         <h4>{{exposicao.titulo}}</h4>
