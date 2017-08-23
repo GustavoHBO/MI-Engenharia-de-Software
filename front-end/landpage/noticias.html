@@ -92,7 +92,7 @@
                 <li><a class="ativo" href="index.html#calendario">Calendário</a></li>
                 <li><a class ="ativo"href="index.html#acervo">Acervo</a></li>
                 <li><a class="ativo" href="index.html#contatos">Contatos</a></li>
-                <li><buton><a href="#login" class="btn btn-secondary-outline btn-lg" id="login">Log In!</a></button></li>
+                <li><buton><a v-on:click="logout()" class="btn btn-secondary-outline btn-lg" id="login">Log In!</a></button></li>
             </ul>
         </div>
     </div>
@@ -145,8 +145,13 @@
 <script src="https://unpkg.com/vue"></script>
 <!-- Javascript -->
 <script src="assets/js/controllerItem.js"></script>
+<script src="assets/js/controllerGeral.js"></script>
 <!-- Instanciando o controller desta página -->
 <script>
     new ControllerItem().listaItens();
+</script>
+<script>
+    new ControllerGeral();
+
 </script>
 </html>

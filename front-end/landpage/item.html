@@ -88,7 +88,7 @@
                 <li><a class="ativo" href="index.html#calendario">Calendário</a></li>
                 <li><a class ="ativo"href="index.html#acervo">Acervo</a></li>
                 <li><a class="ativo" href="index.html#contatos">Contatos</a></li>
-                <li><a href="#" class="btn btn-secondary-outline btn-lg" id="login">Logout</a></li>
+                <li><a v-on:click="logout()" class="btn btn-secondary-outline btn-lg" id="login">Logout</a></li>
             </ul>
         </div>
     </div>
@@ -172,8 +172,13 @@
 <!-- Page JS -->
 <script src="assets/js/controllerEvento.js"></script>
 <script src="assets/js/controllerItem.js"></script>
+<script src="assets/js/controllerGeral.js"></script>
 <script>
     new ControllerItem().item();
+</script>
+<script>
+    new ControllerGeral();
+
 </script>
 
 </body>

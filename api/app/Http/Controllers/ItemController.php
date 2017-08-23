@@ -21,12 +21,9 @@ class ItemController extends Controller
      * @return todos itens cadastrados
      */  
     public function todosItens(){
-        $busca = DB::SELECT('SELECT * FROM item it, aquisicao_item aq_it, caracteristicas_estilisticas_item carac_est_it, dimensao_item dim_it,documentacao_fotografica_item doc_fot_it WHERE it.id_item = aq_it.Item_id_item AND it.id_item = carac_est_it.Item_id_item AND it.id_item = dim_it.Item_id_item AND it.id_item = doc_fot_it.Item_id_item ORDER BY it.id_item');
+        $busca = DB::SELECT('SELECT * FROM casadosertao.item');
         
-        foreach($busca as $b){
-            $imagens = DB::SELECT('SELECT foto_url FROM item_imagem WHERE Item_id_item = ?',[$b->id_item]);
-            $b->foto_imagem = $imagens;
-        }
+        
         return response()->json($busca);
     }
     

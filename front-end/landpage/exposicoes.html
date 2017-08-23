@@ -95,35 +95,20 @@
                 <!-- Page Content -->
                 <div id="page-content-wrapper">
                     <div class="container-fluid" id="lista-exposicoes">
-
-                        <!-- Exposição principal -->
-                        <div class="row exposicao-principal" >
-                            <div class="col-sm-6">
-                                <a href=""><img class="img-responsive img-expo" :src="exposicao_principal.imagem" alt=""></a>
-                            </div>
-                            <div class="col-sm-4 col-sm-offset-1 expo-prin">
-                                <h4>{{exposicao_principal.titulo}}</h4>
-                                <h4>Categoria: {{exposicao_principal.categoria}}</h4>
-                                <h4>Data inicio: {{exposicao_principal.data_inicio}}</h4>
-                                <h4>Data término: {{exposicao_principal.data_fim}}</h4>
-                                <h4>Descrição: </h4>
-                                <p>{{exposicao_principal.descricao}}</p>
-                            </div>
-                        </div> <!-- Fim da exposição principal -->
                         <!-- Linha de exposições secundárias -->
                         <div class="row">
                             <!-- Início de uma exposição -->
-                            <div v-if="exposicoes.length != 0">
+                            <div>
                                 <div v-for="exposicao in exposicoes">
                                     <div class="col-sm-3">
-                                        <a href=""><img class="img-responsive item-mini" :src="exposicao.imagem" alt=""></a>
+                                        <a href=""><img class="img-responsive item-mini" v-bind:src="exposicao.imagem" alt=""></a>
                                     </div>
                                     <div class="col-sm-3 expo-desc">
                                         <h4>{{exposicao.titulo}}</h4>
                                         <p>{{exposicao.descricao}}</p>
                                         <h4>Categoria: {{exposicao.categoria}}</h4>
                                         <h4>Data inicio: {{exposicao.data_inicio}}</h4>
-                                        <h4>Data término: {{exposicao.data_fim}}</h4>
+                                        <h4>Data término: {{exposicao.data_termino}}</h4>
                                     </div>
                                     <!-- Fim de uma exposição -->
                                 </div>
@@ -153,5 +138,9 @@
     <script src="assets/js/ControllerExposicao.js"></script>
     <!-- Instanciando o controller desta página -->
     <script>new ControllerExposicao().listarExposicoes();</script>
+    <script>
+            new ControllerGeral();
+
+    </script>
 </body>
 </html>

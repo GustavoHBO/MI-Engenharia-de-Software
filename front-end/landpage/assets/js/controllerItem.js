@@ -6,58 +6,16 @@ class ControllerItem {
         var listaItens = new Vue({
             el: '#lista-itens',
             data: {
-                itens: [{
-                    id: 1,
-                    nome: 'Calça de couro',
-                    autor: 'Carlos Manoel',
-                    image: 'http://placehold.it/400x300',
-                    descricao: 'Calça de couro de cavalo de 1941'
-                },{
-                    id: 2,
-                    nome: 'Chapéu',
-                    autor: 'Carlos Manoel',
-                    image: 'http://placehold.it/400x300',
-                    descricao: 'Chapéu de couro de cavalo de 1941'
-                },{
-                    id: 3,
-                    nome: 'Chapéu',
-                    autor: 'Carlos Manoel',
-                    image: 'http://placehold.it/400x300',
-                    descricao: 'Chapéu de couro de cavalo de 1941'
-                },{
-                    id: 4,
-                    nome: 'Chapéu',
-                    autor: 'Carlos Manoel',
-                    image: 'http://placehold.it/400x300',
-                    descricao: 'Chapéu de couro de cavalo de 1941'
-                },{
-                    id: 5,
-                    nome: 'Chapéu',
-                    autor: 'Carlos Manoel',
-                    image: 'http://placehold.it/400x300',
-                    descricao: 'Chapéu de couro de cavalo de 1941'
-                },{
-                    id: 6,
-                    nome: 'Chapéu',
-                    autor: 'Carlos Manoel',
-                    image: 'http://placehold.it/400x300',
-                    descricao: 'Chapéu de couro de cavalo de 1941'
-                },{
-                    id: 7,
-                    nome: 'Chapéu',
-                    autor: 'Carlos Manoel',
-                    image: 'http://placehold.it/400x300',
-                    descricao: 'Chapéu de couro de cavalo de 1941'
-                },{
-                    id: 8,
-                    nome: 'Chapéu',
-                    autor: 'Carlos Manoel',
-                    image: 'http://placehold.it/400x300',
-                    descricao: 'Chapéu de couro de cavalo de 1941'
-                }]
+                itens
             },
             methods: {
 
+            },
+            created: () => {
+                //pega lista de eventos
+                $.get("http://localhost:8000/api/public/item", data => {
+                    listaItens.itens = data;
+                });
             }
         });
     }

@@ -15,9 +15,8 @@ class LoginController extends Controller
      * @return response - O usuario conectado ao sistema.
      */
     public function login(Request $request){
-        $dados = $request->all();
+        $dados = $request->all(); 
         $security = new SecurityController;
-        $dados = $security->addbarras($dados);
 
         $busca = DB::SELECT('SELECT * FROM usuario WHERE id_usuario = ?',
         [$dados['id']]);

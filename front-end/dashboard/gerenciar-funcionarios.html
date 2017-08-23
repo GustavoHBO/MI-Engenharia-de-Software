@@ -149,16 +149,16 @@
 										<tr v-for="funcionario in funcionarios">
 											<td>{{funcionario.nome}} {{funcionario.sobrenome}}</td>
 											<td>
-											<div v-if="funcionario.gerencia_itens"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
-											<div v-else="funcionario.gerencia_itens"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+											<div v-if="funcionario.gerenciar_itens"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+											<div v-if="!funcionario.gerenciar_itens"><span class="glyphicon glyphicon-remove" aria-hidden="false"></span></div>
 											</td>
 											<td>
-											<div v-if="funcionario.gerencia_eventos"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
-											<div v-else="funcionario.gerencia_eventos"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+											<div v-if="funcionario.gerenciar_eventos"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+											<div v-if="!funcionario.gerenciar_eventos"><span class="glyphicon glyphicon-remove" aria-hidden="false"></span></div>
 											</td>
 											<td>
-											<div v-if="funcionario.gerencia_noticias"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
-											<div v-else="funcionario.gerencia_noticias"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+											<div v-if="funcionario.gerenciar_noticias"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+											<div v-if="!funcionario.gerenciar_noticias"><span class="glyphicon glyphicon-remove" aria-hidden="false"></span></div>
 											</td>
 											<td>
 												<a v-on:click="editar(noticia.id)" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>

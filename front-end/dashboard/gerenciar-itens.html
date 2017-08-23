@@ -137,16 +137,16 @@
 									<thead>
 										<tr>
 											<th>Título</th>
-											<th>Classificação</th>
-											<th>Categoria</th>
+											<th>Autor</th>
+											<th>Descrição</th>
 											<th></th>
 										</tr>
 									</thead>
 									<tbody id="lista_item">
 										<tr v-for="item in itens">
 											<td>{{item.titulo}}</td>
-											<td>{{item.classificacao}}</td>
-											<td>{{item.categoria}}</td>
+											<td>{{item.autor}}</td>
+											<td>{{item.descricao_objeto}}</td>
 											<td>
 												<a v-on:click="editar(item.id)" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
 												<a v-on:click="desativar(item.id)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>

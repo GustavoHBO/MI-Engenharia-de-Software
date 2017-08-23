@@ -9,12 +9,12 @@ class ControllerRelatorio {
             data: {
                 relatorios: [{
                         item: 'Bota de Couro',
-                        funcionario: 'Carlos Rodrigues',
+                        funcionario: 'João Borges',
                         movimentacao: 'Adição'
                     },
                     {
                         item: 'Carroça de Madeira',
-                        funcionario: 'Fernando Guigs',
+                        funcionario: 'João Borges',
                         movimentacao: 'Remoção'
                     }
                 ]
@@ -36,12 +36,12 @@ class ControllerRelatorio {
             el: '#lista_relatorio',
             data: {
                 relatorios: [{
-                        nome: 'Carlos Rodrigues',
+                    nome: 'João Borges',
                         item: 'Bota de Couro',
                         movimentacao: 'Adição'
                     },
                     {
-                        nome: 'Fernando Guigs',
+                        nome: 'João Borges',
                         item: 'Carroça de Madeira',
                         movimentacao: 'Remoção'
                     }

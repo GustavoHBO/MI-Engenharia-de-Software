@@ -139,7 +139,6 @@
 									<thead>
 										<tr>
 											<th>Título</th>
-											<th>Descrição</th>
 											<th>Data</th>
 											<th></th>
 										</tr>
@@ -147,7 +146,6 @@
 									<tbody>
 										<tr v-for="noticia in noticias">
 											<td>{{noticia.titulo}}</td>
-											<td>{{noticia.descricao}}</td>
 											<td>{{noticia.data_publicacao}}</td>
 											<td>
 												<a v-on:click="editar(noticia.id_noticia)" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>

@@ -59,8 +59,10 @@ class ControllerEvento {
                     var reader = new FileReader();
                     reader.onloadend = function () {
                         novoEvento.evento.foto_url = reader.result;
+                        console.log(novoEvento.evento.foto_url)
                     }
                     reader.readAsDataURL(file);
+                    
                 },
                 cadastrar: () => {
 

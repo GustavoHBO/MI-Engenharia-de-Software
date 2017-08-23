@@ -94,7 +94,7 @@
                 <li><a class="ativo" href="index.html#calendario">Calendário</a></li>
                 <li><a class ="ativo"href="index.html#acervo">Acervo</a></li>
                 <li><a class="ativo" href="index.html#contatos">Contatos</a></li>
-                <li><a href="#" class="btn btn-secondary-outline btn-lg" id="login">Logout</a></li>
+                <li><a v-on:click="logout()" class="btn btn-secondary-outline btn-lg" id="login">Logout</a></li>
             </ul>
         </div>
     </div>
@@ -138,10 +138,10 @@
                 <div class="col-sm-12" id="lista-itens">
 
                         <div v-for="item in itens" class="foto_Item col-lg-2 col-md-3 col-xs-6 thumb">
-                            <p class="nome-noticia"><strong>{{item.nome}}</strong></p>
+                            <p class="nome-noticia"><strong>{{item.titulo}}</strong></p>
                             <p>{{item.autor}}</p>
-                            <a class="thumbnail" href="#">
-                                <img class="img-responsive" v-bind:src="item.image" v-bind:alt="item.descricao" src="http://placehold.it/400x300" alt="">
+                            <a class="thumbnail" href="item.html">
+                                <img class="img-responsive" v-bind:src="item.imagem" v-bind:alt="item.descricao" alt="">
                             </a>
                         </div>
                  </div>
@@ -176,8 +176,12 @@
 <script src="https://unpkg.com/vue"></script>
 <!-- Javascript -->
 <script src="assets/js/controllerItem.js"></script>
+<script src="assets/js/controllerGeral.js"></script>
 <!-- Instanciando o controller desta página -->
 <script>
     new ControllerItem().listaItens();
+</script>
+<script>
+    new ControllerGeral();
 </script>
 </html>

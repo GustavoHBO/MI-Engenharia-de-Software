@@ -108,15 +108,18 @@ var loginpage = new Vue({
         sobrenome = sobrenomeTemp.trim(); // limpa os espaços em branco
         //cadastar usuario no banco
         // ROTA PARA BANCO LOCAL, SUBSTITUIR PARA SERVIDOR QUANDO DISPONÍVEL ROTABANCOLOCAL
-        $.post("http://localhost:8000/api/public/usuario/new?id=" + user.uid + "&nome=" + this.nome + "&sobrenome=" + this.sobrenome)
+        var usuario = {
+          id: user.uid,
+          nome: this.nome,
+          sobrenome: this.sobrenome
+        }
+        $.post("http://localhost:8000/api/public/login", usuario)
           .done(function (data) {
-            if (data) {
-              console.log("Cadastro concluido, efetuando Login");
+            if (data.tipo == "f") {
               window.location.href = "index.html";
-            } else {}
-          }).fail(function (code) {
-            console.log("Usuário já cadastrado, efetuando Login");
-            window.location.href = "index.html";
+            } else {
+              window.location.href = "../landpage/itens.html";
+            }
           });
   
 

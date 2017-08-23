@@ -33,7 +33,7 @@ function init(){
 
     //Carregando objeto
     var loader = new THREE.OBJLoader();
-    loader.load('http://localhost:8000/male02.obj', function (object){
+    loader.load('http://localhost:8000/ThreeJS/male02.obj', function (object){
         obj = object;
         object.scale.set(0.15,0.15,0.15);
         object.position.y = -20;
